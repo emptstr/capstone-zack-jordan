@@ -2,33 +2,71 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ad229d-99b0-4f04-9ab3-ad72ad2fc947" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/app/app.component.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/app/app.component.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/app/app.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/app/app.module.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/app/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/app/main.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/pages/hello-ionic/hello-ionic.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/pages/hello-ionic/hello-ionic.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/pages/item-details/item-details.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/pages/item-details/item-details.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/pages/list/list.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/pages/list/list.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/pages/test/test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/pages/test/test.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/pages/test/test.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Maestro/src/pages/test/test.ts" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/gulpfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/platforms/browser/www/build/main.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/platforms/browser/www/build/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/platforms/browser/www/build/main.js.map" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/.vscode/settings.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/Reflect.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/index.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/spec/metadata.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/standalone.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/Reflect.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/harness.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-decorate.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-definemetadata.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-deletemetadata.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getmetadata.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getmetadatakeys.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getownmetadata.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getownmetadatakeys.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-hasmetadata.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-hasownmetadata.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-metadata.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/run.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/spec.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/typings.d.ts" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/src/app/app.component.ts" afterPath="$PROJECT_DIR$/Maestro/src/app/app.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/src/app/app.module.ts" afterPath="$PROJECT_DIR$/Maestro/src/app/app.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/www/build/main.js" afterPath="$PROJECT_DIR$/Maestro/www/build/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/www/build/main.js.map" afterPath="$PROJECT_DIR$/Maestro/www/build/main.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/.gitignore" afterPath="$PROJECT_DIR$/Maestro/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/config.xml" afterPath="$PROJECT_DIR$/Maestro/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/@angular/core/package.json" afterPath="$PROJECT_DIR$/Maestro/node_modules/@angular/core/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/README.md" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/Reflect.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/Reflect.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/Reflect.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/Reflect.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/Reflect.ts" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/Reflect.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/bower.json" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/package.json" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/reflect-metadata.d.ts" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/reflect-metadata.d.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/Reflect.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/Reflect.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/Reflect.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/Reflect.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/harness.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/harness.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/harness.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/harness.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-decorate.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-decorate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-decorate.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-decorate.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-definemetadata.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-definemetadata.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-definemetadata.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-definemetadata.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-deletemetadata.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-deletemetadata.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-deletemetadata.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-deletemetadata.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getmetadata.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getmetadata.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getmetadata.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getmetadata.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getmetadatakeys.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getmetadatakeys.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getmetadatakeys.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getmetadatakeys.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getownmetadata.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getownmetadata.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getownmetadata.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getownmetadata.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getownmetadatakeys.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getownmetadatakeys.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getownmetadatakeys.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-getownmetadatakeys.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-hasmetadata.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-hasmetadata.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-hasmetadata.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-hasmetadata.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-hasownmetadata.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-hasownmetadata.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-hasownmetadata.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-hasownmetadata.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-metadata.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-metadata.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-metadata.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/reflect/reflect-metadata.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/run.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/run.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/run.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/run.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/spec.js" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/spec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/spec.js.map" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/temp/test/spec.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/test/reflect/reflect-decorate.ts" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/test/reflect/reflect-decorate.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/tsconfig.json" afterPath="$PROJECT_DIR$/Maestro/node_modules/reflect-metadata/tsconfig.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/node_modules/rxjs/package.json" afterPath="$PROJECT_DIR$/Maestro/node_modules/rxjs/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/package.json" afterPath="$PROJECT_DIR$/Maestro/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maestro/src/pages/test/test.ts" afterPath="$PROJECT_DIR$/Maestro/src/pages/test/test.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -49,11 +87,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Maestro/src/pages/test/test.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+            <state relative-caret-position="165">
+              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -62,18 +100,18 @@
       <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Maestro/src/app/app.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-190">
+            <state relative-caret-position="15">
               <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Maestro/.gitignore">
+      <file leaf-file-name="hello-ionic.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Maestro/src/pages/hello-ionic/hello-ionic.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -122,10 +160,10 @@
         <option value="$PROJECT_DIR$/Maestro/tsconfig.json" />
         <option value="$PROJECT_DIR$/Maestro/src/pages/hello-ionic/hello-ionic.html" />
         <option value="$PROJECT_DIR$/Maestro/src/pages/test/test.html" />
-        <option value="$PROJECT_DIR$/Maestro/src/pages/test/test.ts" />
         <option value="$PROJECT_DIR$/Maestro/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/Maestro/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/Maestro/.gitignore" />
+        <option value="$PROJECT_DIR$/Maestro/src/pages/test/test.ts" />
       </list>
     </option>
   </component>
@@ -353,9 +391,11 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="ignore_missing_gitignore" value="true" />
+    <property name="prop_add_unversioned_files" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -430,11 +470,12 @@
       <updated>1485817438909</updated>
       <workItem from="1485817441770" duration="902000" />
       <workItem from="1485846930543" duration="2493000" />
+      <workItem from="1485850744528" duration="769000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3395000" />
+    <option name="totallyTimeSpent" value="4164000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -447,25 +488,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2769556" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27625087" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26632524" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26632524" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,13 +538,52 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Maestro/src/pages/test/test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Maestro/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Maestro/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Maestro/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Maestro/src/pages/test/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Maestro/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1485849353000" expanded="true" signature="1259:1265" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -511,49 +591,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
           <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <marker date="1485849353000" expanded="true" signature="1259:1265" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Maestro/www/build/main.js.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Maestro/src/pages/test.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Maestro/src/pages/test.ts" />
     <entry file="file://$PROJECT_DIR$/Maestro/src/pages/list/list.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="27" column="35" lean-forward="false" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Maestro/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Maestro/gulpfile.js" />
     <entry file="file://$PROJECT_DIR$/Maestro/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -566,7 +625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -582,7 +640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -590,15 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Maestro/src/pages/hello-ionic/hello-ionic.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -606,9 +654,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#75#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Maestro/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -622,26 +675,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Maestro/src/pages/test/test.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Maestro/src/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-190">
+        <state relative-caret-position="15">
           <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Maestro/.gitignore">
+    <entry file="file://$PROJECT_DIR$/Maestro/src/pages/hello-ionic/hello-ionic.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Maestro/src/pages/test/test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
           <folding />
         </state>
       </provider>
