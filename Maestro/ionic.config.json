@@ -1,4 +1,6 @@
 {
-  "name": "myFirstIonicApp",
-  "app_id": ""
+  "name": "githubIonic",
+  "app_id": "",
+  "v2": true,
+  "typescript": true
 }
