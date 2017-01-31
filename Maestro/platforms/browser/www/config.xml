@@ -6,12 +6,12 @@
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>myFirstIonicApp</name>
+    <name>Maestro</name>
     <description>
-        An Ionic Framework and Cordova project.
+        The Start of Maestro with Ionic.
     </description>
     <author email="you@example.com" href="http://example.com/">
-      Your Name Here
+      Jordan Gaston
     </author>
     <content src="index.html" />
     <access origin="*" />
