@@ -45,7 +45,13 @@
       "platform": "ios",
       "version": "",
       "locator": "ios"
+    },
+    "android",
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
     }
   ],
-  "description": "MyIonic2Project: An Ionic project"
+  "description": "Maestro - An App for Learning"
 }
