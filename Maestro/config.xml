@@ -2,7 +2,7 @@
 <widget id="com.phonegap.maestro" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
   <name>Maestro</name>
   <description>An app that will aid the user in discovering better learning practices.</description>
-  <author>Zack Walton and Jordan Gaston</author>
+  <author href="https://github.com/jordangaston/capstone-zack-jordan">Zack Walton and Jordan Gaston</author>
   <content src="index.html"/>
   <access origin="*"/>
   <allow-navigation href="http://ionic.local/*"/>

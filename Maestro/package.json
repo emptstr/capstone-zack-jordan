@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "maestro",
+  "author": "Zack Walton and Jordan Gaston",
+  "homepage": "https://github.com/jordangaston/capstone-zack-jordan",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
