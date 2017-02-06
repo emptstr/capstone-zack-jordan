@@ -1,12 +1,17 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { Login } from '../pages/Login/Login';
+import { AuthService } from '../providers/auth-service'
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { HomePage } from '../pages/home/home';
 
 @NgModule({
   declarations: [
     MyApp,
-    Login
+    HomePage,
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -14,8 +19,10 @@ import { Login } from '../pages/Login/Login';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Login
+    HomePage,
+    LoginPage,
+    RegisterPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
 })
 export class AppModule {}
