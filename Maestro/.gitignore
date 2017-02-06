@@ -1,6 +1,6 @@
 #idea
-.idea/workspace.xml/
-.idea/task.xml
+.idea/**/workspace.xml
+.idea/**/tasks.xml
 
 #node
 node_modules/
