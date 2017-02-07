@@ -8,16 +8,63 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-export var Login = (function () {
-    function Login() {
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
+import { AuthService } from '../../providers/auth-service';
+import { RegisterPage } from '../register/register';
+import { HomePage } from '../home/home';
+export var LoginPage = (function () {
+    function LoginPage(nav, auth, alertCtrl, loadingCtrl) {
+        this.nav = nav;
+        this.auth = auth;
+        this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.registerCredentials = { email: '', password: '' };
     }
-    Login = __decorate([
+    LoginPage.prototype.createAccount = function () {
+        this.nav.push(RegisterPage);
+    };
+    LoginPage.prototype.login = function () {
+        var _this = this;
+        this.showLoading();
+        this.auth.login(this.registerCredentials).subscribe(function (allowed) {
+            if (allowed) {
+                setTimeout(function () {
+                    _this.loading.dismiss();
+                    _this.nav.setRoot(HomePage);
+                });
+            }
+            else {
+                _this.showError("Access Denied");
+            }
+        }, function (error) {
+            _this.showError(error);
+        });
+    };
+    LoginPage.prototype.showLoading = function () {
+        this.loading = this.loadingCtrl.create({
+            content: 'Please wait...'
+        });
+        this.loading.present();
+    };
+    LoginPage.prototype.showError = function (text) {
+        var _this = this;
+        setTimeout(function () {
+            _this.loading.dismiss();
+        });
+        var alert = this.alertCtrl.create({
+            title: 'Fail',
+            subTitle: text,
+            buttons: ['OK']
+        });
+        alert.present(prompt);
+    };
+    LoginPage = __decorate([
         Component({
-            selector: 'login-page',
+            selector: 'page-login',
             templateUrl: 'login.html'
         }), 
-        __metadata('design:paramtypes', [])
-    ], Login);
-    return Login;
+        __metadata('design:paramtypes', [NavController, AuthService, AlertController, LoadingController])
+    ], LoginPage);
+    return LoginPage;
 }());
 //# sourceMappingURL=login.js.map

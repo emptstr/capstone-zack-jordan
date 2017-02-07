@@ -10,7 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { Login } from '../pages/Login/Login';
+import { AuthService } from '../providers/auth-service';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { HomePage } from '../pages/home/home';
 export var AppModule = (function () {
     function AppModule() {
     }
@@ -18,7 +21,9 @@ export var AppModule = (function () {
         NgModule({
             declarations: [
                 MyApp,
-                Login
+                HomePage,
+                LoginPage,
+                RegisterPage
             ],
             imports: [
                 IonicModule.forRoot(MyApp)
@@ -26,9 +31,11 @@ export var AppModule = (function () {
             bootstrap: [IonicApp],
             entryComponents: [
                 MyApp,
-                Login
+                HomePage,
+                LoginPage,
+                RegisterPage
             ],
-            providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
+            providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, AuthService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

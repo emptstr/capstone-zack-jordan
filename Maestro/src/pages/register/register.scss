@@ -1,3 +1,35 @@
 page-register {
 
+  .login-content {
+
+    .login-box {
+      background: #BDBDBD;
+      padding: 20px 20px 0px 20px;
+      margin-top: 30px;
+    }
+
+    ion-row {
+      align-items: center;
+      text-align: center;
+    }
+
+    ion-item {
+      font-size: 0.9em;
+      margin-bottom: 10px;
+
+    }
+
+    .signup-col {
+      margin: 0px 16px 0px 16px;
+      padding-bottom: 20px;
+    }
+
+    .item-inner {
+      box-shadow: none !important;
+    }
+
+    .submit-btn {
+      border-radius: 30px !important;
+    }
+  }
 }

@@ -10,17 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-import { Login } from '../pages/Login/Login';
+import { LoginPage } from '../pages/login/login';
 export var MyApp = (function () {
     function MyApp(platform, menu) {
         this.platform = platform;
         this.menu = menu;
         // make HelloIonicPage the root (or first) page
-        this.rootPage = Login;
+        this.rootPage = LoginPage;
         this.initializeApp();
         // set our app's pages
         this.pages = [
-            { title: 'Login', component: Login },
+            { title: 'Login', component: LoginPage },
         ];
     }
     MyApp.prototype.initializeApp = function () {

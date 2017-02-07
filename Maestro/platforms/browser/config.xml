@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.githubionic647230" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.phonegap.maestro" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>githubIonic</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <name>Maestro</name>
+    <description>An app that will aid the user in discovering better learning practices.</description>
+    <author href="https://github.com/jordangaston/capstone-zack-jordan">Zack Walton and Jordan Gaston</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
