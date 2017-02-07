@@ -8,23 +8,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { AuthServices } from '../../providers/auth-service';
+import { NavController, AlertController } from 'ionic-angular';
+import { AuthService } from '../../providers/auth-service';
 export var RegisterPage = (function () {
-    function RegisterPage(nav, auth) {
+    function RegisterPage(nav, auth, alertCtrl) {
         this.nav = nav;
         this.auth = auth;
+        this.alertCtrl = alertCtrl;
         this.createSuccess = false;
         this.registerCredentials = { email: '', password: '' };
     }
+    RegisterPage.prototype.register = function () {
+        var _this = this;
+        this.auth.register(this.registerCredentials).subscribe(function (success) {
+            if (success) {
+                _this.createSuccess = true;
+                _this.showPopup("Success", "Account created.");
+            }
+            else {
+                _this.showPopup("Error", "Problem creating account.");
+            }
+        }, function (error) {
+            _this.showPopup("Error", error);
+        });
+    };
+    RegisterPage.prototype.showPopup = function (title, text) {
+        var _this = this;
+        var alert = this.alertCtrl.create({
+            title: title,
+            subTitle: text,
+            buttons: [
+                {
+                    text: 'OK',
+                    handler: function (data) {
+                        if (_this.createSuccess) {
+                            _this.nav.popToRoot();
+                        }
+                    }
+                }
+            ]
+        });
+        alert.present();
+    };
     RegisterPage = __decorate([
         Component({
             selector: 'page-register',
             templateUrl: 'register.html'
         }), 
-        __metadata('design:paramtypes', [NavController, (typeof (_a = typeof AuthServices !== 'undefined' && AuthServices) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [NavController, AuthService, AlertController])
     ], RegisterPage);
     return RegisterPage;
-    var _a;
 }());
 //# sourceMappingURL=register.js.map

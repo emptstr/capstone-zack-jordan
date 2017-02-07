@@ -8,15 +8,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { AuthService } from '../../providers/auth-service';
+import { LoginPage } from '../login/login';
 export var HomePage = (function () {
-    function HomePage() {
+    function HomePage(nav, auth) {
+        this.nav = nav;
+        this.auth = auth;
+        this.username = '';
+        this.email = '';
+        var info = this.auth.getUserInfo();
+        this.username = info.name;
+        this.email = info.email;
     }
+    HomePage.prototype.logout = function () {
+        var _this = this;
+        this.auth.logout().subscribe(function (succ) {
+            _this.nav.setRoot(LoginPage);
+        });
+    };
     HomePage = __decorate([
         Component({
             selector: 'page-home',
             templateUrl: 'home.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [NavController, AuthService])
     ], HomePage);
     return HomePage;
 }());
