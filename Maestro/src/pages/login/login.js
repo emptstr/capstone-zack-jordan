@@ -21,6 +21,7 @@ export var LoginPage = (function () {
         this.registerCredentials = { email: '', password: '' };
     }
     LoginPage.prototype.createAccount = function () {
+        this.registerCredentials = { email: '', password: '' };
         this.nav.push(RegisterPage);
     };
     LoginPage.prototype.login = function () {
