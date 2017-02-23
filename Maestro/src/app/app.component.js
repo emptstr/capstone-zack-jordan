@@ -10,17 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-import { LoginPage } from '../pages/login/login';
+import { HomePage } from '../pages/home/home';
+import { UserPage } from '../pages/user/user';
 export var MyApp = (function () {
     function MyApp(platform, menu) {
         this.platform = platform;
         this.menu = menu;
         // make HelloIonicPage the root (or first) page
-        this.rootPage = LoginPage;
+        this.rootPage = HomePage;
         this.initializeApp();
         // set our app's pages
         this.pages = [
-            { title: 'Login', component: LoginPage },
+            { title: 'Home', component: HomePage },
+            { title: 'User', component: UserPage }
         ];
     }
     MyApp.prototype.initializeApp = function () {
@@ -37,10 +39,17 @@ export var MyApp = (function () {
         // navigate to the new page if it is not the current page
         this.nav.setRoot(page.component);
     };
+    MyApp.prototype.logout = function () {
+        this.home.logout();
+    };
     __decorate([
         ViewChild(Nav), 
         __metadata('design:type', Nav)
     ], MyApp.prototype, "nav", void 0);
+    __decorate([
+        ViewChild(HomePage), 
+        __metadata('design:type', HomePage)
+    ], MyApp.prototype, "home", void 0);
     MyApp = __decorate([
         Component({
             templateUrl: 'app.html'

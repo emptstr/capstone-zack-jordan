@@ -14,6 +14,7 @@ import { AuthService } from '../providers/auth-service';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { HomePage } from '../pages/home/home';
+import { UserPage } from '../pages/user/user';
 export var AppModule = (function () {
     function AppModule() {
     }
@@ -23,7 +24,8 @@ export var AppModule = (function () {
                 MyApp,
                 HomePage,
                 LoginPage,
-                RegisterPage
+                RegisterPage,
+                UserPage
             ],
             imports: [
                 IonicModule.forRoot(MyApp)
@@ -33,7 +35,8 @@ export var AppModule = (function () {
                 MyApp,
                 HomePage,
                 LoginPage,
-                RegisterPage
+                RegisterPage,
+                UserPage
             ],
             providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, AuthService]
         }), 

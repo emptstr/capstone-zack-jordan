@@ -22223,13 +22223,18 @@ sub {
   }
 }
 
+page-login .login-content {
+  background: #6098f2;
+}
+
 page-login .login-content .logo-row {
   padding-top: 50px;
   padding-bottom: 20px;
 }
 
 page-login .login-content .login-box {
-  background: #BDBDBD;
+  border-radius: 10px;
+  background: #0D47A1;
   padding: 20px 20px 0px 20px;
   margin-top: 30px;
 }
@@ -22264,8 +22269,13 @@ page-login .register-btn {
   font-size: 0.8em;
 }
 
+page-register .login-content {
+  background: #6098f2;
+}
+
 page-register .login-content .login-box {
-  background: #BDBDBD;
+  border-radius: 10px;
+  background: #0D47A1;
   padding: 20px 20px 0px 20px;
   margin-top: 30px;
 }
@@ -22279,7 +22289,7 @@ page-register .login-content ion-row {
 }
 
 page-register .login-content ion-item {
-  font-size: 0.9em;
+  font-size: 1.1em;
   margin-bottom: 10px;
 }
 

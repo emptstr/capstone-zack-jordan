@@ -5,13 +5,15 @@ import { AuthService } from '../providers/auth-service'
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { HomePage } from '../pages/home/home';
+import { UserPage } from '../pages/user/user';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    UserPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -21,7 +23,8 @@ import { HomePage } from '../pages/home/home';
     MyApp,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    UserPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
 })

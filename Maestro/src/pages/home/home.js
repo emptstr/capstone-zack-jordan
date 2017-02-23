@@ -17,9 +17,6 @@ export var HomePage = (function () {
         this.auth = auth;
         this.username = '';
         this.email = '';
-        var info = this.auth.getUserInfo();
-        this.username = info.name;
-        this.email = info.email;
     }
     HomePage.prototype.logout = function () {
         var _this = this;
@@ -29,7 +26,7 @@ export var HomePage = (function () {
     };
     HomePage = __decorate([
         Component({
-            selector: 'page-home',
+            selector: 'home',
             templateUrl: 'home.html'
         }), 
         __metadata('design:paramtypes', [NavController, AuthService])
