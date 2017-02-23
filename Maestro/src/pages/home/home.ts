@@ -3,7 +3,7 @@ import {NavController} from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 
 @Component({
-  selector: 'home',
+  selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {

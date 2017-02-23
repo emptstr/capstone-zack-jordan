@@ -22223,8 +22223,12 @@ sub {
   }
 }
 
+page-home ion-icon {
+  font-size: 30px;
+}
+
 page-login .login-content {
-  background: #6098f2;
+  background: #161616;
 }
 
 page-login .login-content .logo-row {
@@ -22270,7 +22274,7 @@ page-login .register-btn {
 }
 
 page-register .login-content {
-  background: #6098f2;
+  background: #161616;
 }
 
 page-register .login-content .login-box {
@@ -22304,4 +22308,8 @@ page-register .login-content .item-inner {
 
 page-register .login-content .submit-btn {
   border-radius: 30px !important;
+}
+
+page-user ion-icon {
+  font-size: 30px;
 }
