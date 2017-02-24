@@ -8,11 +8,13 @@ import { NewSessionPage } from '../new-session/new-session';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  username = '';
+  session_name = '';
   email = '';
   constructor(private nav: NavController, private auth: AuthService) {}
 
-
+  /**
+   * Navigates to New Session Page
+   */
   public newSession(){
     this.nav.push(NewSessionPage);
   }
