@@ -7,6 +7,7 @@ import { RegisterPage } from '../pages/register/register';
 import { HomePage } from '../pages/home/home';
 import { UserPage } from '../pages/user/user';
 import { NewSessionPage } from '../pages/new-session/new-session';
+import {SessionInfoPage} from "../pages/session-info/session-info";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NewSessionPage } from '../pages/new-session/new-session';
     LoginPage,
     RegisterPage,
     UserPage,
-    NewSessionPage
+    NewSessionPage,
+    SessionInfoPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -27,8 +29,8 @@ import { NewSessionPage } from '../pages/new-session/new-session';
     LoginPage,
     RegisterPage,
     UserPage,
-    NewSessionPage
-
+    NewSessionPage,
+    SessionInfoPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
 })
