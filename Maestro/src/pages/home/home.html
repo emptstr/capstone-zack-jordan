@@ -17,69 +17,23 @@
 <ion-content class="outer-content" padding>
     <h3>Welcome</h3>
 
-    <ion-list>
-        <ion-item-sliding>
-            <ion-item>
-                <h2>Work Session 1</h2>
-                <h3>01:20:01</h3>
-                <p>Today I worked on...</p>
+    <ion-list >
+        <ion-item-sliding *ngFor="let w of sessions" >
+            <ion-item >
+                <div>
+                    <h2>{{w.session_title}}</h2>
+                    <h3>{{w.session_time}}</h3>
+                    <p>{{w.session_description}}</p>
+                </div>
             </ion-item>
             <ion-item-options>
                 <button ion-button color="primary" icon-left>
                     <ion-icon name="ios-more"></ion-icon>
                     More
                 </button>
-            </ion-item-options>
-        </ion-item-sliding>
-        <ion-item-sliding>
-            <ion-item>
-                <h2>Work Session 2</h2>
-                <h3>01:20:01</h3>
-                <p>Today I worked on...</p>
-            </ion-item>
-            <ion-item-options>
-                <button ion-button color="primary" icon-left>
-                    <ion-icon name="ios-more"></ion-icon>
-                    More
-                </button>
-            </ion-item-options>
-        </ion-item-sliding>
-        <ion-item-sliding>
-            <ion-item>
-                <h2>Work Session 3</h2>
-                <h3>01:20:01</h3>
-                <p>Today I worked on...</p>
-            </ion-item>
-            <ion-item-options>
-                <button ion-button color="primary" icon-left>
-                    <ion-icon name="ios-more"></ion-icon>
-                    More
-                </button>
-            </ion-item-options>
-        </ion-item-sliding>
-        <ion-item-sliding>
-            <ion-item>
-                <h2>Work Session 4</h2>
-                <h3>01:20:01</h3>
-                <p>Today I worked on...</p>
-            </ion-item>
-            <ion-item-options>
-                <button ion-button color="primary" icon-left>
-                    <ion-icon name="ios-more"></ion-icon>
-                    More
-                </button>
-            </ion-item-options>
-        </ion-item-sliding>
-        <ion-item-sliding>
-            <ion-item>
-                <h2>Work Session 5</h2>
-                <h3>01:20:01</h3>
-                <p>Today I worked on...</p>
-            </ion-item>
-            <ion-item-options>
-                <button ion-button color="primary" icon-left>
-                    <ion-icon name="ios-more"></ion-icon>
-                    More
+                <button ion-button (click)="deletePrompt()" color="danger">
+                    <ion-icon name="close-circle"></ion-icon>
+                    Delete
                 </button>
             </ion-item-options>
         </ion-item-sliding>
