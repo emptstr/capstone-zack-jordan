@@ -1,3 +1,8 @@
 /**
- * Created by jordan on 3/4/17.
+ * view
+ * represents a PouchDB view
  */
+export interface view {
+    view_name: string
+    map_reduce_function: any
+}
