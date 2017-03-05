@@ -21,3 +21,11 @@ src/providers/*.js
 src/providers/*.js.map
 src/test.js
 src/*.js.map
+
+#www
+www/
+
+NOTICE
+COPYRIGHT
+
+.npmignore
