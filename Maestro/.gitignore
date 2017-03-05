@@ -1,6 +1,23 @@
 #idea
 .idea/**/workspace.xml
 .idea/**/tasks.xml
+.idea
+
+#plugins
+plugins/
+
+#platforms
+platforms/
 
 #node
 node_modules/
+
+#src
+src/app/*.js
+src/app/*.js.map
+src/pages/*.js
+src/pages/*.js.map
+src/providers/*.js
+src/providers/*.js.map
+src/test.js
+src/*.js.map
