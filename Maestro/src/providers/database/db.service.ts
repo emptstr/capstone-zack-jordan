@@ -1,5 +1,6 @@
 import {DesignDoc} from "./db.design.doc";
 import {Injectable} from "@angular/core";
+import * as PouchDB from "pouchdb"
 
 @Injectable()
 /**
@@ -8,10 +9,14 @@ import {Injectable} from "@angular/core";
  */
 export class DatabaseService {
 
-    private static readonly VIEW_NAME_DELIMITTER: string = "/";
     private static readonly VIEW_NAME_QUERY_PREFIX: string = "_design/";
     private static readonly NOT_FOUND_ERROR: string = "404";
+    private static readonly DB_NAME: string = "MAESTRO";
     private _db;
+
+    constructor() {
+        this._db = new PouchDB(DatabaseService.DB_NAME, {adapter: 'websql'});
+    }
 
     /**
      * setDB
@@ -28,11 +33,15 @@ export class DatabaseService {
      * @param _id
      */
     public fetch(_id: string) {
-        return this._db.get(_id).then((result) => {
+        return this._db.get(_id).then(result =>{
             return result;
-        }).catch((error) => {
-            throw error;
-        })
+        }).catch(error =>{
+           if(error.status == DatabaseService.NOT_FOUND_ERROR){
+               console.log("Document with ID " + _id + " not found");
+               return null;
+           }
+           throw error;
+        });
     }
 
     /**
@@ -40,11 +49,7 @@ export class DatabaseService {
      * fetches all records from the database
      */
     public fetchAll() {
-        return this._db.allDocs({include_docs: true}).then((result) => {
-            return result
-        }).catch((error) => {
-            throw error;
-        })
+        return this._db.allDocs({include_docs: true});
     }
 
 
@@ -55,11 +60,7 @@ export class DatabaseService {
      * @param options
      */
     public query(view_name: string, options: string) {
-        return this._db.query(view_name, options).then((result) => {
-            return result;
-        }).catch((error) => {
-            throw error;
-        })
+        return this._db.query(view_name, options);
     }
 
     /**
@@ -69,29 +70,28 @@ export class DatabaseService {
      * @param design_doc
      */
     public index(design_doc: DesignDoc) {
-       return this._db.get(design_doc._id).then((result)=>{
+        return this._db.get(design_doc._id).then((result) => {
             return result;
-        }).catch((error)=>{
-            if(error.status == DatabaseService.NOT_FOUND_ERROR){
+        }).catch((error) => {
+            if (error.status == DatabaseService.NOT_FOUND_ERROR) {
                 this._db.put(design_doc);
-            }else {
+            } else {
                 throw error;
             }
-        }).then((result)=>{
-           let views: string[] = Object.keys(design_doc.views);
-           for(let view in views){
-               this.bootstrap(DatabaseService.VIEW_NAME_QUERY_PREFIX.concat(view));
-           }
-       })
+        }).then((result) => {
+            let views: string[] = Object.keys(design_doc.views);
+            for (let view in views) {
+                this.bootstrap(DatabaseService.VIEW_NAME_QUERY_PREFIX.concat(view));
+            }
+        })
     }
 
     private bootstrap(view_name: string) {
-        this._db.query(view_name, {limit: 0}).then((result)=>{
-           console.log("Successfully build index for view" + view_name);
-        }).catch((error)=>{
+        this._db.query(view_name, {limit: 0}).then((result) => {
+            console.log("Successfully build index for view" + view_name);
+        }).catch((error) => {
             throw error;
         })
-
     }
 
 
@@ -102,15 +102,14 @@ export class DatabaseService {
      * @param _id
      */
     public put(document: any, _id: string) {
-        return this._db.get(_id).then((result)=>
-        {
+        return this._db.get(_id).then((result) => {
             document._rev = result._rev;
             return this._db.put(document);
-        }).catch((error)=>{
+        }).catch((error) => {
             error;
-            if(error.status == DatabaseService.NOT_FOUND_ERROR){
+            if (error.status == DatabaseService.NOT_FOUND_ERROR) {
                 return this._db.put(document);
-            }else{
+            } else {
                 throw error;
             }
         })

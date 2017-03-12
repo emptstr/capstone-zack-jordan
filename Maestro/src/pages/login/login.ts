@@ -1,63 +1,61 @@
-import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
-import { AuthService } from '../../providers/auth-service';
-import { RegisterPage } from '../register/register';
-import { HomePage } from '../home/home';
+import {Component} from '@angular/core';
+import {NavController, AlertController, LoadingController, Loading} from 'ionic-angular';
+import {AuthService} from '../../providers/auth-service';
+import {RegisterPage} from '../register/register';
+import {HomePage} from '../home/home';
 
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html'
+    selector: 'page-login',
+    templateUrl: 'login.html'
 })
 export class LoginPage {
-  loading: Loading;
-  registerCredentials = {email: '', password: ''};
+    loading: Loading;
+    registerCredentials = {email: '', password: ''};
 
-  constructor(
-    private nav: NavController,
-    private auth: AuthService,
-    private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController
-  ){}
+    constructor(private nav: NavController,
+                private auth: AuthService,
+                private alertCtrl: AlertController,
+                private loadingCtrl: LoadingController) {
+    }
 
-  public createAccount(){
-    this.registerCredentials = {email: '', password: ''};
-    this.nav.push(RegisterPage);
-  }
+    public createAccount() {
+        this.registerCredentials = {email: '', password: ''};
+        this.nav.push(RegisterPage);
+    }
 
-  public login() {
-    this.showLoading();
-    this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed) {
-        setTimeout(() => {
-          this.loading.dismiss();
-          this.nav.setRoot(HomePage);
+    public login() {
+        this.showLoading();
+        this.auth.login(this.registerCredentials).then(allowed => {
+            if (allowed) {
+                setTimeout(() => {
+                    this.loading.dismiss();
+                    this.nav.setRoot(HomePage);
+                });
+            } else {
+                this.showError("Access Denied");
+            }
+        }).catch(err => {
+            this.showError(err);
+        })
+    }
+
+    showLoading() {
+        this.loading = this.loadingCtrl.create({
+            content: 'Please wait...'
         });
-      } else {
-        this.showError("Access Denied");
-      }
-    },
-    error => {
-      this.showError(error);
-    });
-  }
+        this.loading.present();
+    }
 
-  showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    this.loading.present();
-  }
+    showError(text) {
+        setTimeout(() => {
+            this.loading.dismiss();
+        });
 
-  showError(text) {
-    setTimeout(() => {
-      this.loading.dismiss();
-    });
-
-    let alert = this.alertCtrl.create({
-      title: 'Fail',
-      subTitle: text,
-      buttons: ['OK']
-    });
-    alert.present(prompt);
-  }
+        let alert = this.alertCtrl.create({
+            title: 'Fail',
+            subTitle: text,
+            buttons: ['OK']
+        });
+        alert.present(prompt);
+    }
 }

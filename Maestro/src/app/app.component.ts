@@ -6,13 +6,14 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { HomePage } from '../pages/home/home';
 import { UserPage } from '../pages/user/user'
+import {LoginPage} from "../pages/login/login";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = HomePage; //rootPage HomePage for development
+  rootPage: any = LoginPage; //rootPage HomePage for development
   pages: Array<{title: string, component: any}>;
 
   constructor(
