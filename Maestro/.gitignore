@@ -4,26 +4,26 @@
 .idea
 
 #plugins
-plugins/
+plugins/**
 
 #platforms
-platforms/
+platforms/**
 
 #node
-node_modules/
+node_modules/**
 
 #src
 src/app/*.js
-src/app/*.js.map
+src/app/*.map
 src/pages/*.js
-src/pages/*.js.map
+src/pages/*.map
 src/providers/*.js
-src/providers/*.js.map
+src/providers/*.map
 src/test.js
-src/*.js.map
+src/*.map
 
 #www
-www/
+www/**
 
 NOTICE
 COPYRIGHT
