@@ -9,7 +9,8 @@ import {AuthService} from '../../providers/auth-service'
 export class RegisterPage {
   createSuccess = false;
   registerCredentials = {
-
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
   };

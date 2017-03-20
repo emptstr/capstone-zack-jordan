@@ -1,23 +1,23 @@
 <ion-menu [content]="content">
 
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Pages</ion-title>
-      <button ion-button end menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-    </ion-toolbar>
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>Pages</ion-title>
+            <button ion-button end menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-toolbar>
 
-  </ion-header>
+    </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
+    <ion-content>
+        <ion-list>
+            <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                {{p.title}}
+            </button>
+        </ion-list>
 
-  </ion-content>
+    </ion-content>
 
 </ion-menu>
 
