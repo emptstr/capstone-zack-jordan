@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
-import { User, Name } from '../../providers/database/user';
+import { User } from '../../providers/database/user';
 
 @Component({
   selector: 'page-user',
