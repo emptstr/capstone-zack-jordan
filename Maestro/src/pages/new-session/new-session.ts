@@ -1,22 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { StartSessionPage } from '../start-session/start-session'
 
-/*
-  Generated class for the NewSession page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-new-session',
   templateUrl: 'new-session.html'
 })
 export class NewSessionPage {
+  session_title = '';
+  constructor(public nav: NavController, public navParams: NavParams) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewSessionPage');
+  startSession(){
+    this.nav.push(StartSessionPage)
   }
 
 }

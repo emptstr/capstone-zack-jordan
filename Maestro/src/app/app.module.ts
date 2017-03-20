@@ -11,6 +11,7 @@ import {SessionInfoPage} from "../pages/session-info/session-info";
 import {DatabaseService} from "../providers/database/db.service";
 import {UserService} from "../providers/database/user.service";
 import {PasswordService} from "../providers/password.service";
+import {StartSessionPage} from "../pages/start-session/start-session"
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {PasswordService} from "../providers/password.service";
     RegisterPage,
     UserPage,
     NewSessionPage,
-    SessionInfoPage
+    SessionInfoPage,
+    StartSessionPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -33,7 +35,8 @@ import {PasswordService} from "../providers/password.service";
     RegisterPage,
     UserPage,
     NewSessionPage,
-    SessionInfoPage
+    SessionInfoPage,
+    StartSessionPage
   ],
   providers: [{
     provide: ErrorHandler,

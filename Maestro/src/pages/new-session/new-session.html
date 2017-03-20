@@ -6,7 +6,12 @@
 
 </ion-header>
 
-
 <ion-content padding>
+    <ion-item>
+        <ion-label color="dark" floating>"What are you working on?"</ion-label>
+        <ion-input type="text" [(ngModel)]="session_title" required></ion-input>
+    </ion-item>
+
+    <button ion-button margin-top="30px" color="secondary" (click)="startSession()">Start</button>
 
 </ion-content>
