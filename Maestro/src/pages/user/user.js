@@ -17,10 +17,10 @@ export var UserPage = (function () {
         this.auth = auth;
         this.username = '';
         this.email = '';
-        //let info = this.auth.getUserInfo();
+        var info = this.auth.getUserInfo();
         //For Dev hard code
-        this.username = 'Zack Walton'; //info.name;
-        this.email = 'ztwalto@gmail.com'; //info.email;
+        this.username = info.name.firstname + " " + info.name.lastname;
+        this.email = info._id;
     }
     UserPage.prototype.logout = function () {
         var _this = this;

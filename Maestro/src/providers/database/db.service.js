@@ -8,8 +8,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Injectable } from "@angular/core";
+import * as PouchDB from "pouchdb";
 export var DatabaseService = (function () {
     function DatabaseService() {
+        this._db = new PouchDB(DatabaseService.DB_NAME, { adapter: 'websql' });
     }
     /**
      * setDB
@@ -28,6 +30,10 @@ export var DatabaseService = (function () {
         return this._db.get(_id).then(function (result) {
             return result;
         }).catch(function (error) {
+            if (error.status == DatabaseService.NOT_FOUND_ERROR) {
+                console.log("Document with ID " + _id + " not found");
+                return null;
+            }
             throw error;
         });
     };
@@ -36,11 +42,7 @@ export var DatabaseService = (function () {
      * fetches all records from the database
      */
     DatabaseService.prototype.fetchAll = function () {
-        return this._db.allDocs({ include_docs: true }).then(function (result) {
-            return result;
-        }).catch(function (error) {
-            throw error;
-        });
+        return this._db.allDocs({ include_docs: true });
     };
     /**
      * query
@@ -49,11 +51,7 @@ export var DatabaseService = (function () {
      * @param options
      */
     DatabaseService.prototype.query = function (view_name, options) {
-        return this._db.query(view_name, options).then(function (result) {
-            return result;
-        }).catch(function (error) {
-            throw error;
-        });
+        return this._db.query(view_name, options);
     };
     /**
      * index
@@ -63,19 +61,28 @@ export var DatabaseService = (function () {
      */
     DatabaseService.prototype.index = function (design_doc) {
         var _this = this;
-        var id = design_doc._id;
-        return this._db.get(id).then(function (result) {
+        return this._db.get(design_doc._id).then(function (result) {
             return result;
         }).catch(function (error) {
-            if (error.status == "404") {
+            if (error.status == DatabaseService.NOT_FOUND_ERROR) {
                 _this._db.put(design_doc);
             }
             else {
                 throw error;
             }
+        }).then(function (result) {
+            var views = Object.keys(design_doc.views);
+            for (var view in views) {
+                _this.bootstrap(DatabaseService.VIEW_NAME_QUERY_PREFIX.concat(view));
+            }
         });
     };
     DatabaseService.prototype.bootstrap = function (view_name) {
+        this._db.query(view_name, { limit: 0 }).then(function (result) {
+            console.log("Successfully build index for view" + view_name);
+        }).catch(function (error) {
+            throw error;
+        });
     };
     /**
      * put
@@ -84,9 +91,23 @@ export var DatabaseService = (function () {
      * @param _id
      */
     DatabaseService.prototype.put = function (document, _id) {
+        var _this = this;
+        return this._db.get(_id).then(function (result) {
+            document._rev = result._rev;
+            return _this._db.put(document);
+        }).catch(function (error) {
+            error;
+            if (error.status == DatabaseService.NOT_FOUND_ERROR) {
+                return _this._db.put(document);
+            }
+            else {
+                throw error;
+            }
+        });
     };
-    DatabaseService.VIEW_NAME_DELIMITTER = "/";
     DatabaseService.VIEW_NAME_QUERY_PREFIX = "_design/";
+    DatabaseService.NOT_FOUND_ERROR = "404";
+    DatabaseService.DB_NAME = "MAESTRO";
     DatabaseService = __decorate([
         Injectable(), 
         __metadata('design:paramtypes', [])

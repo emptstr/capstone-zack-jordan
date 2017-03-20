@@ -16,11 +16,16 @@ export var RegisterPage = (function () {
         this.auth = auth;
         this.alertCtrl = alertCtrl;
         this.createSuccess = false;
-        this.registerCredentials = { email: '', password: '' };
+        this.registerCredentials = {
+            first_name: '',
+            last_name: '',
+            email: '',
+            password: '',
+        };
     }
     RegisterPage.prototype.register = function () {
         var _this = this;
-        this.auth.register(this.registerCredentials).subscribe(function (success) {
+        this.auth.register(this.registerCredentials).then(function (success) {
             if (success) {
                 _this.createSuccess = true;
                 _this.showPopup("Success", "Account created.");
@@ -28,7 +33,7 @@ export var RegisterPage = (function () {
             else {
                 _this.showPopup("Error", "Problem creating account.");
             }
-        }, function (error) {
+        }).catch(function (error) {
             _this.showPopup("Error", error);
         });
     };

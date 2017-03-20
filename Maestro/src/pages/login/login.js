@@ -27,7 +27,7 @@ export var LoginPage = (function () {
     LoginPage.prototype.login = function () {
         var _this = this;
         this.showLoading();
-        this.auth.login(this.registerCredentials).subscribe(function (allowed) {
+        this.auth.login(this.registerCredentials).then(function (allowed) {
             if (allowed) {
                 setTimeout(function () {
                     _this.loading.dismiss();
@@ -37,8 +37,8 @@ export var LoginPage = (function () {
             else {
                 _this.showError("Access Denied");
             }
-        }, function (error) {
-            _this.showError(error);
+        }).catch(function (err) {
+            _this.showError(err);
         });
     };
     LoginPage.prototype.showLoading = function () {
