@@ -2,19 +2,21 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
+import { User, Name } from '../../providers/database/user';
 
 @Component({
   selector: 'page-user',
   templateUrl: 'user.html'
 })
 export class UserPage {
-  username = '';
+  user: User;
+  username: String = '';
   email = '';
   constructor(private nav: NavController, private auth: AuthService) {
-    //let info = this.auth.getUserInfo();
+    let info = this.auth.getUserInfo();
     //For Dev hard code
-    this.username = 'Zack Walton'; //info.name;
-    this.email = 'ztwalto@gmail.com';//info.email;
+    this.username = info.name.firstname + " " + info.name.lastname;
+    this.email = info._id;
   }
 
   public logout() {
