@@ -13,32 +13,32 @@ import {UserService} from "../providers/database/user.service";
 import {PasswordService} from "../providers/password.service";
 
 @NgModule({
-    declarations: [
-        MyApp,
-        HomePage,
-        LoginPage,
-        RegisterPage,
-        UserPage,
-        NewSessionPage,
-        SessionInfoPage
-    ],
-    imports: [
-        IonicModule.forRoot(MyApp)
-    ],
-    bootstrap: [IonicApp],
-    entryComponents: [
-        MyApp,
-        HomePage,
-        LoginPage,
-        RegisterPage,
-        UserPage,
-        NewSessionPage,
-        SessionInfoPage
-    ],
-    providers: [{
-        provide: ErrorHandler,
-        useClass: IonicErrorHandler
-    }, AuthService, DatabaseService, UserService, PasswordService]
+  declarations: [
+    MyApp,
+    HomePage,
+    LoginPage,
+    RegisterPage,
+    UserPage,
+    NewSessionPage,
+    SessionInfoPage
+  ],
+  imports: [
+    IonicModule.forRoot(MyApp)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    HomePage,
+    LoginPage,
+    RegisterPage,
+    UserPage,
+    NewSessionPage,
+    SessionInfoPage
+  ],
+  providers: [{
+    provide: ErrorHandler,
+    useClass: IonicErrorHandler
+  }, AuthService, DatabaseService, UserService, PasswordService]
 })
 export class AppModule {
 }
