@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {NavController, AlertController} from 'ionic-angular';
-//import { AuthService } from '../../providers/auth-service';
 import {NewSessionPage} from '../new-session/new-session';
 import {SessionInfoPage} from '../session-info/session-info';
 import {SessionService} from "../../providers/sessions/session.service";

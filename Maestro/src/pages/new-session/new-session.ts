@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Observable, Subscription } from 'rxjs/Rx';
-import { AuthService } from '../../providers/auth-service';
+import { AuthService } from '../../providers/auth/auth-service';
+import { Session } from '../../providers/sessions/session';
+import { SessionService } from '../../providers/sessions/session.service';
+import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
+
 
 @Component({
   selector: 'page-new-session',
@@ -60,11 +64,10 @@ const convertSec = ticks => { return new Date(ticks * 1000).toISOString().substr
 
 
 const getDateTime = () => {
-  let dateTime;
   let date = new Date();
-  dateTime = date.toLocaleDateString();
-  dateTime += " " + date.toLocaleTimeString();
-  return dateTime;
+  return DateArrBuilder.build(date.getFullYear(), date.getMonth(), date.getDate(),
+                              date.getHours(), date.getMinutes(), date.getSeconds());
+
 };
 
 
