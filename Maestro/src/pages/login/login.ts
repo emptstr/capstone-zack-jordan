@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, AlertController, LoadingController, Loading} from 'ionic-angular';
-import {AuthService} from '../../providers/auth-service';
+import {AuthService} from '../../providers/auth/auth-service';
 import {RegisterPage} from '../register/register';
 import {HomePage} from '../home/home';
 

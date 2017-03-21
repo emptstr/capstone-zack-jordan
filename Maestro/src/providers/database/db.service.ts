@@ -11,11 +11,17 @@ export class DatabaseService {
 
   private static readonly VIEW_NAME_QUERY_PREFIX: string = "_design/";
   private static readonly NOT_FOUND_ERROR: string = "404";
-  private static readonly DB_NAME: string = "MAESTRO";
+  private static readonly DB_NAME: string = "MAESTRO-1";
   private _db;
+  private bootstrap_function;
 
   constructor() {
     this._db = new PouchDB(DatabaseService.DB_NAME, {adapter: 'websql'});
+    this.bootstrap_function =
+      function bootstrap(view_name: string) {
+        console.log("bootstraping " + view_name)
+        return this._db.query(view_name, {limit: 0})
+      }
   }
 
   /**
@@ -59,7 +65,11 @@ export class DatabaseService {
    * @param view_name
    * @param options
    */
+<<<<<<< d8d684730179d9f992c643099fffa90ea8368e82
   public query(view_name: string, options: string) {
+=======
+  public query(view_name, options: {}) {
+>>>>>>> initial commit to remove cached files
     return this._db.query(view_name, options);
   }
 
@@ -70,6 +80,7 @@ export class DatabaseService {
    * @param design_doc
    */
   public index(design_doc: DesignDoc) {
+<<<<<<< d8d684730179d9f992c643099fffa90ea8368e82
     return this._db.get(design_doc._id).then((result) => {
       return result;
     }).catch((error) => {
@@ -91,6 +102,30 @@ export class DatabaseService {
       console.log("Successfully build index for view" + view_name);
     }).catch((error) => {
       throw error;
+=======
+
+    return this._db.get(design_doc._id).then((result) => {
+      return result;
+    }).catch((error) => {
+      if (error.status == DatabaseService.NOT_FOUND_ERROR) {
+        this._db.put(design_doc);
+      } else {
+        throw error;
+      }
+    }).then((result) => {
+      let views: string[] = Object.keys(design_doc.views);
+      let arr = [];
+      for (let view of views) {
+        let view_name: string = DatabaseService.VIEW_NAME_QUERY_PREFIX.concat(view);
+        arr.push(this.bootstrap_function(view_name));
+      }
+      return Promise.all(arr);
+    }).then(result => {
+      console.log("Success");
+    }).catch(err => {
+      console.log("Error occurred while indexing " + err)
+      throw err;
+>>>>>>> initial commit to remove cached files
     })
   }
 
@@ -114,4 +149,9 @@ export class DatabaseService {
       }
     })
   }
+<<<<<<< d8d684730179d9f992c643099fffa90ea8368e82
+=======
+
+  //todo implement a delete doc function
+>>>>>>> initial commit to remove cached files
 }

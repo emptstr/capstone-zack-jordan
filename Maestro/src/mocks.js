@@ -6,6 +6,7 @@
 export var ConfigMock = (function () {
     function ConfigMock() {
     }
+
     ConfigMock.prototype.get = function () {
         return '';
     };
@@ -20,6 +21,7 @@ export var ConfigMock = (function () {
 export var FormMock = (function () {
     function FormMock() {
     }
+
     FormMock.prototype.register = function () {
         return true;
     };
@@ -28,6 +30,7 @@ export var FormMock = (function () {
 export var NavMock = (function () {
     function NavMock() {
     }
+
     NavMock.prototype.pop = function () {
         return new Promise(function (resolve) {
             resolve();
@@ -53,13 +56,16 @@ export var NavMock = (function () {
 export var PlatformMock = (function () {
     function PlatformMock() {
     }
+
     PlatformMock.prototype.ready = function () {
         return new Promise(function (resolve) {
             resolve('READY');
         });
     };
     PlatformMock.prototype.registerBackButtonAction = function (fn, priority) {
-        return (function () { return true; });
+        return (function () {
+            return true;
+        });
     };
     PlatformMock.prototype.hasFocus = function (ele) {
         return true;
@@ -68,7 +74,9 @@ export var PlatformMock = (function () {
         return document;
     };
     PlatformMock.prototype.registerListener = function (ele, eventName, callback) {
-        return (function () { return true; });
+        return (function () {
+            return true;
+        });
     };
     PlatformMock.prototype.win = function () {
         return window;
@@ -81,6 +89,7 @@ export var PlatformMock = (function () {
 export var MenuMock = (function () {
     function MenuMock() {
     }
+
     MenuMock.prototype.close = function () {
         return new Promise(function (resolve) {
             resolve();
@@ -88,5 +97,5 @@ export var MenuMock = (function () {
     };
     return MenuMock;
 }());
-/* tslint:enable */ 
+/* tslint:enable */
 //# sourceMappingURL=mocks.js.map

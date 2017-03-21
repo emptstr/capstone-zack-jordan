@@ -12,6 +12,7 @@ export class UserPage {
   user: User;
   username: String = '';
   email = '';
+
   constructor(private nav: NavController, private auth: AuthService) {
     let info = this.auth.getUserInfo();
     //For Dev hard code

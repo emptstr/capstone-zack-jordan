@@ -1,8 +1,12 @@
 import {Component} from '@angular/core';
 import {NavController, AlertController} from 'ionic-angular';
 //import { AuthService } from '../../providers/auth-service';
-import { NewSessionPage } from '../new-session/new-session';
-import { SessionInfoPage } from '../session-info/session-info';
+import {NewSessionPage} from '../new-session/new-session';
+import {SessionInfoPage} from '../session-info/session-info';
+import {SessionService} from "../../providers/sessions/session.service";
+import {Session} from "../../providers/sessions/session";
+import {DatabaseService} from "../../providers/database/db.service";
+import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
 
 @Component({
   selector: 'page-home',
@@ -12,33 +16,23 @@ export class HomePage {
   session_name = '';
   email = '';
   sessions = [];
-  constructor(private nav: NavController, private alertCtrl: AlertController) {
-    // This is where we will pull from session service
 
-    //Hard coded data for now
-    this.sessions = [
-      { session_id: 1,
-        session_title: 'Work Session 1',
-        session_time: '01:20:20',
-        session_description: 'Today I worked on...' },
-      { session_id: 2,
-        session_title: 'Work Session 2',
-        session_time: '01:20:20',
-        session_description: 'Today I worked on...' }];
+  constructor(private nav: NavController, private alertCtrl: AlertController, private session_service: SessionService, private database_service: DatabaseService) {
+
   }
 
   /**
    * Navigates to New Session Page
    */
-  newSession(){
+  newSession() {
     this.nav.push(NewSessionPage);
   }
 
-  sessionInfo(){
+  sessionInfo() {
     this.nav.push(SessionInfoPage);
   }
 
-  deletePrompt(){
+  deletePrompt() {
     let prompt = this.alertCtrl.create({
       title: 'Delete Session',
       message: "Are you sure you would like to delete this work session?",
@@ -60,5 +54,4 @@ export class HomePage {
     });
     prompt.present();
   }
-
 }

@@ -1,10 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
-
+import {Component, ViewChild} from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
-import { HomePage } from '../pages/home/home';
-import { UserPage } from '../pages/user/user'
+import {HomePage} from '../pages/home/home';
+import {UserPage} from '../pages/user/user'
 import {LoginPage} from "../pages/login/login";
 
 @Component({
@@ -15,16 +13,14 @@ export class MyApp {
   rootPage: any = LoginPage; //rootPage HomePage for development
   pages: Array<{title: string, component: any}>;
 
-  constructor(
-    public platform: Platform,
-    public menu: MenuController
-  ) {
+  constructor(public platform: Platform,
+              public menu: MenuController) {
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
-      { title: 'Home', component: HomePage},
-      { title: 'User Profile', component: UserPage}
+      {title: 'Home', component: HomePage},
+      {title: 'User Profile', component: UserPage}
 
     ]
 

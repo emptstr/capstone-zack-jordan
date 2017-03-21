@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "session-info.js",
+  "sourceRoot": "",
+  "sources": [
+    "session-info.ts"
+  ],
+  "names": [],
+  "mappings": ";;;;;;;;;OAAO,EAAE,SAAS,EAAE,MAAM,eAAe;OAClC,EAAE,aAAa,EAAE,SAAS,EAAE,MAAM,eAAe;AAOxD;IAEE,yBAAmB,OAAsB,EAAS,SAAoB;QAAnD,YAAO,GAAP,OAAO,CAAe;QAAS,cAAS,GAAT,SAAS,CAAW;IAAG,CAAC;IAN5E;QAAC,SAAS,CAAC;YACT,QAAQ,EAAE,mBAAmB;YAC7B,WAAW,EAAE,mBAAmB;SACjC,CAAC;;uBAAA;IAMF,sBAAC;AAAD,CAAC,AALD,IAKC"
+}

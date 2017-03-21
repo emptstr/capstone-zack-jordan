@@ -29,4 +29,6 @@ export class UserService {
       throw err;
     });
   }
+
+  //todo implement a delete user function
 }

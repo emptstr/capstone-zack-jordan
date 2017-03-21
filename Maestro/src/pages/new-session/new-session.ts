@@ -3,7 +3,6 @@ import { NavController } from 'ionic-angular';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { AuthService } from '../../providers/auth-service';
 
-
 @Component({
   selector: 'page-new-session',
   templateUrl: 'new-session.html'
