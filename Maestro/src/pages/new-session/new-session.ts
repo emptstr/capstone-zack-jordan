@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Observable, Subscription } from 'rxjs/Rx';
+import { AuthService } from '../../providers/auth-service';
 
 
 @Component({
@@ -13,13 +14,14 @@ export class NewSessionPage {
   end_session: boolean;
   subscription: Subscription;
 
-  constructor(public nav: NavController) {
+  constructor(public nav: NavController, private auth: AuthService) {
     this.session = {
       title: '',
       notes: '',
       time: '',
       start_time: '',
       end_time: '',
+      user_id: this.auth.getUserInfo()._id,
     };
 
     this.started = false;
@@ -45,11 +47,9 @@ export class NewSessionPage {
 
   saveSession(){
     this.subscription.unsubscribe();
-    console.log("Session Title: " + this.session.title);
-    console.log("Session Notes: " + this.session.notes);
-    console.log("Start Time: " + this.session.start_time);
-    console.log("End Time: " + this.session.end_time);
-    console.log("Time of session: " + this.session.time);
+
+    console.log(JSON.stringify(this.session));
+    this.nav.pop();
   }
 
 }
