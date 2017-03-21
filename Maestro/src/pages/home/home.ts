@@ -13,6 +13,8 @@ export class HomePage {
   email = '';
   sessions = [];
   constructor(private nav: NavController, private alertCtrl: AlertController) {
+    // This is where we will pull from session service
+
     //Hard coded data for now
     this.sessions = [
       { session_id: 1,
@@ -44,6 +46,7 @@ export class HomePage {
         {
           text: 'Yes',
           handler: data => {
+            // Call session service and delete session
             console.log('Delete Session');
           }
         },
