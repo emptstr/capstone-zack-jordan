@@ -29,5 +29,6 @@ To build on android simply plug your phone into your computer and run
     ionic run android
     
 You will need to have ANDROID_HOME in your path which will contian `android-sdk` and `platform-tools`
+
 Refer to link below:
 http://stackoverflow.com/questions/36198165/failed-to-find-android-home-environment-variable
