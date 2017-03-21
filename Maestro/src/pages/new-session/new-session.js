@@ -9,20 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-/*
-  Generated class for the NewSession page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 export var NewSessionPage = (function () {
-    function NewSessionPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
+    function NewSessionPage(nav, navParams) {
+        this.nav = nav;
         this.navParams = navParams;
+        this.session_title = '';
     }
-    NewSessionPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad NewSessionPage');
-    };
     NewSessionPage = __decorate([
         Component({
             selector: 'page-new-session',
