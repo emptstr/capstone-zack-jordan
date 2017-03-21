@@ -65,70 +65,10 @@ export class DatabaseService {
    * @param view_name
    * @param options
    */
-<<<<<<< d8d684730179d9f992c643099fffa90ea8368e82
-  public query(view_name: string, options: string) {
-=======
+
   public query(view_name, options: {}) {
->>>>>>> initial commit to remove cached files
     return this._db.query(view_name, options);
   }
-
-  /**
-   * index
-   * inserts the provided design document into the databse if it doesnt already exist.
-   * performs a dry run query to bootstrap the views provided by the design doc
-   * @param design_doc
-   */
-  public index(design_doc: DesignDoc) {
-<<<<<<< d8d684730179d9f992c643099fffa90ea8368e82
-    return this._db.get(design_doc._id).then((result) => {
-      return result;
-    }).catch((error) => {
-      if (error.status == DatabaseService.NOT_FOUND_ERROR) {
-        this._db.put(design_doc);
-      } else {
-        throw error;
-      }
-    }).then((result) => {
-      let views: string[] = Object.keys(design_doc.views);
-      for (let view in views) {
-        this.bootstrap(DatabaseService.VIEW_NAME_QUERY_PREFIX.concat(view));
-      }
-    })
-  }
-
-  private bootstrap(view_name: string) {
-    this._db.query(view_name, {limit: 0}).then((result) => {
-      console.log("Successfully build index for view" + view_name);
-    }).catch((error) => {
-      throw error;
-=======
-
-    return this._db.get(design_doc._id).then((result) => {
-      return result;
-    }).catch((error) => {
-      if (error.status == DatabaseService.NOT_FOUND_ERROR) {
-        this._db.put(design_doc);
-      } else {
-        throw error;
-      }
-    }).then((result) => {
-      let views: string[] = Object.keys(design_doc.views);
-      let arr = [];
-      for (let view of views) {
-        let view_name: string = DatabaseService.VIEW_NAME_QUERY_PREFIX.concat(view);
-        arr.push(this.bootstrap_function(view_name));
-      }
-      return Promise.all(arr);
-    }).then(result => {
-      console.log("Success");
-    }).catch(err => {
-      console.log("Error occurred while indexing " + err)
-      throw err;
->>>>>>> initial commit to remove cached files
-    })
-  }
-
 
   /**
    * put
@@ -149,9 +89,6 @@ export class DatabaseService {
       }
     })
   }
-<<<<<<< d8d684730179d9f992c643099fffa90ea8368e82
-=======
 
   //todo implement a delete doc function
->>>>>>> initial commit to remove cached files
 }
