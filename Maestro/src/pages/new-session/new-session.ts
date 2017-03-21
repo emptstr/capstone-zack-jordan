@@ -48,7 +48,9 @@ export class NewSessionPage {
   saveSession(){
     this.subscription.unsubscribe();
 
+    // This is where Session will be stored in Database
     console.log(JSON.stringify(this.session));
+
     this.nav.pop();
   }
 
