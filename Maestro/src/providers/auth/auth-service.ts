@@ -57,7 +57,7 @@ export class AuthService {
         }
         let user_salt = this.password_service.genSalt();
         let user_password = this.password_service.hashPassword(credentials.password, user_salt);
-        let new_user: User = new User("", "", credentials.email, user_password, user_salt);
+        let new_user: User = new User(credentials.first_name, credentials.last_name, credentials.email, user_password, user_salt);
         return this.user_service.addUser(new_user, new_user._id);
       }).catch(err => {
         console.log("Error while creating account" + err);

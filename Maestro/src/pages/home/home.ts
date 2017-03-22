@@ -3,9 +3,7 @@ import {NavController, AlertController} from 'ionic-angular';
 import {NewSessionPage} from '../new-session/new-session';
 import {SessionInfoPage} from '../session-info/session-info';
 import {SessionService} from "../../providers/sessions/session.service";
-import {Session} from "../../providers/sessions/session";
 import {DatabaseService} from "../../providers/database/db.service";
-import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
 
 @Component({
   selector: 'page-home',
