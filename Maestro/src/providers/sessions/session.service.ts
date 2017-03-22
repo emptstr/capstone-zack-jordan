@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {DatabaseService} from "../database/db.service";
-import {SessionServiceDesignDoc} from "./session.service.design.doc";
+//import {SessionServiceDesignDoc} from "./session.service.design.doc";
 import {Session} from "./session";
 
 @Injectable()

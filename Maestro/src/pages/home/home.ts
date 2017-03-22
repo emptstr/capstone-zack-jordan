@@ -1,12 +1,9 @@
 import {Component} from '@angular/core';
 import {NavController, AlertController} from 'ionic-angular';
-//import { AuthService } from '../../providers/auth-service';
 import {NewSessionPage} from '../new-session/new-session';
 import {SessionInfoPage} from '../session-info/session-info';
 import {SessionService} from "../../providers/sessions/session.service";
-import {Session} from "../../providers/sessions/session";
 import {DatabaseService} from "../../providers/database/db.service";
-import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
 
 @Component({
   selector: 'page-home',
@@ -18,7 +15,16 @@ export class HomePage {
   sessions = [];
 
   constructor(private nav: NavController, private alertCtrl: AlertController, private session_service: SessionService, private database_service: DatabaseService) {
-
+    session_service.getPreviousSessions(5).then((sess) => {
+      if (sess == null){
+        this.sessions = [];
+      } else {
+        this.sessions = sess;
+      }
+    }).catch(err => {
+      console.log("Error while getting previous sessions");
+      throw err;
+    })
   }
 
   /**

@@ -1,4 +1,4 @@
-import {DesignDoc} from "./db.design.doc";
+//import {DesignDoc} from "./db.design.doc";
 import {Injectable} from "@angular/core";
 import * as PouchDB from "pouchdb"
 
@@ -9,7 +9,7 @@ import * as PouchDB from "pouchdb"
  */
 export class DatabaseService {
 
-  private static readonly VIEW_NAME_QUERY_PREFIX: string = "_design/";
+  //private static readonly VIEW_NAME_QUERY_PREFIX: string = "_design/";
   private static readonly NOT_FOUND_ERROR: string = "404";
   private static readonly DB_NAME: string = "MAESTRO-1";
   private _db;
