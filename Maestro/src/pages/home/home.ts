@@ -17,7 +17,16 @@ export class HomePage {
   sessions = [];
 
   constructor(private nav: NavController, private alertCtrl: AlertController, private session_service: SessionService, private database_service: DatabaseService) {
-
+    session_service.getPreviousSessions(5).then((sess) => {
+      if (sess == null){
+        this.sessions = [];
+      } else {
+        this.sessions = sess;
+      }
+    }).catch(err => {
+      console.log("Error while getting previous sessions");
+      throw err;
+    })
   }
 
   /**

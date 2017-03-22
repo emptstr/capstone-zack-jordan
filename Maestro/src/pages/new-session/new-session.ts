@@ -5,6 +5,7 @@ import { AuthService } from '../../providers/auth/auth-service';
 import { Session } from '../../providers/sessions/session';
 import { SessionService } from '../../providers/sessions/session.service';
 import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
+import {HomePage} from "../home/home"
 
 
 @Component({
@@ -12,13 +13,15 @@ import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
   templateUrl: 'new-session.html'
 })
 export class NewSessionPage {
-  session: any = {};
+  sessionObj: any = {};
   started: boolean;
   end_session: boolean;
   subscription: Subscription;
+  session: Session;
+  _id: string;
 
-  constructor(public nav: NavController, private auth: AuthService) {
-    this.session = {
+  constructor(private nav: NavController, private auth: AuthService, private sess: SessionService) {
+    this.sessionObj = {
       title: '',
       notes: '',
       time: '',
@@ -33,10 +36,10 @@ export class NewSessionPage {
 
   startSession(){
     let timer = Observable.timer(0, 1000);
-    this.subscription = timer.subscribe(t => this.session.time = convertSec(t));
+    this.subscription = timer.subscribe(t => this.sessionObj.time = convertSec(t));
     this.started = true;
     console.log("Session Started");
-    this.session.start_time = getDateTime();
+    this.sessionObj.start_time = getDateTime();
 
   }
 
@@ -45,16 +48,18 @@ export class NewSessionPage {
     this.started = false;
     this.end_session = true;
     console.log("Session Ended");
-    this.session.end_time = getDateTime();
+    this.sessionObj.end_time = getDateTime();
   }
 
   saveSession(){
     this.subscription.unsubscribe();
-
+    this._id = this.sessionObj.start_time.toString() + " - " + this.sessionObj.end_time.toString();
     // This is where Session will be stored in Database
+    this.session = new Session(this._id, this.sessionObj.start_time, this.sessionObj.end_time, this.sessionObj.time,
+                                                    this.sessionObj.notes, this.sessionObj.user_id, this.sessionObj.title);
     console.log(JSON.stringify(this.session));
-
-    this.nav.pop();
+    this.sess.addSession(this.session);
+    this.nav.setRoot(HomePage);
   }
 
 }
