@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
-import {NavController, AlertController} from 'ionic-angular';
+import {NavController, AlertController, LoadingController, ItemSliding} from 'ionic-angular';
 import {NewSessionPage} from '../new-session/new-session';
 import {SessionInfoPage} from '../session-info/session-info';
 import {SessionService} from "../../providers/sessions/session.service";
-import {DatabaseService} from "../../providers/database/db.service";
 
 @Component({
   selector: 'page-home',
@@ -14,17 +13,8 @@ export class HomePage {
   email = '';
   sessions = [];
 
-  constructor(private nav: NavController, private alertCtrl: AlertController, private session_service: SessionService, private database_service: DatabaseService) {
-    session_service.getPreviousSessions(5).then((sess) => {
-      if (sess == null){
-        this.sessions = [];
-      } else {
-        this.sessions = sess;
-      }
-    }).catch(err => {
-      console.log("Error while getting previous sessions");
-      throw err;
-    })
+  constructor(private nav: NavController, private alertCtrl: AlertController, private session_service: SessionService,
+              private loader: LoadingController) {
   }
 
   /**
@@ -34,8 +24,11 @@ export class HomePage {
     this.nav.push(NewSessionPage);
   }
 
-  sessionInfo() {
-    this.nav.push(SessionInfoPage);
+  sessionInfo(session, slidingItem: ItemSliding) {
+    this.nav.push(SessionInfoPage, {
+      session: session
+    });
+    slidingItem.close();
   }
 
   deletePrompt() {
@@ -59,5 +52,29 @@ export class HomePage {
       ]
     });
     prompt.present();
+  }
+
+  ngOnInit() {
+    let loading = this.loader.create({
+      content: "Please Wait...",
+    });
+
+    loading.present().then(() => {
+      this.getSessions();
+      loading.dismiss();
+    });
+  }
+
+  getSessions(){
+    this.session_service.getPreviousSessions(5).then((sess) => {
+      if (sess == null){
+        this.sessions = [];
+      } else {
+        this.sessions = sess;
+      }
+    }).catch(err => {
+      console.log("Error while getting previous sessions");
+      throw err;
+    })
   }
 }

@@ -1,22 +1,16 @@
 <ion-header>
+
     <ion-navbar color="primary">
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>
-            Dashboard
-        </ion-title>
-        <ion-buttons end>
-            <button ion-button (click)="newSession()">
-                <ion-icon name="add-circle"></ion-icon>
-            </button>
-        </ion-buttons>
+        <ion-title>Session History</ion-title>
     </ion-navbar>
+
 </ion-header>
 
-<ion-content class="outer-content" padding >
-    <h3>Welcome</h3>
 
+<ion-content padding>
     <ion-list>
         <ion-item-sliding *ngFor="let w of sessions" #slidingItem >
             <ion-item >
@@ -38,5 +32,4 @@
             </ion-item-options>
         </ion-item-sliding>
     </ion-list>
-
 </ion-content>

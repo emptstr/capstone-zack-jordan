@@ -24,11 +24,9 @@ export class LoginPage {
   }
 
   public login() {
-    this.showLoading();
     this.auth.login(this.registerCredentials).then(allowed => {
       if (allowed) {
         setTimeout(() => {
-          this.loading.dismiss();
           this.nav.setRoot(HomePage);
         });
       } else {

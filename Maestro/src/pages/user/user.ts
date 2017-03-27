@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth-service';
 import { LoginPage } from '../login/login';
-import { User, Name } from '../../providers/database/user';
+import { User } from '../../providers/database/user';
 
 @Component({
   selector: 'page-user',
@@ -15,7 +15,6 @@ export class UserPage {
 
   constructor(private nav: NavController, private auth: AuthService) {
     let info = this.auth.getUserInfo();
-    console.log(JSON.stringify(info.name));
     this.username = info.name.firstname + " " + info.name.lastname;
     this.email = info._id;
   }
