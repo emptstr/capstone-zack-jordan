@@ -1,4 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { NewSessionPage } from "../new-session/new-session"
 
 @Component({
   selector: 'page-home',
@@ -9,8 +11,13 @@ export class HomePage {
   loaded: boolean = false;
   sessions: any = [];
 
-  constructor() {}
+  constructor(private nav: NavController) {}
 
-
+  /**
+   * Navigates to New Session Page
+   */
+  newSession() {
+    this.nav.push(NewSessionPage);
+  }
 
 }

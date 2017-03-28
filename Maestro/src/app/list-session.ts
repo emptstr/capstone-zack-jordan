@@ -31,6 +31,7 @@ export class ListSession {
     slidingItem.close();
   }
 
+
   ngOnInit(){
     let loading = this.loader.create({
       content: "Please Wait...",
