@@ -28,6 +28,8 @@ To build on android simply plug your phone into your computer and run
     
     ionic run android
     
+Using `ionic run android --prod` will greatly increase performance
+    
 You will need to have ANDROID_HOME in your path which will contian `android-sdk` and `platform-tools`
 
 Refer to link below:
