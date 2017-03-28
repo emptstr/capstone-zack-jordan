@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { NavController, LoadingController, AlertController, ItemSliding} from 'ionic-angular';
+import { NavController, LoadingController, AlertController, ItemSliding, Loading} from 'ionic-angular';
 import {SessionService} from "../providers/sessions/session.service";
 import {SessionInfoPage} from "../pages/session-info/session-info";
 import {Chart} from 'chart.js';
@@ -13,6 +13,7 @@ export class ListSession {
   @Input() showGraph: boolean;
   @Input() amount: number;
   @Output() isLoaded = new EventEmitter();
+  loading: Loading;
 
   @ViewChild('lineCanvas') lineCanvas;
   lineChart: any;
@@ -21,7 +22,6 @@ export class ListSession {
 
   constructor(private loader: LoadingController,  private session_service: SessionService, private alertCtrl: AlertController,
               private nav: NavController) {
-    this.loaded = true;
   }
 
   sessionInfo(session, slidingItem: ItemSliding) {
@@ -31,16 +31,17 @@ export class ListSession {
     slidingItem.close();
   }
 
+  showLoading(){
+    this.loaded = false;
+    this.loading = this.loader.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
+  }
 
   ngOnInit(){
-    let loading = this.loader.create({
-      content: "Please Wait...",
-    });
-    loading.present().then(() => {
-      this.getSessions();
-
-      loading.dismiss();
-    });
+    this.showLoading();
+    this.getSessions();
 
   }
 
@@ -50,7 +51,11 @@ export class ListSession {
         this.sessions = [];
       } else {
         this.sessions = sess;
-        this.renderChart();
+        if (this.showGraph) {
+          this.renderChart();
+        }
+        this.loading.dismiss();
+        this.loaded = true;
 
       }
     }).catch(err => {

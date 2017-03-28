@@ -20,7 +20,7 @@
     </ion-item-sliding>
 </ion-list>
 <hr>
-<ion-card [hidden]="!showGraph" >
+<ion-card [hidden]="!loaded" *ngIf="showGraph">
     <ion-card-header text-center>
         Time Worked in Current Month
     </ion-card-header>
