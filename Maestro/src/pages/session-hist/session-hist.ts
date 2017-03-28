@@ -9,8 +9,7 @@ import {SessionService} from "../../providers/sessions/session.service";
 })
 export class SessionHistPage {
   sessions = [];
-  constructor(private loader: LoadingController,  private session_service: SessionService, private alertCtrl: AlertController,
-              private nav: NavController) {
+  constructor() {
   }
 
 }

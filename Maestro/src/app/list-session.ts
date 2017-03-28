@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NavController, LoadingController, AlertController, ItemSliding} from 'ionic-angular';
 import {SessionService} from "../providers/sessions/session.service";
 import {SessionInfoPage} from "../pages/session-info/session-info";
+import {Chart} from 'chart.js';
 
 @Component({
   selector: 'list-session',
@@ -9,9 +10,18 @@ import {SessionInfoPage} from "../pages/session-info/session-info";
 })
 export class ListSession {
   sessions = [];
+  @Input() showGraph: boolean;
   @Input() amount: number;
+  @Output() isLoaded = new EventEmitter();
+
+  @ViewChild('lineCanvas') lineCanvas;
+  lineChart: any;
+
+  loaded:boolean;
+
   constructor(private loader: LoadingController,  private session_service: SessionService, private alertCtrl: AlertController,
               private nav: NavController) {
+    this.loaded = true;
   }
 
   sessionInfo(session, slidingItem: ItemSliding) {
@@ -27,21 +37,27 @@ export class ListSession {
     });
     loading.present().then(() => {
       this.getSessions();
+
       loading.dismiss();
     });
+
   }
 
   getSessions(){
-    this.session_service.getPreviousSessions(this.amount).then((sess) => {
+    this.session_service.getPreviousSessions(10000).then((sess) => {
       if (sess == null){
         this.sessions = [];
       } else {
         this.sessions = sess;
+        this.renderChart();
+
       }
     }).catch(err => {
       console.log("Error while getting previous sessions");
       throw err;
-    })
+    });
+
+
   }
 
   deletePrompt() {
@@ -65,6 +81,86 @@ export class ListSession {
       ]
     });
     prompt.present();
+  }
+
+  renderChart() {
+    let mapData = this.getChartData();
+    let chartScale = this.getChartScale();
+    console.log(chartScale);
+    console.log(mapData);
+    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+
+      type: 'line',
+      data: {
+        labels: chartScale.reverse(),
+        datasets: [{
+          label: "Time worked",
+          fill: false,
+          lineTension: 0.1,
+          backgroundColor: "rgba(75,192,192,0.4)",
+          borderColor: "rgba(75,192,192,1)",
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(75,192,192,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          data: mapData.reverse(),
+          spanGaps: false
+        }]
+      },
+      options: {
+        tooltips: {
+          callbacks: {
+            title: function (tooltipItems) {
+              return "Day: " + tooltipItems[0].xLabel;
+            },
+            label: function (tooltipItems) {
+              return "Time Worked: " + new Date(tooltipItems.yLabel * 1000).toISOString().substr(11, 8);
+            }
+          }
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                callback: function (label) {
+                  return new Date(label * 1000).toISOString().substr(11, 8);
+                }
+              }
+            }
+          ]
+        },
+
+      }
+
+    });
+  }
+
+  getChartScale(){
+    let date = new Date();
+    return this.sessions.map(s => {
+      if(s.start_time[1] == (date.getMonth() + 1)){
+        return s.start_time[1] + "/" + s.start_time[2];
+      }
+    })
+  }
+
+  getChartData(){
+    let date = new Date();
+    return this.sessions.map(s => {
+      if(s.start_time[1] == (date.getMonth() + 1)){
+        let a = s.session_duration.split(':');
+        return (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+      }
+    })
   }
 
 }

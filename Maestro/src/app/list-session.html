@@ -1,6 +1,6 @@
 <ion-list>
-    <ion-item-sliding *ngFor="let w of sessions" #slidingItem>
-        <ion-item>
+    <ion-item-sliding *ngFor="let w of sessions; let i=index" #slidingItem>
+        <ion-item *ngIf="i<amount">
             <div>
                 <h2>{{w.title}}</h2>
                 <h3>{{w.session_duration}}</h3>
@@ -19,3 +19,12 @@
         </ion-item-options>
     </ion-item-sliding>
 </ion-list>
+<hr>
+<ion-card [hidden]="!showGraph" >
+    <ion-card-header text-center>
+        Time Worked in Current Month
+    </ion-card-header>
+    <ion-card-content>
+        <canvas #lineCanvas></canvas>
+    </ion-card-content>
+</ion-card>
