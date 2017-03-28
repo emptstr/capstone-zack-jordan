@@ -1,0 +1,30 @@
+<ion-list>
+    <ion-item-sliding *ngFor="let w of sessions; let i=index" #slidingItem>
+        <ion-item *ngIf="i<amount">
+            <div>
+                <h2>{{w.title}}</h2>
+                <h3>{{w.session_duration}}</h3>
+            </div>
+        </ion-item>
+        <ion-item-options>
+            <button ion-button (click)="sessionInfo(w, slidingItem)" color="primary" icon-left>
+
+                <ion-icon id="more" name="ios-more"></ion-icon>
+                More
+            </button>
+            <button ion-button (click)="deletePrompt()" color="danger">
+                <ion-icon id="delete" name="close-circle"></ion-icon>
+                Delete
+            </button>
+        </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
+<hr>
+<ion-card [hidden]="!loaded" *ngIf="showGraph">
+    <ion-card-header text-center>
+        Time Worked in Current Month
+    </ion-card-header>
+    <ion-card-content>
+        <canvas #lineCanvas></canvas>
+    </ion-card-content>
+</ion-card>

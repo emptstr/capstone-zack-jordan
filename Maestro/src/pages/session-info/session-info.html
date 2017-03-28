@@ -1,10 +1,40 @@
 <ion-header>
     <ion-navbar color="primary">
         <ion-title>Session Info</ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="editSession()">
+                <ion-icon name="create"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+    <div id="session" *ngIf="!edit">
+        <h1>{{session.title}}</h1>
+        <hr>
+        <p>Notes:</p>
+        <p>{{session.notes}}</p>
+        <hr>
+        <h3>Time Worked: {{session.session_duration}}</h3>
+    </div>
+    <div id="edit-session" *ngIf="edit">
+        <ion-item>
+            <ion-label>Title: </ion-label>
+            <ion-input id="title" type="text" [(ngModel)]="session.title">{{session.title}}</ion-input>
+        </ion-item>
+        <hr>
+        <ion-item>
+            <ion-label floating>Notes:</ion-label>
+            <ion-textarea [(ngModel)]="session.notes" >{{session.notes}}</ion-textarea>
+        </ion-item>
+        <hr>
+        <div id="time">Time Worked: {{session.session_duration}}</div>
+
+        <button id="save" ion-button color="secondary" (click)="saveSession()">
+            Save
+        </button>
+    </div>
 
 </ion-content>

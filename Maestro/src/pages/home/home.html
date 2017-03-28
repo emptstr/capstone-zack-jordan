@@ -15,27 +15,8 @@
 </ion-header>
 
 <ion-content class="outer-content" padding >
-    <h3>Welcome</h3>
+    <h3 text-center>Welcome</h3>
 
-    <ion-list>
-        <ion-item-sliding *ngFor="let w of sessions" >
-            <ion-item >
-                <div>
-                    <h2>{{w.title}}</h2>
-                    <h3>{{w.session_duration}}</h3>
-                </div>
-            </ion-item>
-            <ion-item-options>
-                <button ion-button (click)="sessionInfo()" color="primary" icon-left>
-                    <ion-icon id="more" name="ios-more"></ion-icon>
-                    More
-                </button>
-                <button ion-button  (click)="deletePrompt()" color="danger">
-                    <ion-icon id="delete" name="close-circle"></ion-icon>
-                    Delete
-                </button>
-            </ion-item-options>
-        </ion-item-sliding>
-    </ion-list>
+    <list-session [amount]="5" (isLoaded)="areSessionsLoaded($event)" [showGraph]="true"></list-session>
 
 </ion-content>
