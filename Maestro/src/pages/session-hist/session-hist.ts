@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController} from 'ionic-angular';
-import {SessionService} from "../../providers/sessions/session.service";
 
 
 @Component({
