@@ -155,6 +155,8 @@ export class ListSession {
     return this.sessions.map(s => {
       if(s.start_time[1] == (date.getMonth() + 1)){
         return s.start_time[1] + "/" + s.start_time[2];
+      } else {
+        return 0;
       }
     })
   }
