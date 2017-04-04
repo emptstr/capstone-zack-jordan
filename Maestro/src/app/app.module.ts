@@ -13,7 +13,7 @@ import {UserService} from "../providers/database/user.service";
 import {PasswordService} from "../providers/auth/password.service";
 import {SessionService} from "../providers/sessions/session.service"
 import { SessionHistPage } from "../pages/session-hist/session-hist";
-import { ListSession } from "../list-session";
+import { ListSession } from "../components/list-session/list-session";
 import { InitSurveyPage } from  "../pages/init-survey/init-survey"
 
 @NgModule({

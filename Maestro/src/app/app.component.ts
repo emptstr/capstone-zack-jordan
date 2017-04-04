@@ -5,13 +5,15 @@ import {HomePage} from '../pages/home/home';
 import {UserPage} from '../pages/user/user'
 import {LoginPage} from "../pages/login/login";
 import { SessionHistPage } from "../pages/session-hist/session-hist";
+import { InitSurveyPage } from  "../pages/init-survey/init-survey"
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = LoginPage; //rootPage HomePage for development
+  rootPage: any = InitSurveyPage; //rootPage HomePage for development
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform,

@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NavController, LoadingController, AlertController, ItemSliding, Loading} from 'ionic-angular';
-import {SessionService} from "../providers/sessions/session.service";
-import {SessionInfoPage} from "../pages/session-info/session-info";
+import {SessionService} from "../../providers/sessions/session.service";
+import {SessionInfoPage} from "../../pages/session-info/session-info";
 import {Chart} from 'chart.js';
 
 @Component({
