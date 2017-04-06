@@ -13,7 +13,7 @@ import { InitSurveyPage } from  "../pages/init-survey/init-survey"
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = InitSurveyPage; //rootPage HomePage for development
+  rootPage: any = LoginPage; //rootPage HomePage for development
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform,
@@ -24,7 +24,8 @@ export class MyApp {
     this.pages = [
       {title: 'Dashboard', component: HomePage},
       {title: 'Sessions', component: SessionHistPage},
-      {title: 'User Profile', component: UserPage}
+      {title: 'User Profile', component: UserPage},
+      {title: 'Initial Survey', component: InitSurveyPage}
 
     ]
 

@@ -6,21 +6,9 @@
 
 </ion-header>
 
-
 <ion-content padding>
-    <ion-slides >
-        <ion-slide *ngFor="let w of survey">
-            <ion-list radio-group>
-                <ion-list-header>{{ w.question }}</ion-list-header>
-                    <ion-item *ngFor="let answer of w.answers">
-                        <ion-label>{{ answer.answer }}</ion-label>
-                        <ion-radio value= "{{answer.id}}"></ion-radio>
-                    </ion-item>
-                <button ion-button [hidden]="w.isfirstquestion" (click)="prevSlide()">Prev</button>
-                <button ion-button (click)="nextSlide()">Next</button>
-            </ion-list>
-        </ion-slide>
-    </ion-slides>
 
+    <survey-temp></survey-temp>
 
 </ion-content>
+

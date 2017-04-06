@@ -92,8 +92,6 @@ export class ListSession {
   renderChart() {
     let mapData = this.getChartData();
     let chartScale = this.getChartScale();
-    console.log(chartScale);
-    console.log(mapData);
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
 
       type: 'line',
