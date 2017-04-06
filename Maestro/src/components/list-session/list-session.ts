@@ -150,22 +150,30 @@ export class ListSession {
 
   getChartScale(){
     let date = new Date();
-    return this.sessions.map(s => {
-      if(s.start_time[1] == (date.getMonth() + 1)){
-        return s.start_time[1] + "/" + s.start_time[2];
+    let filtered = this.sessions.filter(s => {
+      if(s.start_time[1] == (date.getMonth() + 1)) {
+        return s;
       } else {
-        return 0;
+        return false;
       }
+    });
+    return filtered.map(s => {
+      return s.start_time[1] + "/" + s.start_time[2];
     })
   }
 
   getChartData(){
     let date = new Date();
-    return this.sessions.map(s => {
-      if(s.start_time[1] == (date.getMonth() + 1)){
-        let a = s.session_duration.split(':');
-        return (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+    let filtered = this.sessions.filter(s => {
+      if(s.start_time[1] == (date.getMonth() + 1)) {
+        return s;
+      } else {
+        return false;
       }
+    });
+    return filtered.map(s => {
+      let a = s.session_duration.split(':');
+      return (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
     })
   }
 
