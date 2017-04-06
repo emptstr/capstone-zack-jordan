@@ -5,6 +5,8 @@ import {HomePage} from '../pages/home/home';
 import {UserPage} from '../pages/user/user'
 import {LoginPage} from "../pages/login/login";
 import { SessionHistPage } from "../pages/session-hist/session-hist";
+import { InitSurveyPage } from  "../pages/init-survey/init-survey"
+
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +24,8 @@ export class MyApp {
     this.pages = [
       {title: 'Dashboard', component: HomePage},
       {title: 'Sessions', component: SessionHistPage},
-      {title: 'User Profile', component: UserPage}
+      {title: 'User Profile', component: UserPage},
+      {title: 'Initial Survey', component: InitSurveyPage}
 
     ]
 
