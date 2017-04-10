@@ -1,6 +1,6 @@
 //import {DesignDoc} from "./db.design.doc";
 import {Injectable} from "@angular/core";
-import * as PouchDB from "pouchdb"
+import * as PouchDB from "pouchdb";
 
 @Injectable()
 /**
@@ -17,6 +17,7 @@ export class DatabaseService {
 
   constructor() {
     this._db = new PouchDB(DatabaseService.DB_NAME, {adapter: 'websql'});
+
     this.bootstrap_function =
       function bootstrap(view_name: string) {
         console.log("bootstraping " + view_name)
@@ -90,5 +91,34 @@ export class DatabaseService {
     })
   }
 
+  /**
+   * syncFrom
+   * copies all data from the specified upstream url into the local database
+   * @param url
+   */
+  public syncFrom(url: string){
+    let remote_db = new PouchDB(url,{withCredentials:true})
+    this._db.replicate.from(remote_db, {xhrFields:{withCredentials:true}}).on('complete', function(){
+      console.log("Successfully synced data from upstream database at URL: " + url)
+    }).on('error',function(err){
+      console.log("Encountered error while syncing data from upstream database at URL: " + url)
+      throw err
+    })
+  }
+
+  /**
+   * syncTo
+   * copies all data from the local database into the remote database specified by the url
+   * @param url
+   */
+  public syncTo(url:string){
+    let remote_db = new PouchDB(url,{withCredentials:true})
+    this._db.replicate.to(remote_db, {xhrFields:{withCredentials:true}}).on("complete", function(){
+      console.log("Successfullyy synced data from upstream database at URL: " + url)
+    }).on("error", function(err){
+      console.log("Encountered error while syncing data from upstream database at URL: " + url )
+      throw err
+    })
+  }
   //todo implement a delete doc function
 }
