@@ -3,14 +3,13 @@ import { Slides } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { HomePage } from "../../pages/home/home"
 import {SurveyService} from "../../providers/survey/survey.service";
-import {Survey} from "../../providers/survey/survey";
 
 @Component({
   selector: 'survey-temp',
   templateUrl: 'survey_temp.html'
 })
 export class SurveyTemp {
-  survey: Survey;
+  survey = [];
   users_answers: any = [];
   @ViewChild(Slides) slides: Slides;
   radioValue: number;
@@ -18,8 +17,8 @@ export class SurveyTemp {
 
   constructor(private nav: NavController, private survey_service:SurveyService) {
     this.survey_service.getSurvey("init-survey").then(result=>{
-      this.survey = result
-      console.log(this.survey)
+      this.survey = result.questions;
+      console.log(this.survey);
     }).catch(err=>{
       throw err;
     })

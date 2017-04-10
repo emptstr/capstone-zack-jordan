@@ -1,7 +1,7 @@
 <ion-slides>
-    <ion-slide *ngFor="let w of survey.questions">
+    <ion-slide *ngFor="let w of survey">
         <ion-list radio-group [(ngModel)]="radioValue" >
-            <ion-list-header>{{ w.question }}</ion-list-header>
+            <div>{{ w.question }}</div>
             <ion-item *ngFor="let answer of w.answers">
                 <ion-label>{{ answer.answer }}</ion-label>
                 <ion-radio value={{answer._id}}></ion-radio>
