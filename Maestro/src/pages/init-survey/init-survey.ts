@@ -6,8 +6,9 @@ import {Component} from '@angular/core';
 })
 export class InitSurveyPage {
 
-  constructor() {
+  survey_name: string = "init-survey";
 
+  constructor() {
   }
 
 }

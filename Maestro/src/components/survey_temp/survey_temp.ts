@@ -1,4 +1,4 @@
-import {Component, ViewChild } from '@angular/core';
+import {Component, ViewChild, Input} from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { HomePage } from "../../pages/home/home"
@@ -13,19 +13,22 @@ export class SurveyTemp {
   users_answers: any = [];
   @ViewChild(Slides) slides: Slides;
   radioValue: number;
+  @Input() survey_id: string;
 
 
   constructor(private nav: NavController, private survey_service:SurveyService) {
-    this.survey_service.getSurvey("init-survey").then(result=>{
+  }
+
+  getSurvey(){
+    this.survey_service.getSurvey(this.survey_id).then(result=>{
       this.survey = result.questions;
-      console.log(this.survey);
     }).catch(err=>{
       throw err;
     })
   }
 
-
   ngOnInit(){
+    this.getSurvey();
     this.slides.lockSwipeToNext(true);
     this.slides.lockSwipeToPrev(true);
   }
