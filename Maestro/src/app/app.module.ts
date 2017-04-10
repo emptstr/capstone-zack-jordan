@@ -19,6 +19,7 @@ import {UserService} from "../providers/database/user.service";
 import {PasswordService} from "../providers/auth/password.service";
 import {SessionService} from "../providers/sessions/session.service";
 import {AuthService} from '../providers/auth/auth-service'
+import {SurveyService} from '../providers/survey/survey.service'
 
 
 @NgModule({
@@ -55,7 +56,7 @@ import {AuthService} from '../providers/auth/auth-service'
   providers: [{
     provide: ErrorHandler,
     useClass: IonicErrorHandler
-  }, AuthService, DatabaseService, UserService, PasswordService, SessionService]
+  }, AuthService, DatabaseService, UserService, PasswordService, SessionService, SurveyService]
 })
 export class AppModule {
 }

@@ -26,7 +26,6 @@ export class MyApp {
       {title: 'Sessions', component: SessionHistPage},
       {title: 'User Profile', component: UserPage},
       {title: 'Initial Survey', component: InitSurveyPage}
-
     ]
 
   }

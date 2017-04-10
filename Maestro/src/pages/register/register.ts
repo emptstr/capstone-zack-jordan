@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, AlertController} from 'ionic-angular';
 import {AuthService} from '../../providers/auth/auth-service'
+import {DatabaseService} from "../../providers/database/db.service";
 
 @Component({
   selector: 'page-register',
@@ -17,7 +18,8 @@ export class RegisterPage {
 
   constructor(private nav: NavController,
               private auth: AuthService,
-              private alertCtrl: AlertController) {
+              private alertCtrl: AlertController,
+              private db_service: DatabaseService) {
   }
 
   public register() {
@@ -25,6 +27,7 @@ export class RegisterPage {
       if (success) {
         this.createSuccess = true;
         this.showPopup("Success", "Account created.");
+        this.db_service.syncFrom("https://couchdb-743f41.smileupps.com/maestro-demo")
       } else {
         this.showPopup("Error", "Problem creating account.");
       }

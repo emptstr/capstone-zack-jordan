@@ -2,57 +2,29 @@ import {Component, ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { HomePage } from "../../pages/home/home"
+import {SurveyService} from "../../providers/survey/survey.service";
+import {Survey} from "../../providers/survey/survey";
 
 @Component({
   selector: 'survey-temp',
   templateUrl: 'survey_temp.html'
 })
 export class SurveyTemp {
-  survey: any;
+  survey: Survey;
   users_answers: any = [];
   @ViewChild(Slides) slides: Slides;
   radioValue: number;
 
 
-  constructor(private nav: NavController) {
-
-    this.survey = [
-      {
-        _id: 1,
-        question: "What is your name?",
-        answers: [
-          {id: 1, answer: "Ted"},
-          {id: 2, answer: "Zack"},
-          {id: 3, answer: "Jordan"},
-          {id: 4, answer: "Tim"},
-        ],
-        isfirstquestion: true,
-      },
-      {
-        _id: 2,
-        question: "How old are you?",
-        answers: [
-          {id: 1, answer: "18"},
-          {id: 2, answer: "19"},
-          {id: 3, answer: "20"},
-          {id: 4, answer: "21"},
-        ],
-        isfirstquestion: false,
-      },
-      {
-        _id: 3,
-        question: "Where do you live?",
-        answers: [
-          {id: 1, answer: "Boone"},
-          {id: 2, answer: "Chapel Hill"},
-          {id: 3, answer: "Durham"},
-          {id: 4, answer: "Charlotte"},
-        ],
-        isfirstquestion: false,
-      }
-    ];
-
+  constructor(private nav: NavController, private survey_service:SurveyService) {
+    this.survey_service.getSurvey("init-survey").then(result=>{
+      this.survey = result
+      console.log(this.survey)
+    }).catch(err=>{
+      throw err;
+    })
   }
+
 
   ngOnInit(){
     this.slides.lockSwipeToNext(true);
