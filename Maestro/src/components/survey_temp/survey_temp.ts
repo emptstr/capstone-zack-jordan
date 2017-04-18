@@ -1,7 +1,7 @@
 import {Component, ViewChild, Input} from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
-import { HomePage } from "../../pages/home/home"
+import { UserPage } from "../../pages/user/user"
 import {SurveyService} from "../../providers/survey/survey.service";
 
 @Component({
@@ -22,6 +22,7 @@ export class SurveyTemp {
   getSurvey(){
     this.survey_service.getSurvey(this.survey_id).then(result=>{
       this.survey = result.questions;
+      console.log(this.survey);
     }).catch(err=>{
       throw err;
     })
@@ -33,8 +34,8 @@ export class SurveyTemp {
     this.slides.lockSwipeToPrev(true);
   }
 
-  nextSlide(question_id, question_title) {
-    this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue});
+  nextSlide(question_id, question_title, section) {
+    this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue, section: section});
     console.log(this.users_answers);
     this.slides.lockSwipeToNext(false);
     this.slides.slideNext();
@@ -49,10 +50,10 @@ export class SurveyTemp {
     this.slides.lockSwipeToPrev(true);
   }
 
-  saveSurvey(question_id, question_title){
-    this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue});
+  saveSurvey(question_id, question_title, section){
+    this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue, section: section});
     console.log(this.users_answers);
-    this.nav.setRoot(HomePage);
+    this.nav.setRoot(UserPage});
   }
 
 }

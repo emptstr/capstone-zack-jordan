@@ -1,14 +1,17 @@
 <ion-slides>
     <ion-slide *ngFor="let w of survey">
+        <ion-title id="section">{{w.section}} Section</ion-title>
+        <hr>
         <ion-list radio-group [(ngModel)]="radioValue" >
-            <div>{{ w.question }}</div>
+            <div id="title">{{ w.question }}</div>
+            <hr>
             <ion-item *ngFor="let answer of w.answers">
                 <ion-label>{{ answer.answer }}</ion-label>
                 <ion-radio value={{answer._id}}></ion-radio>
             </ion-item>
             <button ion-button [hidden]="w.isfirstquestion" (click)="prevSlide()">Prev</button>
-            <button ion-button [hidden]="(survey.length == (w._id))" (click)="nextSlide(w._id, w.question)">Next</button>
-            <button ion-button [hidden]="!(survey.length == (w._id))" color="secondary" (click)="saveSurvey(w._id, w.question)">Save</button>
+            <button ion-button [hidden]="(survey.length == (w._id))" (click)="nextSlide(w._id, w.question, w.section)">Next</button>
+            <button ion-button [hidden]="!(survey.length == (w._id))" color="secondary" (click)="saveSurvey(w._id, w.question, w.section)">Save</button>
         </ion-list>
     </ion-slide>
 </ion-slides>
