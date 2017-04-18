@@ -53,7 +53,7 @@ export class SurveyTemp {
   saveSurvey(question_id, question_title, section){
     this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue, section: section});
     console.log(this.users_answers);
-    this.nav.setRoot(UserPage});
+    this.nav.setRoot(UserPage);
   }
 
 }
