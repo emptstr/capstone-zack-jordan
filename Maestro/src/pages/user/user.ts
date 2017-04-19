@@ -39,6 +39,7 @@ export class UserPage {
     if (this.first_visit) {
       this.calcInitSurvey();
     }
+    //TODO: ELSE pull user category and score information from database
     this.renderChart();
   }
 
@@ -55,7 +56,9 @@ export class UserPage {
     this.kin_score = calculateScore(kinesthetic);
     let auditory = this.getAudAnswers();
     this.aud_score = calculateScore(auditory);
+    //TODO: Store visual_score, kin_score, aud_score in database
     this.categorizeUser();
+    //TODO: Store user_category in database
   }
 
   categorizeUser(){
