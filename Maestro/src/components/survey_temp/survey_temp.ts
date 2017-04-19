@@ -22,7 +22,6 @@ export class SurveyTemp {
   getSurvey(){
     this.survey_service.getSurvey(this.survey_id).then(result=>{
       this.survey = result.questions;
-      console.log(this.survey);
     }).catch(err=>{
       throw err;
     })
@@ -36,7 +35,7 @@ export class SurveyTemp {
 
   nextSlide(question_id, question_title, section) {
     this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue, section: section});
-    console.log(this.users_answers);
+    console.log(this.users_answers); //Testing
     this.slides.lockSwipeToNext(false);
     this.slides.slideNext();
     this.slides.lockSwipeToNext(true);
@@ -44,7 +43,7 @@ export class SurveyTemp {
 
   prevSlide() {
     this.users_answers.pop();
-    console.log(this.users_answers);
+    console.log(this.users_answers); //Testing
     this.slides.lockSwipeToPrev(false);
     this.slides.slidePrev();
     this.slides.lockSwipeToPrev(true);
@@ -53,7 +52,10 @@ export class SurveyTemp {
   saveSurvey(question_id, question_title, section){
     this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue, section: section});
     console.log(this.users_answers);
-    this.nav.setRoot(UserPage);
+    this.nav.setRoot(UserPage, {
+      users_answers: this.users_answers,
+      first_visit: true
+    });
   }
 
 }
