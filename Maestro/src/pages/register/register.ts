@@ -45,6 +45,7 @@ export class RegisterPage {
           text: 'OK',
           handler: data => {
             if (this.createSuccess) {
+              //TODO Goto initial survey instead of popping to LoginPage
               this.nav.popToRoot();
             }
           }
