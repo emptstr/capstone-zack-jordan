@@ -3,9 +3,12 @@ export class User {
   name: Name;
   _id: string;
   credentials: Credentials;
+  firstname: string;
+  lastname: string;
 
   constructor(firstname: string, lastname: string, email: string, password: string, salt: string) {
-    this.name = {firstname: firstname, lastname: lastname}
+    this.firstname = firstname;
+    this.lastname = lastname;
     this._id = email;
     this.credentials = {password: password, salt: salt}
   }

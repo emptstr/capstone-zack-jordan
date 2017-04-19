@@ -1,39 +1,41 @@
-import {Component, ViewChild } from '@angular/core';
+import {Component, ViewChild, Input} from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
-import { HomePage } from "../../pages/home/home"
+import { UserPage } from "../../pages/user/user"
 import {SurveyService} from "../../providers/survey/survey.service";
-import {Survey} from "../../providers/survey/survey";
 
 @Component({
   selector: 'survey-temp',
   templateUrl: 'survey_temp.html'
 })
 export class SurveyTemp {
-  survey: Survey;
+  survey = [];
   users_answers: any = [];
   @ViewChild(Slides) slides: Slides;
   radioValue: number;
+  @Input() survey_id: string;
 
 
   constructor(private nav: NavController, private survey_service:SurveyService) {
-    this.survey_service.getSurvey("init-survey").then(result=>{
-      this.survey = result
-      console.log(this.survey)
+  }
+
+  getSurvey(){
+    this.survey_service.getSurvey(this.survey_id).then(result=>{
+      this.survey = result.questions;
     }).catch(err=>{
       throw err;
     })
   }
 
-
   ngOnInit(){
+    this.getSurvey();
     this.slides.lockSwipeToNext(true);
     this.slides.lockSwipeToPrev(true);
   }
 
-  nextSlide(question_id, question_title) {
-    this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue});
-    console.log(this.users_answers);
+  nextSlide(question_id, question_title, section) {
+    this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue, section: section});
+    console.log(this.users_answers); //Testing
     this.slides.lockSwipeToNext(false);
     this.slides.slideNext();
     this.slides.lockSwipeToNext(true);
@@ -41,16 +43,19 @@ export class SurveyTemp {
 
   prevSlide() {
     this.users_answers.pop();
-    console.log(this.users_answers);
+    console.log(this.users_answers); //Testing
     this.slides.lockSwipeToPrev(false);
     this.slides.slidePrev();
     this.slides.lockSwipeToPrev(true);
   }
 
-  saveSurvey(question_id, question_title){
-    this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue});
+  saveSurvey(question_id, question_title, section){
+    this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue, section: section});
     console.log(this.users_answers);
-    this.nav.setRoot(HomePage);
+    this.nav.setRoot(UserPage, {
+      users_answers: this.users_answers,
+      first_visit: true
+    });
   }
 
 }
