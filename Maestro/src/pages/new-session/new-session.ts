@@ -6,7 +6,7 @@ import { Session } from '../../providers/sessions/session';
 import { SessionService } from '../../providers/sessions/session.service';
 import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
 import {HomePage} from "../home/home"
-
+import { SessionSurveyPage } from "../session-survey/session-survey"
 
 @Component({
   selector: 'page-new-session',
@@ -15,6 +15,7 @@ import {HomePage} from "../home/home"
 export class NewSessionPage {
   sessionObj: any = {};
   started: boolean;
+  prev_session: boolean;
   end_session: boolean;
   subscription: Subscription;
   session: Session;
@@ -34,6 +35,16 @@ export class NewSessionPage {
     this.end_session = false;
   }
 
+  ngOnInit(){
+
+    //TODO: Get previous session-survey
+    this.prev_session = true
+  }
+
+  toStart(){
+    this.prev_session = false
+  }
+
   startSession(){
     let timer = Observable.timer(0, 1000);
     this.subscription = timer.subscribe(t => this.sessionObj.time = convertSec(t));
@@ -51,16 +62,19 @@ export class NewSessionPage {
     this.sessionObj.end_time = getDateTime();
   }
 
-  saveSession(){
+  sessionSurvey(){
     this.subscription.unsubscribe();
     this._id = this.sessionObj.start_time.toString() + " - " + this.sessionObj.end_time.toString();
     // This is where Session will be stored in Database
     this.session = new Session(this._id, this.sessionObj.start_time, this.sessionObj.end_time, this.sessionObj.time,
-                                                    this.sessionObj.notes, this.sessionObj.user_id, this.sessionObj.title);
+      this.sessionObj.notes, this.sessionObj.user_id, this.sessionObj.title);
     console.log(JSON.stringify(this.session));
-    this.sess.addSession(this.session);
-    this.nav.setRoot(HomePage);
+
+    this.nav.setRoot(SessionSurveyPage, {
+      session: this.session
+    });
   }
+
 
 }
 

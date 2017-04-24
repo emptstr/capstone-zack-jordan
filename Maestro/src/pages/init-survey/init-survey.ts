@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {UserPage} from "../../pages/user/user"
 
 
 @Component({
@@ -8,6 +9,7 @@ import {Component} from '@angular/core';
 export class InitSurveyPage {
 
   survey_name: string = "init-survey";
+  navigate: Component = UserPage;
 
   constructor() {
   }

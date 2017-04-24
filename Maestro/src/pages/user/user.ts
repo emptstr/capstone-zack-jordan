@@ -27,7 +27,7 @@ export class UserPage {
   constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams, private userService: UserService) {}
 
   ngOnInit(){
-    this.init_answers = this.navParams.get("users_answers");
+    this.init_answers = this.navParams.get("answers");
 
     this.user = this.auth.getUserInfo();
     this.username = this.user.firstname + " " + this.user.lastname;
@@ -137,9 +137,9 @@ export class UserPage {
           ],
           data: [this.aud_score, this.kin_score, this.visual_score],
         }],
-
       }
     });
+
   }
 
 }

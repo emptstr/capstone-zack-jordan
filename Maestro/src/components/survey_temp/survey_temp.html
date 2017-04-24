@@ -1,8 +1,8 @@
 <ion-slides>
     <ion-slide *ngFor="let w of survey">
-        <ion-title id="section">{{w.section}} Section</ion-title>
+        <ion-title [hidden]="hideSection" id="section">{{w.section}} Section</ion-title>
         <hr>
-        <ion-list radio-group [(ngModel)]="radioValue" >
+        <ion-list text-wrap radio-group [(ngModel)]="radioValue" >
             <div id="title">{{ w.question }}</div>
             <hr>
             <ion-item *ngFor="let answer of w.answers">
