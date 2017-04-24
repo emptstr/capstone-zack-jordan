@@ -82,6 +82,14 @@ export class UserPage {
       this.user_category = "Kinesthetic";
     } else if (this.aud_score > this.visual_score && this.aud_score > this.kin_score) {
       this.user_category = "Auditory";
+    } else if (this.aud_score == this.visual_score && this.aud_score > this.kin_score && this.visual_score > this.kin_score) {
+      this.user_category = "Auditory/Visual";
+    } else if (this.kin_score == this.visual_score && this.kin_score > this.aud_score && this.visual_score > this.aud_score) {
+      this.user_category = "Kinesthetic/Visual";
+    } else if (this.kin_score == this.aud_score && this.kin_score > this.visual_score && this.aud_score > this.visual_score) {
+      this.user_category = "Kinesthetic/Auditory";
+    } else {
+      this.user_category = "Kinesthetic/Auditory/Visual";
     }
   }
 
