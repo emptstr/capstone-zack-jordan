@@ -10,7 +10,14 @@
 </ion-header>
 
 <ion-content padding>
-    <div id="new-session" *ngIf="!started">
+    <!--Info from last session-->
+    <div [hidden]="!prev_session">
+        <h1>Past Session Info </h1>
+        <button ion-button margin-top="30px" color="seconday" (click)="toStart()">Next</button>
+    </div>
+
+    <!--Title and Notes-->
+    <div id="new-session" *ngIf="!started" [hidden]="prev_session">
         <ion-item class="time-worked" *ngIf="end_session">
             You worked for: {{sessionObj.time}}
         </ion-item>
@@ -29,6 +36,7 @@
         <button ion-button margin-top="30px" color="secondary" (click)="startSession()" *ngIf="!end_session">Start</button>
 
     </div>
+    <!--Timer-->
     <div id="session-started" *ngIf="started">
         <ion-card>
             <ion-card-content class="timer" large full clear >{{sessionObj.time}}</ion-card-content>

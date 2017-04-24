@@ -15,6 +15,7 @@ import { SessionSurveyPage } from "../session-survey/session-survey"
 export class NewSessionPage {
   sessionObj: any = {};
   started: boolean;
+  prev_session: boolean;
   end_session: boolean;
   subscription: Subscription;
   session: Session;
@@ -32,6 +33,16 @@ export class NewSessionPage {
 
     this.started = false;
     this.end_session = false;
+  }
+
+  ngOnInit(){
+
+    //TODO: Get previous session-survey
+    this.prev_session = true
+  }
+
+  toStart(){
+    this.prev_session = false
   }
 
   startSession(){

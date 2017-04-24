@@ -14,7 +14,7 @@ export class SessionSurveyPage {
   navigate: Component = HomePage;
   session: Session;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private sess: SessionService) {}
+  constructor(public navParams: NavParams, private sess: SessionService) {}
 
   ngOnInit(){
     this.session = this.navParams.get("session");
