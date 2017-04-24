@@ -1,3 +1,4 @@
+import {UserScore} from "../../pages/user/user.score";
 export class User {
 
   name: Name;
@@ -5,12 +6,14 @@ export class User {
   credentials: Credentials;
   firstname: string;
   lastname: string;
+  user_score: UserScore
 
   constructor(firstname: string, lastname: string, email: string, password: string, salt: string) {
     this.firstname = firstname;
     this.lastname = lastname;
     this._id = email;
     this.credentials = {password: password, salt: salt}
+    this.user_score = null;
   }
 }
 
