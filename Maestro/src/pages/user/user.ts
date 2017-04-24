@@ -135,8 +135,9 @@ export class UserPage {
             "#3498db",
             "#e74c3c"
           ],
-          data: [this.aud_score, this.kin_score, this.visual_score]
-        }]
+          data: [this.aud_score, this.kin_score, this.visual_score],
+        }],
+
       }
     });
   }
