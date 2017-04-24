@@ -11,6 +11,7 @@ import {SessionInfoPage} from "../pages/session-info/session-info";
 import { SessionHistPage } from "../pages/session-hist/session-hist";
 import { InitSurveyPage } from  "../pages/init-survey/init-survey";
 import { SessionSurveyPage } from "../pages/session-survey/session-survey";
+import { WelcomePage } from "../pages/welcome/welcome"
 
 import { ListSession } from "../components/list-session/list-session";
 import { SurveyTemp } from "../components/survey_temp/survey_temp";
@@ -36,7 +37,8 @@ import {SurveyService} from '../providers/survey/survey.service'
     ListSession,
     InitSurveyPage,
     SurveyTemp,
-    SessionSurveyPage
+    SessionSurveyPage,
+    WelcomePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -54,7 +56,8 @@ import {SurveyService} from '../providers/survey/survey.service'
     ListSession,
     InitSurveyPage,
     SurveyTemp,
-    SessionSurveyPage
+    SessionSurveyPage,
+    WelcomePage
   ],
   providers: [{
     provide: ErrorHandler,

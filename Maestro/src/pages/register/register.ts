@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, AlertController} from 'ionic-angular';
 import {AuthService} from '../../providers/auth/auth-service'
 import {DatabaseService} from "../../providers/database/db.service";
-import { InitSurveyPage } from "../../pages/init-survey/init-survey"
+import { WelcomePage } from "../welcome/welcome"
 
 @Component({
   selector: 'page-register',
@@ -47,7 +47,7 @@ export class RegisterPage {
           handler: data => {
             if (this.createSuccess) {
               //TODO Goto initial survey instead of popping to LoginPage
-              this.nav.setRoot(InitSurveyPage);
+              this.nav.setRoot(WelcomePage);
             }
           }
         }

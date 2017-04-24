@@ -1,5 +1,5 @@
 import {Component, ViewChild, Input} from '@angular/core';
-import { Slides } from 'ionic-angular';
+import {Slides, LoadingController, Loading} from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { UserPage } from "../../pages/user/user"
 import {SurveyService} from "../../providers/survey/survey.service";
@@ -17,20 +17,34 @@ export class SurveyTemp {
   @Input() navigate: Component;
   @Input() hideSection: boolean;
   @Input() from_session_survey: boolean;
+  loading: Loading;
+  loaded: boolean;
 
 
-  constructor(private nav: NavController, private survey_service:SurveyService) {
+  constructor(private nav: NavController, private survey_service:SurveyService, private loader: LoadingController) {
+    this.showLoading();
   }
 
   getSurvey(){
     this.survey_service.getSurvey(this.survey_id).then(result=>{
       this.survey = result.questions;
+      this.loading.dismiss();
+      this.loaded = true;
     }).catch(err=>{
       throw err;
     })
   }
 
+  showLoading(){
+    this.loaded = false;
+    this.loading = this.loader.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
+  }
+
   ngOnInit(){
+
     this.getSurvey();
     this.slides.lockSwipeToNext(true);
     this.slides.lockSwipeToPrev(true);
