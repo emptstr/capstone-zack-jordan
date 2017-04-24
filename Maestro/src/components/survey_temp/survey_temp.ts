@@ -53,8 +53,7 @@ export class SurveyTemp {
     this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue, section: section});
     console.log(this.users_answers);
     this.nav.setRoot(UserPage, {
-      users_answers: this.users_answers,
-      first_visit: true
+      users_answers: this.users_answers
     });
   }
 
