@@ -137,9 +137,9 @@ export class UserPage {
           ],
           data: [this.aud_score, this.kin_score, this.visual_score],
         }],
-
       }
     });
+
   }
 
 }
