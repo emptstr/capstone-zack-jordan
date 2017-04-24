@@ -14,6 +14,7 @@ export class SurveyTemp {
   @ViewChild(Slides) slides: Slides;
   radioValue: number;
   @Input() survey_id: string;
+  @Input() navigate: Component;
 
 
   constructor(private nav: NavController, private survey_service:SurveyService) {
@@ -52,7 +53,7 @@ export class SurveyTemp {
   saveSurvey(question_id, question_title, section){
     this.users_answers.push({question_title: question_title ,question_id: question_id, answer: this.radioValue, section: section});
     console.log(this.users_answers);
-    this.nav.setRoot(UserPage, {
+    this.nav.setRoot(this.navigate, {
       users_answers: this.users_answers
     });
   }

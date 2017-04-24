@@ -6,7 +6,7 @@ import { Session } from '../../providers/sessions/session';
 import { SessionService } from '../../providers/sessions/session.service';
 import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
 import {HomePage} from "../home/home"
-
+import { SessionSurveyPage } from "../session-survey/session-survey"
 
 @Component({
   selector: 'page-new-session',
@@ -49,6 +49,10 @@ export class NewSessionPage {
     this.end_session = true;
     console.log("Session Ended");
     this.sessionObj.end_time = getDateTime();
+  }
+
+  sessionSurvey(){
+    this.nav.setRoot(SessionSurveyPage)
   }
 
   saveSession(){

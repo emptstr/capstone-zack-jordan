@@ -26,6 +26,7 @@
 
         </ion-list>
         <button ion-button margin-top="30px" color="primary" (click)="saveSession()" *ngIf="end_session">Save</button>
+        <button ion-button margin-top="30px" color="seconday" (click)="sessionSurvey()" *ngIf="end_session">Next</button>
         <button ion-button margin-top="30px" color="secondary" (click)="startSession()" *ngIf="!end_session">Start</button>
 
     </div>
