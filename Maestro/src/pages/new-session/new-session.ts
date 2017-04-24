@@ -52,19 +52,18 @@ export class NewSessionPage {
   }
 
   sessionSurvey(){
-    this.nav.setRoot(SessionSurveyPage)
-  }
-
-  saveSession(){
     this.subscription.unsubscribe();
     this._id = this.sessionObj.start_time.toString() + " - " + this.sessionObj.end_time.toString();
     // This is where Session will be stored in Database
     this.session = new Session(this._id, this.sessionObj.start_time, this.sessionObj.end_time, this.sessionObj.time,
-                                                    this.sessionObj.notes, this.sessionObj.user_id, this.sessionObj.title);
+      this.sessionObj.notes, this.sessionObj.user_id, this.sessionObj.title);
     console.log(JSON.stringify(this.session));
-    this.sess.addSession(this.session);
-    this.nav.setRoot(HomePage);
+
+    this.nav.setRoot(SessionSurveyPage, {
+      session: this.session
+    });
   }
+
 
 }
 

@@ -15,6 +15,7 @@ export class SurveyTemp {
   radioValue: number;
   @Input() survey_id: string;
   @Input() navigate: Component;
+  @Input() hideSection: boolean;
 
 
   constructor(private nav: NavController, private survey_service:SurveyService) {
