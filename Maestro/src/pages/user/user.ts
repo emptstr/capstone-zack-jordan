@@ -4,6 +4,7 @@ import { AuthService } from '../../providers/auth/auth-service';
 import { LoginPage } from '../login/login';
 import { User } from '../../providers/database/user';
 import {Chart} from 'chart.js';
+import { UserService } from '../../providers/database/user.service'
 
 
 @Component({
@@ -15,31 +16,35 @@ export class UserPage {
   username: string = "";
   email: string;
   init_answers = [];
+
   visual_score: number;
   kin_score: number;
   aud_score: number;
   user_category: string;
-  first_visit: boolean = false;
 
   @ViewChild('pieCanvas') pieCanvas;
 
-  constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams) {
-    let info = this.auth.getUserInfo();
-    this.username = info.firstname + " " + info.lastname;
-    this.email = info._id;
-
-  }
+  constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams, private userService: UserService) {}
 
   ngOnInit(){
-    console.log(this.auth.getUserInfo())
     this.init_answers = this.navParams.get("users_answers");
-    this.first_visit = this.navParams.get("first_visit");
+
+    this.user = this.auth.getUserInfo();
+    this.username = this.user.firstname + " " + this.user.lastname;
+    this.email = this.user._id;
 
     console.log(this.init_answers);
-    if (this.first_visit) {
+
+    //If user came from initial survey
+    if (this.user.user_score == null) {
       this.calcInitSurvey();
+    } else {
+      this.aud_score = this.user.user_score.aud_score;
+      this.kin_score = this.user.user_score.kin_score;
+      this.visual_score = this.user.user_score.visual_score;
+      this.categorizeUser()
     }
-    //TODO: ELSE pull user category and score information from database
+    // Display user learning data
     this.renderChart();
   }
 
@@ -50,15 +55,24 @@ export class UserPage {
   }
 
   calcInitSurvey() {
+
     let visual = this.getVisualAnswers();
     this.visual_score = calculateScore(visual);
     let kinesthetic = this.getKinAnswers();
     this.kin_score = calculateScore(kinesthetic);
     let auditory = this.getAudAnswers();
     this.aud_score = calculateScore(auditory);
-    //TODO: Store visual_score, kin_score, aud_score in database
+
+    this.user.user_score = {
+      visual_score: this.visual_score,
+      kin_score: this.kin_score,
+      aud_score: this.aud_score
+    };
+
+    //Add initial survey score to user
+    this.userService.addUser(this.user, this.user._id);
+
     this.categorizeUser();
-    //TODO: Store user_category in database
   }
 
   categorizeUser(){

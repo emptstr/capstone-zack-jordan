@@ -1,4 +1,4 @@
-import {UserScore} from "../../pages/user/user.score";
+import {UserScore} from "./user.score";
 export class User {
 
   name: Name;
