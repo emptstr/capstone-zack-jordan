@@ -22,6 +22,8 @@ import {PasswordService} from "../providers/auth/password.service";
 import {SessionService} from "../providers/sessions/session.service";
 import {AuthService} from '../providers/auth/auth-service'
 import {SurveyService} from '../providers/survey/survey.service'
+import {KnowledgeBaseService} from "../providers/knowledge-base/knowlege.base.service"
+import {LearningStrategiesService} from "../providers/learning-strategies/learning.strategies.service"
 
 
 @NgModule({
@@ -62,7 +64,8 @@ import {SurveyService} from '../providers/survey/survey.service'
   providers: [{
     provide: ErrorHandler,
     useClass: IonicErrorHandler
-  }, AuthService, DatabaseService, UserService, PasswordService, SessionService, SurveyService]
+  }, AuthService, DatabaseService, UserService, PasswordService, SessionService, SurveyService, KnowledgeBaseService,
+     LearningStrategiesService]
 })
 export class AppModule {
 }

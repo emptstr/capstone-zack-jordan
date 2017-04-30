@@ -5,6 +5,9 @@ import { LoginPage } from '../login/login';
 import { User } from '../../providers/database/user';
 import {Chart} from 'chart.js';
 import { UserService } from '../../providers/database/user.service'
+import {KnowledgeBaseService} from "../../providers/knowledge-base/knowlege.base.service"
+import {LearningStrategiesService} from "../../providers/learning-strategies/learning.strategies.service"
+import {DatabaseService} from "../../providers/database/db.service"
 
 
 @Component({
@@ -24,9 +27,14 @@ export class UserPage {
 
   @ViewChild('pieCanvas') pieCanvas;
 
-  constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams, private userService: UserService) {}
+  constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams,
+              private userService: UserService, private knowledge: KnowledgeBaseService,
+              private learning: LearningStrategiesService, private db : DatabaseService) {}
 
   ngOnInit(){
+    console.log(this.knowledge.getKnowledgeBase());
+    console.log(this.learning.getStrategies());
+
     this.init_answers = this.navParams.get("answers");
 
     this.user = this.auth.getUserInfo();
