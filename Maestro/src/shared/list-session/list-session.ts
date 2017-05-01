@@ -1,35 +1,37 @@
-import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { NavController, LoadingController, AlertController, ItemSliding, Loading} from 'ionic-angular';
 import {SessionService} from "../../providers/sessions/session.service";
 import {SessionInfoPage} from "../../pages/session-info/session-info";
 import {Chart} from 'chart.js';
 
+/**
+ * A reusable component to display the users sessions.
+ */
 @Component({
   selector: 'list-session',
   templateUrl: 'list-session.html'
 })
-/**
- *
- */
+
 export class ListSession {
-  sessions;
-  @Input() showGraph: boolean;
-  @Input() amount: number;
+  sessions; // Hold users sessions
+  @Input() showGraph: boolean; // Whether or not graph should be rendered
+  @Input() amount: number;  // How many sessions to show
+
   @Output() isLoaded = new EventEmitter();
   loading: Loading;
-  loaded:boolean;
+  loaded: boolean;
 
   constructor(private loader: LoadingController,  private session_service: SessionService,
-              private alertCtrl: AlertController, private nav: NavController) {
+              private alertCtrl: AlertController, private nav: NavController) {}
+
+  ngOnInit(){
+    this.showLoading();
+    this.getSessions();
   }
 
-  sessionInfo(session, slidingItem: ItemSliding) {
-    this.nav.push(SessionInfoPage, {
-      session: session
-    });
-    slidingItem.close();
-  }
-
+  /**
+   * Creates and displays loading prompt waiting on sessions to be retrieved.
+   */
   showLoading(){
     this.loaded = false;
     this.loading = this.loader.create({
@@ -38,18 +40,16 @@ export class ListSession {
     this.loading.present();
   }
 
-  ngOnInit(){
-    this.showLoading();
-    this.getSessions();
-  }
-
+  /**
+   * Get user sessions from database.
+   */
   getSessions(){
     this.session_service.getPreviousSessions(10000).then((sess) => {
       if (sess == null){
-        this.sessions = [];
+        this.sessions = []; // User doesn't have any sessions
       } else {
         this.sessions = sess;
-        this.loading.dismiss();
+        this.loading.dismiss(); // Dismiss Loading
         this.loaded = true;
 
       }
@@ -58,9 +58,24 @@ export class ListSession {
       throw err;
     });
 
+  }
+
+  /**
+   * Click handler to navigate to SessionInfoPage
+   * @param session the session which was selected
+   * @param slidingItem
+   */
+  sessionInfo(session, slidingItem: ItemSliding) {
+    this.nav.push(SessionInfoPage, {
+      session: session // Pass session info to be displayed
+    });
+    slidingItem.close(); // Close slider so it will be closed upon user return
 
   }
 
+  /**
+   * Click handler when delete button is pressed.
+   */
   deletePrompt() {
     let prompt = this.alertCtrl.create({
       title: 'Delete Session',
@@ -69,8 +84,8 @@ export class ListSession {
         {
           text: 'Yes',
           handler: data => {
-            // Call session service and delete session
-            console.log('Delete Session');
+            console.log('Delete Session');  // Call session service and delete session
+
           }
         },
         {
@@ -83,7 +98,6 @@ export class ListSession {
     });
     prompt.present();
   }
-
 
 }
 
