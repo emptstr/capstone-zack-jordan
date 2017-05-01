@@ -4,12 +4,18 @@ import {AuthService} from '../../providers/auth/auth-service'
 import {DatabaseService} from "../../providers/database/db.service";
 import { WelcomePage } from "../welcome/welcome"
 
+/**
+ * Component for register page
+ */
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html'
 })
+
 export class RegisterPage {
   createSuccess = false;
+
+  // Credentials to register the user
   registerCredentials = {
     first_name: '',
     last_name: '',
@@ -17,26 +23,31 @@ export class RegisterPage {
     password: '',
   };
 
-  constructor(private nav: NavController,
-              private auth: AuthService,
-              private alertCtrl: AlertController,
-              private db_service: DatabaseService) {
-  }
+  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController,
+              private db_service: DatabaseService) {}
 
+  /**
+   * Click handler for register button
+   */
   public register() {
     this.auth.register(this.registerCredentials).then(success => {
       if (success) {
-        this.createSuccess = true;
-        this.showPopup("Success", "Account created.");
-        this.db_service.syncFrom("https://couchdb-743f41.smileupps.com/maestro-demo")
+        this.createSuccess = true; // Account created successful
+        this.showPopup("Success", "Account created."); // Display popup
+        this.db_service.syncFrom("https://couchdb-743f41.smileupps.com/maestro-demo"); // Sync from couchdb
       } else {
-        this.showPopup("Error", "Problem creating account.");
+        this.showPopup("Error", "Problem creating account."); // Account not created successfully
       }
     }).catch(error => {
       this.showPopup("Error", error);
     });
   }
 
+  /**
+   * Display alert after account creation attempt
+   * @param title
+   * @param text - message to be displayed
+   */
   showPopup(title, text) {
     let alert = this.alertCtrl.create({
       title: title,
@@ -46,8 +57,7 @@ export class RegisterPage {
           text: 'OK',
           handler: data => {
             if (this.createSuccess) {
-              //TODO Goto initial survey instead of popping to LoginPage
-              this.nav.setRoot(WelcomePage);
+              this.nav.setRoot(WelcomePage); // Go to welcome page if account was successfully created
             }
           }
         }
