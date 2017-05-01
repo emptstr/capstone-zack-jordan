@@ -32,7 +32,11 @@ export class UserPage {
 
 
   constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams,
-              private userService: UserService, private db : DatabaseService) {}
+              private userService: UserService, private db : DatabaseService, private kb: KnowledgeBaseService,
+              private ls: LearningStrategiesService) {
+
+
+  }
 
   /**
    * Initialize the directive/component after Angular first displays the data-bound properties
@@ -40,6 +44,7 @@ export class UserPage {
    */
   ngOnInit(){
     //TODO: Grab from database
+
 
     this.init_answers = this.navParams.get("answers");  // Get answers from initial-survey
 

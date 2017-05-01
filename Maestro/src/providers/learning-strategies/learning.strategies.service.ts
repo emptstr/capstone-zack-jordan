@@ -8,7 +8,7 @@ import {DatabaseService} from "../database/db.service";
  */
 export class LearningStrategiesService {
 
- private static readonly LEARNING_STRATEGIES_ID = "learning_strategies"
+ private static readonly LEARNING_STRATEGIES_ID = "learning-strategies"
  private db_service: DatabaseService
  private strategies = [];
 
