@@ -28,7 +28,7 @@ export class UserScore {
    * Renders Pie chart of users scores
    */
   renderChart() {
-    let myChart = new Chart(this.pieCanvas.nativeElement, {
+    return new Chart(this.pieCanvas.nativeElement, {
       type: 'pie',
       data: {
         labels: ["Auditory Score", "Kinesthetic Score", "Visual Score"],
