@@ -11,14 +11,27 @@ import {SessionService} from "../../providers/sessions/session.service"
 export class SessionSurveyPage {
 
   survey_name: string = "session-survey";
-  navigate: Component = HomePage;
+  navigate: Component = SessionSurveyPage;
   session: Session;
+  from_session_survey: boolean;
+  sess_answers = [];
 
-  constructor(public navParams: NavParams, private sess: SessionService) {}
+  constructor(public navParams: NavParams, private sess: SessionService, private nav: NavController) {}
 
   ngOnInit(){
     this.session = this.navParams.get("session");
-    this.sess.addSession(this.session);
+    this.from_session_survey = this.navParams.get("from_session_survey");
+
+    if(this.from_session_survey) {
+
+      this.sess_answers = this.navParams.get("answers");
+      console.log(this.sess_answers);
+
+      //TODO: make new session with session answers before adding
+      this.sess.addSession(this.session);
+      this.nav.setRoot(HomePage);
+
+    }
   }
 
 }

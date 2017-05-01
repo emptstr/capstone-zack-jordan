@@ -19,6 +19,7 @@ export class SurveyTemp {
   @Input() from_session_survey: boolean;
   loading: Loading;
   loaded: boolean;
+  @Input() session = [];
 
 
   constructor(private nav: NavController, private survey_service:SurveyService, private loader: LoadingController) {
@@ -71,7 +72,8 @@ export class SurveyTemp {
     console.log(this.users_answers);
     this.nav.setRoot(this.navigate, {
       answers: this.users_answers,
-      from_session_survey: this.from_session_survey
+      from_session_survey: this.from_session_survey,
+      session: this.session
     });
   }
 
