@@ -76,26 +76,15 @@ export class SessionService {
         let session: Session = row.value
         sessions.push(session)
       }
+      console.log("Successfully retrieved previous sessions from the database")
       return sessions;
     }).catch(err => {
-      console.log("failed to query service");
+      console.log("Failed to query service");
       throw err;
     })
   }
 
-  /**
-   * getSession
-   * retuns a session for specific date
-   * @param date
-   * @returns {Promise<TResult|T>}
-   */
-  public getSession(date: number[]): Promise<Session> {
-    return this.db_service.query(this.sessionsByDate, {key: date}).then(result => {
-      return result.rows.value;
-    }).catch(err => {
-      throw err;
-    })
+  public deleteSession(session: Session){
+    this.db_service.delete(session._id)
   }
-
-  //todo implement a delete session function
 }
