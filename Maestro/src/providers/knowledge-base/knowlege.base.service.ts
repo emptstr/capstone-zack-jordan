@@ -10,7 +10,7 @@ import {DatabaseService} from "../database/db.service";
 export class KnowledgeBaseService {
 
   private static readonly  KNOWLEDGE_BASE_ID = 'knowledge-base'
-  private knowledge_base = [];
+  knowledge_base;
 
   /**
    * fetches the knowledge base from the database

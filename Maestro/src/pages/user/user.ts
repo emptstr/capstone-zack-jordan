@@ -29,7 +29,7 @@ export class UserPage {
 
   user_category: string; // What category the user is placed in
 
-
+  knowledge: any;
 
   constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams,
               private userService: UserService, private db : DatabaseService, private kb: KnowledgeBaseService,
@@ -44,7 +44,10 @@ export class UserPage {
    */
   ngOnInit(){
     //TODO: Grab from database
+    this.knowledge = this.kb.getKnowledgeBase()
 
+    console.log(this.knowledge);
+    //console.log(this.ls.getStrategies());
 
     this.init_answers = this.navParams.get("answers");  // Get answers from initial-survey
 

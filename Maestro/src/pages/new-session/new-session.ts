@@ -28,6 +28,8 @@ export class NewSessionPage {
   session: Session; // Session object being created
   _id: string;  // Field for session id
 
+  prev_session_survey = [];
+
   constructor(private nav: NavController, private auth: AuthService, private sess: SessionService) {
 
     this.sessionObj = {
@@ -48,8 +50,31 @@ export class NewSessionPage {
    * and sets the directive/component's input properties.
    */
   ngOnInit(){
+    this.getSessions();
+
     //TODO: Get previous session-survey
     this.prev_session = true
+  }
+
+  /**
+   * Get user sessions from database.
+   */
+  getSessions(){
+    this.sess.getPreviousSessions(1).then((sess) => {
+      if (sess == null){
+        this.prev_session_survey = []; // User doesn't have any sessions
+      } else {
+        this.prev_session_survey = sess;
+        console.log(this.prev_session_survey);
+        //this.loading.dismiss(); // Dismiss Loading
+        //this.loaded = true;
+
+      }
+    }).catch(err => {
+      console.log("Error while getting previous sessions");
+      throw err;
+    });
+
   }
 
   /**
