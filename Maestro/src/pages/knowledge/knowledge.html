@@ -8,10 +8,19 @@
 
 
 <ion-content padding>
-    <ion-list>
-        <ion-item text-wrap *ngFor="let w of learning_style[0].strategies">
-            <p>{{w}}</p>
-        </ion-item>
-    </ion-list>
+
+    <div text-center>
+        <button ion-button (click)="showLearning()">
+            Learning Styles
+            <ion-icon name="arrow-down"></ion-icon>
+        </button>
+    </div>
+    <div [hidden]="!show_learning">
+        <ion-list>
+            <ion-item text-wrap *ngFor="let w of learning_style[0].strategies">
+                <p>{{w}}</p>
+            </ion-item>
+        </ion-list>
+    </div>
 
 </ion-content>

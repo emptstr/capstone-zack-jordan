@@ -10,6 +10,8 @@ export class KnowledgePage {
   knowledge;
   learning_style;
 
+  show_learning: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.knowledge = this.navParams.get("knowledge");
     console.log(this.knowledge);
@@ -17,4 +19,14 @@ export class KnowledgePage {
     console.log(this.learning_style);
   }
 
+  /**
+   *
+   */
+  showLearning() {
+    if (this.show_learning) {
+      this.show_learning = false;
+    } else {
+      this.show_learning = true;
+    }
+  }
 }
