@@ -13,8 +13,9 @@ import { InitSurveyPage } from  "../pages/init-survey/init-survey";
 import { SessionSurveyPage } from "../pages/session-survey/session-survey";
 import { WelcomePage } from "../pages/welcome/welcome"
 
-import { ListSession } from "../components/list-session/list-session";
-import { SurveyTemp } from "../components/survey_temp/survey_temp";
+import { ListSession } from "../shared/list-session/list-session";
+import { SurveyTemp } from "../shared/survey_temp/survey_temp";
+import { TimeWorked } from "../shared/graphs/time-worked";
 
 import {DatabaseService} from "../providers/database/db.service";
 import {UserService} from "../providers/database/user.service";
@@ -40,7 +41,8 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
     InitSurveyPage,
     SurveyTemp,
     SessionSurveyPage,
-    WelcomePage
+    WelcomePage,
+    TimeWorked,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -59,7 +61,8 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
     InitSurveyPage,
     SurveyTemp,
     SessionSurveyPage,
-    WelcomePage
+    WelcomePage,
+    TimeWorked
   ],
   providers: [{
     provide: ErrorHandler,

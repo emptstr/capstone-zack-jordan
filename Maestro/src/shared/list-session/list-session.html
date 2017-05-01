@@ -24,7 +24,7 @@
     <ion-card-header text-center>
         Time Worked in Current Month
     </ion-card-header>
-    <ion-card-content>
-        <canvas #lineCanvas></canvas>
-    </ion-card-content>
+    <div *ngIf="sessions">
+        <time-worked [sessions]="sessions" ></time-worked>
+    </div>
 </ion-card>
