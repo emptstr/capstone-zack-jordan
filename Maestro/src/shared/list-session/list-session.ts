@@ -24,6 +24,10 @@ export class ListSession {
   constructor(private loader: LoadingController,  private session_service: SessionService,
               private alertCtrl: AlertController, private nav: NavController) {}
 
+  /**
+   * Initialize the directive/component after Angular first displays the data-bound properties
+   * and sets the directive/component's input properties.
+   */
   ngOnInit(){
     this.showLoading();
     this.getSessions();

@@ -6,7 +6,7 @@ import { SessionService } from '../../providers/sessions/session.service';
 /**
  * Component for displaying more info about a session.
  *
- * Accesses from list-session when more button is pressed.
+ * Navigate to this page after more button is pressed on list-session reusable component
  */
 @Component({
   selector: 'page-session-info',

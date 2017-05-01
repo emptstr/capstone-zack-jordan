@@ -43,6 +43,10 @@ export class NewSessionPage {
     this.end_session = false;
   }
 
+  /**
+   * Initialize the directive/component after Angular first displays the data-bound properties
+   * and sets the directive/component's input properties.
+   */
   ngOnInit(){
     //TODO: Get previous session-survey
     this.prev_session = true

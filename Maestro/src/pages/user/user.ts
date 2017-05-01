@@ -31,6 +31,10 @@ export class UserPage {
               private userService: UserService, private knowledge: KnowledgeBaseService,
               private learning: LearningStrategiesService, private db : DatabaseService) {}
 
+  /**
+   * Initialize the directive/component after Angular first displays the data-bound properties
+   * and sets the directive/component's input properties.
+   */
   ngOnInit(){
     //TODO: Grab from database
     console.log(this.knowledge.getKnowledgeBase());

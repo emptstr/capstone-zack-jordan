@@ -14,6 +14,10 @@ export class TimeWorked {
   @ViewChild('lineCanvas') lineCanvas;
   @Input() sessions = []; // session will be passed from list-session.ts
 
+  /**
+   * Initialize the directive/component after Angular first displays the data-bound properties
+   * and sets the directive/component's input properties.
+   */
   ngOnInit() {
     this.renderChart()
   }
