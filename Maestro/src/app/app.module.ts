@@ -30,6 +30,7 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
 @NgModule({
   declarations: [
     MyApp,
+    // PAGES
     HomePage,
     LoginPage,
     RegisterPage,
@@ -37,11 +38,13 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
     NewSessionPage,
     SessionInfoPage,
     SessionHistPage,
-    ListSession,
-    InitSurveyPage,
-    SurveyTemp,
     SessionSurveyPage,
     WelcomePage,
+    InitSurveyPage,
+
+    // SHARED
+    ListSession,
+    SurveyTemp,
     TimeWorked,
   ],
   imports: [
@@ -50,6 +53,8 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+
+    // PAGES
     HomePage,
     LoginPage,
     RegisterPage,
@@ -57,12 +62,14 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
     NewSessionPage,
     SessionInfoPage,
     SessionHistPage,
-    ListSession,
     InitSurveyPage,
-    SurveyTemp,
     SessionSurveyPage,
     WelcomePage,
-    TimeWorked
+
+    // SHARED
+    TimeWorked,
+    SurveyTemp,
+    ListSession
   ],
   providers: [{
     provide: ErrorHandler,
