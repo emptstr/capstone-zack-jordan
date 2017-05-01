@@ -32,6 +32,7 @@ export class UserPage {
               private learning: LearningStrategiesService, private db : DatabaseService) {}
 
   ngOnInit(){
+    //TODO: Grab from database
     console.log(this.knowledge.getKnowledgeBase());
     console.log(this.learning.getStrategies());
 
