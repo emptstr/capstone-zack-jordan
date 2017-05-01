@@ -88,8 +88,8 @@ export class ListSession {
         {
           text: 'Yes',
           handler: data => {
-            console.log('Delete Session');  // Call session service and delete session
-            this.session_service.deleteSession(w);
+            console.log('Delete Session');
+            this.session_service.deleteSession(w); // Call session service and delete session
             this.nav.setRoot(HomePage);
 
           }

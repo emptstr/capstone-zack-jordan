@@ -12,6 +12,7 @@ import { SessionHistPage } from "../pages/session-hist/session-hist";
 import { InitSurveyPage } from  "../pages/init-survey/init-survey";
 import { SessionSurveyPage } from "../pages/session-survey/session-survey";
 import { WelcomePage } from "../pages/welcome/welcome"
+import { KnowledgePage } from "../pages/knowledge/knowledge"
 
 import { ListSession } from "../shared/list-session/list-session";
 import { SurveyTemp } from "../shared/survey_temp/survey_temp";
@@ -42,6 +43,7 @@ import {UserScore} from "../shared/graphs/user-score"
     SessionSurveyPage,
     WelcomePage,
     InitSurveyPage,
+    KnowledgePage,
 
     // SHARED
     ListSession,
@@ -67,6 +69,7 @@ import {UserScore} from "../shared/graphs/user-score"
     InitSurveyPage,
     SessionSurveyPage,
     WelcomePage,
+    KnowledgePage,
 
     // SHARED
     TimeWorked,

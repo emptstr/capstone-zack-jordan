@@ -51,7 +51,6 @@ export class NewSessionPage {
    */
   ngOnInit(){
     this.getSessions();
-
     //TODO: Get previous session-survey
     this.prev_session = true
   }

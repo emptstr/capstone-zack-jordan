@@ -37,15 +37,11 @@
     <ion-card>
         <ion-card-title text-center>Knowledge Base</ion-card-title>
         <ion-card-content>
-            <div text-center>
-                <button ion-button>Kinesthetic</button>
-                <button ion-button>Visual</button>
-                <button ion-button>Auditory</button>
+            <div text-center *ngIf="knowledge">
+                <button ion-button (click)="gotoKnowledge('Kinesthetic')">Kinesthetic</button>
+                <button ion-button (click)="gotoKnowledge('Visual')">Visual</button>
+                <button ion-button (click)="gotoKnowledge('Auditory')">Auditory</button>
             </div>
-
         </ion-card-content>
     </ion-card>
-    <div *ngIf="knowledge">
-        <h1>Hello</h1>
-    </div>
 </ion-content>

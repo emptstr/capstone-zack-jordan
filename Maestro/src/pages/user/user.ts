@@ -7,6 +7,7 @@ import { UserService } from '../../providers/database/user.service'
 import {KnowledgeBaseService} from "../../providers/knowledge-base/knowlege.base.service"
 import {LearningStrategiesService} from "../../providers/learning-strategies/learning.strategies.service"
 import {DatabaseService} from "../../providers/database/db.service"
+import {KnowledgePage} from "../knowledge/knowledge"
 
 /**
  * Component for user page
@@ -67,6 +68,9 @@ export class UserPage {
     }
   }
 
+  /**
+   *
+   */
   getKnowledgeBase() {
     this.kb.getKnowledgeBase().then(kb => {
       this.knowledge = kb;
@@ -77,6 +81,9 @@ export class UserPage {
     })
   }
 
+  /**
+   *
+   */
   getLearningStyle(){
     this.ls.getStrategies().then(ls => {
       this.learning_style = ls;
@@ -87,12 +94,34 @@ export class UserPage {
     })
   }
 
-  getCategoryKnowledge(){
-    let v = 'visual';
-    return this.knowledge.map(kb => {
-      return {name: kb.name}
+  /**
+   *
+   * @param cat
+   */
+  getLearningStyleCat(cat) {
+    return this.learning_style[0].filter(ls => {
+      if (ls.category == cat) {
+        return ls;
+      } else {
+        return false;
+      }
     });
   }
+
+  /**
+   *
+   * @param category
+   */
+  gotoKnowledge(category) {
+    console.log(category);
+    let catLearning = this.getLearningStyleCat(category);
+    this.nav.push(KnowledgePage, {
+      knowledge: this.knowledge,
+      learning: catLearning
+    })
+  }
+
+
 
   /**
    * Click handler for the logout button
