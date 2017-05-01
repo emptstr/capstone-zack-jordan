@@ -13,8 +13,9 @@ import { InitSurveyPage } from  "../pages/init-survey/init-survey";
 import { SessionSurveyPage } from "../pages/session-survey/session-survey";
 import { WelcomePage } from "../pages/welcome/welcome"
 
-import { ListSession } from "../components/list-session/list-session";
-import { SurveyTemp } from "../components/survey_temp/survey_temp";
+import { ListSession } from "../shared/list-session/list-session";
+import { SurveyTemp } from "../shared/survey_temp/survey_temp";
+import { TimeWorked } from "../shared/graphs/time-worked";
 
 import {DatabaseService} from "../providers/database/db.service";
 import {UserService} from "../providers/database/user.service";
@@ -24,11 +25,13 @@ import {AuthService} from '../providers/auth/auth-service'
 import {SurveyService} from '../providers/survey/survey.service'
 import {KnowledgeBaseService} from "../providers/knowledge-base/knowlege.base.service"
 import {LearningStrategiesService} from "../providers/learning-strategies/learning.strategies.service"
+import {UserScore} from "../shared/graphs/user-score"
 
 
 @NgModule({
   declarations: [
     MyApp,
+    // PAGES
     HomePage,
     LoginPage,
     RegisterPage,
@@ -36,11 +39,15 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
     NewSessionPage,
     SessionInfoPage,
     SessionHistPage,
-    ListSession,
-    InitSurveyPage,
-    SurveyTemp,
     SessionSurveyPage,
-    WelcomePage
+    WelcomePage,
+    InitSurveyPage,
+
+    // SHARED
+    ListSession,
+    SurveyTemp,
+    TimeWorked,
+    UserScore,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -48,6 +55,8 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+
+    // PAGES
     HomePage,
     LoginPage,
     RegisterPage,
@@ -55,11 +64,15 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
     NewSessionPage,
     SessionInfoPage,
     SessionHistPage,
-    ListSession,
     InitSurveyPage,
-    SurveyTemp,
     SessionSurveyPage,
-    WelcomePage
+    WelcomePage,
+
+    // SHARED
+    TimeWorked,
+    SurveyTemp,
+    ListSession,
+    UserScore,
   ],
   providers: [{
     provide: ErrorHandler,

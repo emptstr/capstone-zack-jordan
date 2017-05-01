@@ -1,77 +1,92 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth-service';
 import { LoginPage } from '../login/login';
 import { User } from '../../providers/database/user';
-import {Chart} from 'chart.js';
 import { UserService } from '../../providers/database/user.service'
 import {KnowledgeBaseService} from "../../providers/knowledge-base/knowlege.base.service"
 import {LearningStrategiesService} from "../../providers/learning-strategies/learning.strategies.service"
 import {DatabaseService} from "../../providers/database/db.service"
 
-
+/**
+ * Component for user page
+ */
 @Component({
   selector: 'page-user',
   templateUrl: 'user.html'
 })
+
 export class UserPage {
   user: User;
   username: string = "";
   email: string;
-  init_answers = [];
+  init_answers = [];  // Answers passed from survey-temp
 
+  // Scores from initial answer
   visual_score: number;
   kin_score: number;
   aud_score: number;
-  user_category: string;
 
-  @ViewChild('pieCanvas') pieCanvas;
+  user_category: string; // What category the user is placed in
+
+
 
   constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams,
-              private userService: UserService, private knowledge: KnowledgeBaseService,
-              private learning: LearningStrategiesService, private db : DatabaseService) {}
+              private userService: UserService, private db : DatabaseService) {}
 
+  /**
+   * Initialize the directive/component after Angular first displays the data-bound properties
+   * and sets the directive/component's input properties.
+   */
   ngOnInit(){
     //TODO: Grab from database
-    console.log(this.knowledge.getKnowledgeBase());
-    console.log(this.learning.getStrategies());
 
-    this.init_answers = this.navParams.get("answers");
+    this.init_answers = this.navParams.get("answers");  // Get answers from initial-survey
 
-    this.user = this.auth.getUserInfo();
-    this.username = this.user.firstname + " " + this.user.lastname;
-    this.email = this.user._id;
+    this.user = this.auth.getUserInfo(); // Get current user
 
-    console.log(this.init_answers);
+    this.username = this.user.firstname + " " + this.user.lastname; // Populate user name
+    this.email = this.user._id; // Populate email
+
+    console.log(this.init_answers); // Tesing
 
     //If user came from initial survey
     if (this.user.user_score == null) {
-      this.calcInitSurvey();
+      this.calcInitSurvey();  // Calculate user scores
     } else {
+      // If user is not coming from initial survey grab scores from database
       this.aud_score = this.user.user_score.aud_score;
       this.kin_score = this.user.user_score.kin_score;
       this.visual_score = this.user.user_score.visual_score;
+      // Calculate user
       this.categorizeUser()
     }
-    // Display user learning data
-    this.renderChart();
   }
 
+  /**
+   * Click handler for the logout button
+   */
   public logout() {
     this.auth.logout().subscribe(succ => {
-      this.nav.setRoot(LoginPage)
+      this.nav.setRoot(LoginPage); //Go to login page
     });
   }
 
+  /**
+   * Calculate the answers from the initial survey
+   */
   calcInitSurvey() {
 
-    let visual = this.getVisualAnswers();
-    this.visual_score = calculateScore(visual);
-    let kinesthetic = this.getKinAnswers();
-    this.kin_score = calculateScore(kinesthetic);
-    let auditory = this.getAudAnswers();
-    this.aud_score = calculateScore(auditory);
+    let visual = this.getVisualAnswers(); // Get scores from visual section
+    this.visual_score = calculateScore(visual); // Calculate score
 
+    let kinesthetic = this.getKinAnswers(); // Get scores from kinesthetic section
+    this.kin_score = calculateScore(kinesthetic); // Calculate score
+
+    let auditory = this.getAudAnswers();  // Get scores from auditory section
+    this.aud_score = calculateScore(auditory);  // Calculate score
+
+    // Put users scores into the User object
     this.user.user_score = {
       visual_score: this.visual_score,
       kin_score: this.kin_score,
@@ -81,9 +96,12 @@ export class UserPage {
     //Add initial survey score to user
     this.userService.addUser(this.user, this.user._id);
 
-    this.categorizeUser();
+    this.categorizeUser();  // Calculate user category
   }
 
+  /**
+   * Takes the users scores and puts them in a category
+   */
   categorizeUser(){
     if (this.visual_score > this.kin_score && this.visual_score > this.aud_score) {
       this.user_category = "Visual";
@@ -102,6 +120,10 @@ export class UserPage {
     }
   }
 
+  /**
+   * Gets the visual scores from the users answers.
+   * @returns {any[]}
+   */
   getVisualAnswers(){
     return this.init_answers.filter(a => {
       if (a.section == "Visual") {
@@ -112,6 +134,11 @@ export class UserPage {
     });
 
   }
+
+  /**
+   * Gets Kinesthetic scores from users answers.
+   * @returns {any[]}
+   */
   getKinAnswers(){
     return this.init_answers.filter(a => {
       if (a.section == "Auditory") {
@@ -122,6 +149,11 @@ export class UserPage {
     });
 
   }
+
+  /**
+   * Get auditory scores from user answers
+   * @returns {any[]}
+   */
   getAudAnswers(){
     return this.init_answers.filter(a => {
       if (a.section == "Kinesthetic") {
@@ -133,25 +165,13 @@ export class UserPage {
 
   }
 
-  renderChart() {
-    let myChart = new Chart(this.pieCanvas.nativeElement, {
-      type: 'pie',
-      data: {
-        labels: ["Auditory Score", "Kinesthetic Score", "Visual Score"],
-        datasets: [{
-          backgroundColor: [
-            "#2ecc71",
-            "#3498db",
-            "#e74c3c"
-          ],
-          data: [this.aud_score, this.kin_score, this.visual_score],
-        }],
-      }
-    });
-  }
 }
 
-
+/**
+ * Sum up scores from a section of the initial survey
+ * @param answers section answers
+ * @returns {number} user score
+ */
 const calculateScore = (answers) => {
   let sum: number = 0;
   for (let i = 0; i < answers.length; i++) {
