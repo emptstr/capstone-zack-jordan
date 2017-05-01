@@ -30,6 +30,7 @@ export class UserPage {
   user_category: string; // What category the user is placed in
 
   knowledge: any;
+  learning_style: any;
 
   constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams,
               private userService: UserService, private db : DatabaseService, private kb: KnowledgeBaseService,
@@ -42,6 +43,7 @@ export class UserPage {
   ngOnInit(){
     //TODO: Grab from database
     this.getKnowledgeBase();
+    this.getLearningStyle();
 
     this.init_answers = this.navParams.get("answers");  // Get answers from initial-survey
 
@@ -69,14 +71,20 @@ export class UserPage {
     this.kb.getKnowledgeBase().then(kb => {
       this.knowledge = kb;
       console.log(this.knowledge);
-      let k = this.getCategoryKnowledge();
-      console.log(k);
     }).catch(err => {
       console.log("Error while getting knowledge base");
       throw err;
     })
+  }
 
-
+  getLearningStyle(){
+    this.ls.getStrategies().then(ls => {
+      this.learning_style = ls;
+      console.log(this.learning_style);
+    }).catch(err => {
+      console.log("Error while getting knowledge base");
+      throw err;
+    })
   }
 
   getCategoryKnowledge(){
