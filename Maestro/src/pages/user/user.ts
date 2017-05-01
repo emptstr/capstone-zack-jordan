@@ -33,10 +33,7 @@ export class UserPage {
 
   constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams,
               private userService: UserService, private db : DatabaseService, private kb: KnowledgeBaseService,
-              private ls: LearningStrategiesService) {
-
-
-  }
+              private ls: LearningStrategiesService) {}
 
   /**
    * Initialize the directive/component after Angular first displays the data-bound properties
@@ -44,10 +41,7 @@ export class UserPage {
    */
   ngOnInit(){
     //TODO: Grab from database
-    this.knowledge = this.kb.getKnowledgeBase()
-
-    console.log(this.knowledge);
-    //console.log(this.ls.getStrategies());
+    this.getKnowledgeBase();
 
     this.init_answers = this.navParams.get("answers");  // Get answers from initial-survey
 
@@ -56,7 +50,7 @@ export class UserPage {
     this.username = this.user.firstname + " " + this.user.lastname; // Populate user name
     this.email = this.user._id; // Populate email
 
-    console.log(this.init_answers); // Tesing
+    console.log(this.init_answers); // Testing
 
     //If user came from initial survey
     if (this.user.user_score == null) {
@@ -69,6 +63,27 @@ export class UserPage {
       // Calculate user
       this.categorizeUser()
     }
+  }
+
+  getKnowledgeBase() {
+    this.kb.getKnowledgeBase().then(kb => {
+      this.knowledge = kb;
+      console.log(this.knowledge);
+      let k = this.getCategoryKnowledge();
+      console.log(k);
+    }).catch(err => {
+      console.log("Error while getting knowledge base");
+      throw err;
+    })
+
+
+  }
+
+  getCategoryKnowledge(){
+    let v = 'visual';
+    return this.knowledge.map(kb => {
+      return {name: kb.name}
+    });
   }
 
   /**
