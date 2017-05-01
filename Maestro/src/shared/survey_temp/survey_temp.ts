@@ -79,12 +79,11 @@ export class SurveyTemp {
     // Save user answers on stack
     this.users_answers.push({question_title: question_title ,question_id: question_id,
                              answer: this.radioValue, section: section});
+
     console.log(this.users_answers); //Testing
 
-    // Workaround to Ionic 2 slide bug
-    this.slides.lockSwipeToNext(false);
-    this.slides.slideNext();
-    this.slides.lockSwipeToNext(true);
+    this.next();  // Go to next survey question
+
   }
 
   /**
@@ -93,12 +92,31 @@ export class SurveyTemp {
   prevSlide() {
     // If user goes back pop off last answer from stack.
     this.users_answers.pop();
+
     console.log(this.users_answers); //Testing
 
-    // Workaround to Ionic 2 slide bug
+    this.prev();  // Go to previous survey question
+  }
+
+  /**
+   * Workaround to Ionic 2 slide bug.
+   * Go to previous slide using button
+   */
+  prev() {
     this.slides.lockSwipeToPrev(false);
     this.slides.slidePrev();
     this.slides.lockSwipeToPrev(true);
+  }
+
+  /**
+   * Workaround to Ionic 2 slide bug.
+   * Go to next slide using button
+   */
+  next() {
+    this.slides.lockSwipeToNext(false);
+    this.slides.slideNext();
+    this.slides.lockSwipeToNext(true);
+
   }
 
   /**
