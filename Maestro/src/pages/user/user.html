@@ -16,7 +16,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding [hidden]="!loaded">
     <ion-card>
         <ion-card-content>
             <p> User: {{username}} </p>

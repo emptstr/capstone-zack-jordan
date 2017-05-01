@@ -23,10 +23,6 @@ export class KnowledgePage {
    *
    */
   showLearning() {
-    if (this.show_learning) {
-      this.show_learning = false;
-    } else {
-      this.show_learning = true;
-    }
+    this.show_learning = !this.show_learning;
   }
 }

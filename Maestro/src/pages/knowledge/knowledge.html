@@ -12,7 +12,8 @@
     <div text-center>
         <button ion-button (click)="showLearning()">
             Learning Styles
-            <ion-icon name="arrow-down"></ion-icon>
+            <ion-icon *ngIf="!show_learning" name="arrow-down"></ion-icon>
+            <ion-icon *ngIf="show_learning" name="arrow-up"></ion-icon>
         </button>
     </div>
     <div [hidden]="!show_learning">
