@@ -9,20 +9,22 @@ import {DatabaseService} from "../database/db.service";
  */
 export class KnowledgeBaseService {
 
-  private static readonly  KNOWLEDGE_BASE_ID = 'knowledge_base'
-  private knowledge_base = [];
+  private static readonly  KNOWLEDGE_BASE_ID = 'knowledge-base'
+  private db_service: DatabaseService
+  knowledge_base_query;
+
 
   /**
    * fetches the knowledge base from the database
    * @param db_service
    */
   constructor(db_service: DatabaseService){
-    db_service.fetch(KnowledgeBaseService.KNOWLEDGE_BASE_ID).then(result => {
-      this.knowledge_base = result.modalities;
-    }).catch(err => {
-      console.log(err)
-      throw err
-    })
+    this.db_service = db_service
+    this.knowledge_base_query = function (doc, emit) {
+      if (doc.modalities) {
+        emit(doc.modalities, doc);
+      }
+    }
   }
 
   /**
@@ -30,7 +32,16 @@ export class KnowledgeBaseService {
    * @returns {Array}
    */
   public getKnowledgeBase(){
-    return this.knowledge_base;
+      return this.db_service.query(this.knowledge_base_query, {}).then(result => {
+      let sessions = []
+      let rows = result.rows;
+      for (let row of rows){
+        sessions.push(row.value.modalities)
+      }
+      return sessions
+    }).catch(err => {
+    throw err
+  })
   }
 }
 
