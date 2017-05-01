@@ -91,6 +91,15 @@ export class DatabaseService {
     })
   }
 
+  public delete(_id: string){
+    this._db.get(_id).then(result => {
+      return this._db.remove(result)
+    }).catch(err => {
+      throw err
+    })
+  }
+
+
   /**
    * syncFrom
    * copies all data from the specified upstream url into the local database
@@ -120,5 +129,7 @@ export class DatabaseService {
       throw err
     })
   }
-  //todo implement a delete doc function
+
+
+
 }
