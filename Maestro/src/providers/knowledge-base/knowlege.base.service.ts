@@ -9,10 +9,8 @@ import {DatabaseService} from "../database/db.service";
  */
 export class KnowledgeBaseService {
 
-  private static readonly  KNOWLEDGE_BASE_ID = 'knowledge-base'
   private db_service: DatabaseService
-  knowledge_base_query;
-
+  private knowledge_base_query;
 
   /**
    * fetches the knowledge base from the database
@@ -33,12 +31,12 @@ export class KnowledgeBaseService {
    */
   public getKnowledgeBase(){
       return this.db_service.query(this.knowledge_base_query, {}).then(result => {
-      let sessions = []
+      let modalities = []
       let rows = result.rows;
       for (let row of rows){
-        sessions.push(row.value.modalities)
+        modalities.push(row.value.modalities)
       }
-      return sessions
+      return modalities
     }).catch(err => {
     throw err
   })
