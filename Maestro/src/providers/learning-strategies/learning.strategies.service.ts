@@ -8,21 +8,19 @@ import {DatabaseService} from "../database/db.service";
  */
 export class LearningStrategiesService {
 
- private static readonly LEARNING_STRATEGIES_ID = "learning-strategies"
  private db_service: DatabaseService
- private strategies = [];
-
+ private learning_strategies_query
   /**
    * fetches the learning strategies from the database
    * @param db_service
    */
  constructor(db_service: DatabaseService){
-  db_service.fetch(LearningStrategiesService.LEARNING_STRATEGIES_ID).then(result => {
-    this.strategies = result.stategies
-  }).catch(err => {
-    console.log(err)
-    throw err
-  })
+    this.db_service = db_service;
+    this.learning_strategies_query = function(doc, emit) {
+      if(doc.strategies){
+        emit(doc.strategies,doc)
+      }
+    }
  }
 
   /**
@@ -31,6 +29,15 @@ export class LearningStrategiesService {
    * @returns {Array}
    */
  getStrategies(){
-   return this.strategies
+   return this.db_service.query(this.learning_strategies_query, {}).then(result => {
+     let strategies = []
+     let rows = result.rows
+     for(let row of rows){
+        strategies.push(row.value.strategies)
+     }
+    return strategies
+   }).catch(err => {
+     throw err
+   })
  }
 }
