@@ -15,11 +15,18 @@ export class UserScore {
   @Input() kin_score;
   @Input() visual_score;
 
+  /**
+   * Initialize the directive/component after Angular first displays the data-bound properties
+   * and sets the directive/component's input properties.
+   */
   ngOnInit(){
     // Display user learning data
     this.renderChart();
   }
 
+  /**
+   * Renders Pie chart of users scores
+   */
   renderChart() {
     let myChart = new Chart(this.pieCanvas.nativeElement, {
       type: 'pie',
