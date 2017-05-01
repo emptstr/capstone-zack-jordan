@@ -29,17 +29,20 @@ export class SessionSurveyPage {
    * and sets the directive/component's input properties.
    */
   ngOnInit(){
-    this.session = this.navParams.get("session");
+    this.session = this.navParams.get("session"); // Get session passed from new-session page
     this.from_session_survey = this.navParams.get("from_session_survey");
 
+    // If coming from session survey. Survey is completed
     if(this.from_session_survey) {
 
+      // Get answers passed from survey-temp
       this.sess_answers = this.navParams.get("answers");
-      console.log(this.sess_answers);
+
+      console.log(this.sess_answers); // Testing
 
       //TODO: make new session with session answers before adding
       this.sess.addSession(this.session);
-      this.nav.setRoot(HomePage);
+      this.nav.setRoot(HomePage); // Navigate to HomePage
 
     }
   }

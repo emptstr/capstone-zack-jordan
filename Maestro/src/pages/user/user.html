@@ -23,12 +23,11 @@
             <p>Your Email is: {{email}}</p>
         </ion-card-content>
     </ion-card>
-
-    <ion-card>
-        <ion-card-content>
-            <canvas #pieCanvas></canvas>
-        </ion-card-content>
-    </ion-card>
+    <div *ngIf="kin_score">
+        <ion-card>
+            <user-score [kin_score]="kin_score" [aud_score]="aud_score" [visual_score]="visual_score"></user-score>
+        </ion-card>
+    </div>
 
     <ion-card>
         <ion-card-content text-center>

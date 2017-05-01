@@ -1,4 +1,4 @@
-import {Component, ViewChild, Input, SimpleChanges} from '@angular/core';
+import {Component, ViewChild, Input} from '@angular/core';
 import {Chart} from 'chart.js';
 
 /**

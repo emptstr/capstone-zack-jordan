@@ -25,6 +25,7 @@ import {AuthService} from '../providers/auth/auth-service'
 import {SurveyService} from '../providers/survey/survey.service'
 import {KnowledgeBaseService} from "../providers/knowledge-base/knowlege.base.service"
 import {LearningStrategiesService} from "../providers/learning-strategies/learning.strategies.service"
+import {UserScore} from "../shared/graphs/user-score"
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
     ListSession,
     SurveyTemp,
     TimeWorked,
+    UserScore,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -69,7 +71,8 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
     // SHARED
     TimeWorked,
     SurveyTemp,
-    ListSession
+    ListSession,
+    UserScore,
   ],
   providers: [{
     provide: ErrorHandler,
