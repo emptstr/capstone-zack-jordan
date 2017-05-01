@@ -13,7 +13,8 @@ export class Session {
   title: string
   survey_answers = [];
 
-  constructor(_id: string, start_time: number[], end_time: number[], session_duration: number, notes: string, user_id: string, title: string) {
+  constructor(_id: string, start_time: number[], end_time: number[], session_duration: number, notes: string, user_id:
+              string, title: string) {
     this._id = _id
     this.start_time = start_time
     this.end_time = end_time

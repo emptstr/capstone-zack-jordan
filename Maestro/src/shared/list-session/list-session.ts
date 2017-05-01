@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { NavController, LoadingController, AlertController, ItemSliding, Loading} from 'ionic-angular';
 import {SessionService} from "../../providers/sessions/session.service";
 import {SessionInfoPage} from "../../pages/session-info/session-info";
+import {HomePage} from "../../pages/home/home"
 
 /**
  * A reusable component to display the users sessions.
@@ -27,7 +28,7 @@ export class ListSession {
    * Initialize the directive/component after Angular first displays the data-bound properties
    * and sets the directive/component's input properties.
    */
-  ngOnInit(){
+  ngOnInit() {
     this.showLoading();
     this.getSessions();
   }
@@ -79,7 +80,7 @@ export class ListSession {
   /**
    * Click handler when delete button is pressed.
    */
-  deletePrompt() {
+  deletePrompt(w) {
     let prompt = this.alertCtrl.create({
       title: 'Delete Session',
       message: "Are you sure you would like to delete this work session?",
@@ -87,7 +88,9 @@ export class ListSession {
         {
           text: 'Yes',
           handler: data => {
-            console.log('Delete Session');  // Call session service and delete session
+            console.log('Delete Session');
+            this.session_service.deleteSession(w); // Call session service and delete session
+            this.nav.setRoot(HomePage);
 
           }
         },

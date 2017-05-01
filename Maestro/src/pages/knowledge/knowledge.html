@@ -1,0 +1,27 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-title>Knowledge Base</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <div text-center>
+        <button ion-button (click)="showLearning()">
+            Learning Styles
+            <ion-icon *ngIf="!show_learning" name="arrow-down"></ion-icon>
+            <ion-icon *ngIf="show_learning" name="arrow-up"></ion-icon>
+        </button>
+    </div>
+    <div [hidden]="!show_learning">
+        <ion-list>
+            <ion-item text-wrap *ngFor="let w of learning_style[0].strategies">
+                <p>{{w}}</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+</ion-content>

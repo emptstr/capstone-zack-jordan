@@ -41,6 +41,8 @@ export class SessionSurveyPage {
       console.log(this.sess_answers); // Testing
 
       //TODO: make new session with session answers before adding
+      this.session.survey_answers = this.sess_answers;
+      console.log(this.session);
       this.sess.addSession(this.session);
       this.nav.setRoot(HomePage); // Navigate to HomePage
 

@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, Loading, LoadingController} from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth-service';
 import { LoginPage } from '../login/login';
 import { User } from '../../providers/database/user';
 import { UserService } from '../../providers/database/user.service'
 import {KnowledgeBaseService} from "../../providers/knowledge-base/knowlege.base.service"
 import {LearningStrategiesService} from "../../providers/learning-strategies/learning.strategies.service"
-import {DatabaseService} from "../../providers/database/db.service"
+import {KnowledgePage} from "../knowledge/knowledge"
 
 /**
  * Component for user page
@@ -29,17 +29,25 @@ export class UserPage {
 
   user_category: string; // What category the user is placed in
 
+  knowledge: any;
+  learning_style: any;
 
+  loading: Loading;
+  loaded: boolean;
 
   constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams,
-              private userService: UserService, private db : DatabaseService) {}
+              private userService: UserService, private kb: KnowledgeBaseService,
+              private ls: LearningStrategiesService, private loader: LoadingController) {}
 
   /**
    * Initialize the directive/component after Angular first displays the data-bound properties
    * and sets the directive/component's input properties.
    */
   ngOnInit(){
-    //TODO: Grab from database
+
+    this.showLoading();
+    this.getKnowledgeBase();
+    this.getLearningStyle();
 
     this.init_answers = this.navParams.get("answers");  // Get answers from initial-survey
 
@@ -48,7 +56,7 @@ export class UserPage {
     this.username = this.user.firstname + " " + this.user.lastname; // Populate user name
     this.email = this.user._id; // Populate email
 
-    console.log(this.init_answers); // Tesing
+    console.log(this.init_answers); // Testing
 
     //If user came from initial survey
     if (this.user.user_score == null) {
@@ -62,6 +70,74 @@ export class UserPage {
       this.categorizeUser()
     }
   }
+
+  /**
+   * Creates and displays loading prompt waiting on sessions to be retrieved.
+   */
+  showLoading(){
+    this.loaded = false;
+    this.loading = this.loader.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
+  }
+
+  /**
+   *
+   */
+  getKnowledgeBase() {
+    this.kb.getKnowledgeBase().then(kb => {
+      this.knowledge = kb;
+      console.log(this.knowledge);
+    }).catch(err => {
+      console.log("Error while getting knowledge base");
+      throw err;
+    })
+  }
+
+  /**
+   *
+   */
+  getLearningStyle(){
+    this.ls.getStrategies().then(ls => {
+      this.learning_style = ls;
+      console.log(this.learning_style);
+      this.loading.dismiss(); // Dismiss Loading
+      this.loaded = true;
+    }).catch(err => {
+      console.log("Error while getting knowledge base");
+      throw err;
+    })
+  }
+
+  /**
+   *
+   * @param cat
+   */
+  getLearningStyleCat(cat) {
+    return this.learning_style[0].filter(ls => {
+      if (ls.category == cat) {
+        return ls;
+      } else {
+        return false;
+      }
+    });
+  }
+
+  /**
+   *
+   * @param category
+   */
+  gotoKnowledge(category) {
+    console.log(category);
+    let catLearning = this.getLearningStyleCat(category);
+    this.nav.push(KnowledgePage, {
+      knowledge: this.knowledge,
+      learning: catLearning
+    })
+  }
+
+
 
   /**
    * Click handler for the logout button

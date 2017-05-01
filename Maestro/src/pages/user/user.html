@@ -16,7 +16,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding [hidden]="!loaded">
     <ion-card>
         <ion-card-content>
             <p> User: {{username}} </p>
@@ -32,6 +32,16 @@
     <ion-card>
         <ion-card-content text-center>
             <h3>You Are A {{user_category}} Learner!</h3>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-title text-center>Knowledge Base</ion-card-title>
+        <ion-card-content>
+            <div text-center *ngIf="knowledge">
+                <button ion-button (click)="gotoKnowledge('Kinesthetic')">Kinesthetic</button>
+                <button ion-button (click)="gotoKnowledge('Visual')">Visual</button>
+                <button ion-button (click)="gotoKnowledge('Auditory')">Auditory</button>
+            </div>
         </ion-card-content>
     </ion-card>
 </ion-content>
