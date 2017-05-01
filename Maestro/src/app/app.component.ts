@@ -12,7 +12,7 @@ import { SessionHistPage } from "../pages/session-hist/session-hist";
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = LoginPage;
+  rootPage: any = LoginPage;  // First page will be LoginPage
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform,

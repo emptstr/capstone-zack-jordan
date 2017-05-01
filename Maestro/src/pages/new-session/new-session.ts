@@ -5,7 +5,6 @@ import { AuthService } from '../../providers/auth/auth-service';
 import { Session } from '../../providers/sessions/session';
 import { SessionService } from '../../providers/sessions/session.service';
 import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
-import {HomePage} from "../home/home"
 import { SessionSurveyPage } from "../session-survey/session-survey"
 
 @Component({
@@ -13,7 +12,7 @@ import { SessionSurveyPage } from "../session-survey/session-survey"
   templateUrl: 'new-session.html'
 })
 export class NewSessionPage {
-  sessionObj: any = {};
+  sessionObj: any = [];
   started: boolean;
   prev_session: boolean;
   end_session: boolean;
@@ -22,6 +21,7 @@ export class NewSessionPage {
   _id: string;
 
   constructor(private nav: NavController, private auth: AuthService, private sess: SessionService) {
+
     this.sessionObj = {
       title: '',
       notes: '',
@@ -36,7 +36,6 @@ export class NewSessionPage {
   }
 
   ngOnInit(){
-
     //TODO: Get previous session-survey
     this.prev_session = true
   }
