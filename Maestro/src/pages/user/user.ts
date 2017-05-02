@@ -101,7 +101,6 @@ export class UserPage {
   getLearningStyle(){
     this.ls.getStrategies().then(ls => {
       this.learning_style = ls;
-      console.log(this.learning_style);
       this.loading.dismiss(); // Dismiss Loading
       this.loaded = true;
     }).catch(err => {
@@ -129,7 +128,6 @@ export class UserPage {
    * @param category
    */
   gotoKnowledge(category) {
-    console.log(category);
     let catLearning = this.getLearningStyleCat(category);
     this.nav.push(KnowledgePage, {
       knowledge: this.knowledge,

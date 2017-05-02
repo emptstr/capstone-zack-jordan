@@ -1,7 +1,7 @@
 <ion-header>
 
     <ion-navbar color="primary">
-        <ion-title>Knowledge Base</ion-title>
+        <ion-title>{{learning_style[0].category}} Knowledge Base</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -9,9 +9,10 @@
 
 <ion-content padding>
 
+    <hr>
     <div text-center>
+        <h6 style="display: inline-block">Tips on how to improve learning sessions:</h6>
         <button ion-button (click)="showLearning()">
-            Learning Styles
             <ion-icon *ngIf="!show_learning" name="arrow-down"></ion-icon>
             <ion-icon *ngIf="show_learning" name="arrow-up"></ion-icon>
         </button>
@@ -19,9 +20,12 @@
     <div [hidden]="!show_learning">
         <ion-list>
             <ion-item text-wrap *ngFor="let w of learning_style[0].strategies">
-                <p>{{w}}</p>
+                <ul>
+                    <li><p>{{w}}</p></li>
+                </ul>
             </ion-item>
         </ion-list>
     </div>
+    <hr>
 
 </ion-content>
