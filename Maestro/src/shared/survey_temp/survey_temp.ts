@@ -82,7 +82,7 @@ export class SurveyTemp {
   nextSlide(question_id, question_title, section) {
     // Save user answers on stack
     this.users_answers.push({question_title: question_title ,question_id: question_id,
-                             answer: this.radioValue, section: section});
+                             answer: +this.radioValue, section: section});
 
     console.log(this.users_answers); //Testing
 
@@ -133,7 +133,7 @@ export class SurveyTemp {
   saveSurvey(question_id, question_title, section){
     //Push last answer onto answer stack
     this.users_answers.push({question_title: question_title ,question_id: question_id,
-                             answer: this.radioValue, section: section});
+                             answer: +this.radioValue, section: section});
     console.log(this.users_answers); // Tesing
 
     // After Save button is pressed go to specified location

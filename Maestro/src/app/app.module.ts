@@ -27,6 +27,7 @@ import {SurveyService} from '../providers/survey/survey.service'
 import {KnowledgeBaseService} from "../providers/knowledge-base/knowlege.base.service"
 import {LearningStrategiesService} from "../providers/learning-strategies/learning.strategies.service"
 import {UserScore} from "../shared/graphs/user-score"
+import {SessionSurveyResultsAnalyzer} from "../providers/sessions/session.survey.results.analyzer";
 
 
 @NgModule({
@@ -81,7 +82,7 @@ import {UserScore} from "../shared/graphs/user-score"
     provide: ErrorHandler,
     useClass: IonicErrorHandler
   }, AuthService, DatabaseService, UserService, PasswordService, SessionService, SurveyService, KnowledgeBaseService,
-     LearningStrategiesService]
+     LearningStrategiesService, SessionSurveyResultsAnalyzer]
 })
 export class AppModule {
 }

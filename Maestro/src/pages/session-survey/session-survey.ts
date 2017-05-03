@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {HomePage} from "../home/home"
 import {Session} from "../../providers/sessions/session"
 import {SessionService} from "../../providers/sessions/session.service"
+import {SessionSurveyResultsAnalyzer} from "../../providers/sessions/session.survey.results.analyzer";
 
 /**
  * Component for session survey
@@ -22,7 +23,7 @@ export class SessionSurveyPage {
   from_session_survey: boolean;
   sess_answers = [];
 
-  constructor(public navParams: NavParams, private sess: SessionService, private nav: NavController) {}
+  constructor(public navParams: NavParams, private sess: SessionService, private nav: NavController, private sessionSurveyAnalyzer: SessionSurveyResultsAnalyzer) {}
 
   /**
    * Initialize the directive/component after Angular first displays the data-bound properties
@@ -41,7 +42,7 @@ export class SessionSurveyPage {
       console.log(this.sess_answers); // Testing
 
       //TODO: make new session with session answers before adding
-      this.session.survey_answers = this.sess_answers;
+      this.session.sessionSurveyMetric = this.sessionSurveyAnalyzer.analyze(this.sess_answers);
       console.log(this.session);
       this.sess.addSession(this.session);
       this.nav.setRoot(HomePage); // Navigate to HomePage

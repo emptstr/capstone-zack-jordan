@@ -1,3 +1,4 @@
+import {SessionSurveyMetric} from "./session.survey.metric";
 /**
  * Session
  * represents a user's work session
@@ -11,7 +12,7 @@ export class Session {
   notes: string
   private user_id: string
   title: string
-  survey_answers = [];
+  sessionSurveyMetric: SessionSurveyMetric
 
   constructor(_id: string, start_time: number[], end_time: number[], session_duration: number, notes: string, user_id:
               string, title: string) {
