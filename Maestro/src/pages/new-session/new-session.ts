@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {Component, Input, ViewChild} from '@angular/core';
+import { NavController,Loading, LoadingController } from 'ionic-angular';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { AuthService } from '../../providers/auth/auth-service';
 import { Session } from '../../providers/sessions/session';
 import { SessionService } from '../../providers/sessions/session.service';
 import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
 import { SessionSurveyPage } from "../session-survey/session-survey"
+
+import {Chart} from 'chart.js';
+
 
 /**
  * Component for starting a new work session.
@@ -28,9 +31,15 @@ export class NewSessionPage {
   session: Session; // Session object being created
   _id: string;  // Field for session id
 
-  prev_session_survey = [];
+  prev_session_survey;
 
-  constructor(private nav: NavController, private auth: AuthService, private sess: SessionService) {
+  loading: Loading;
+  loaded: boolean;
+
+
+
+  constructor(private nav: NavController, private auth: AuthService, private sess: SessionService,
+              private loader: LoadingController) {
 
     this.sessionObj = {
       title: '',
@@ -50,10 +59,23 @@ export class NewSessionPage {
    * and sets the directive/component's input properties.
    */
   ngOnInit(){
+    this.showLoading();
     this.getSessions();
     //TODO: Get previous session-survey
     this.prev_session = true
   }
+
+  /**
+   * Creates and displays loading prompt waiting on sessions to be retrieved.
+   */
+  showLoading(){
+    this.loaded = false;
+    this.loading = this.loader.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
+  }
+
 
   /**
    * Get user sessions from database.
@@ -65,8 +87,9 @@ export class NewSessionPage {
       } else {
         this.prev_session_survey = sess;
         console.log(this.prev_session_survey);
-        //this.loading.dismiss(); // Dismiss Loading
-        //this.loaded = true;
+
+        this.loading.dismiss(); // Dismiss Loading
+        this.loaded = true;
 
       }
     }).catch(err => {

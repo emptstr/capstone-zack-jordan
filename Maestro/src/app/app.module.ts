@@ -28,6 +28,7 @@ import {KnowledgeBaseService} from "../providers/knowledge-base/knowlege.base.se
 import {LearningStrategiesService} from "../providers/learning-strategies/learning.strategies.service"
 import {UserScore} from "../shared/graphs/user-score"
 import {SessionSurveyResultsAnalyzer} from "../providers/sessions/session.survey.results.analyzer";
+import {PrevSession} from "../shared/graphs/prev-session"
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import {SessionSurveyResultsAnalyzer} from "../providers/sessions/session.survey
     SurveyTemp,
     TimeWorked,
     UserScore,
+    PrevSession
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -77,6 +79,7 @@ import {SessionSurveyResultsAnalyzer} from "../providers/sessions/session.survey
     SurveyTemp,
     ListSession,
     UserScore,
+    PrevSession
   ],
   providers: [{
     provide: ErrorHandler,

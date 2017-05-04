@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+/**
+ * Component for knowledge base page
+ */
 @Component({
   selector: 'page-knowledge',
   templateUrl: 'knowledge.html'
 })
+
 export class KnowledgePage {
 
   knowledge;
@@ -20,7 +24,7 @@ export class KnowledgePage {
   }
 
   /**
-   *
+   * Click handler for button to show learning styles
    */
   showLearning() {
     this.show_learning = !this.show_learning;

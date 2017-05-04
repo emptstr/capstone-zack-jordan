@@ -124,7 +124,7 @@ export class UserPage {
   }
 
   /**
-   *
+   * Click handler for categoryy buttons to go to knowledge base
    * @param category
    */
   gotoKnowledge(category) {
@@ -134,7 +134,6 @@ export class UserPage {
       learning: catLearning
     })
   }
-
 
 
   /**
@@ -253,3 +252,5 @@ const calculateScore = (answers) => {
   }
   return sum;
 }
+
+
