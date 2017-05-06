@@ -19,8 +19,8 @@ export class KnowledgeBaseService {
   constructor(db_service: DatabaseService){
     this.db_service = db_service
     this.knowledge_base_query = function (doc, emit) {
-      if (doc.modalities) {
-        emit(doc.modalities, doc);
+      if (doc._id == "knowledge-base") {
+        emit(doc);
       }
     }
   }
@@ -31,13 +31,9 @@ export class KnowledgeBaseService {
    */
   public getKnowledgeBase(){
       return this.db_service.query(this.knowledge_base_query, {}).then(result => {
-      let modalities = []
-      let rows = result.rows;
-      for (let row of rows){
-        modalities.push(row.value.modalities)
-      }
-      return modalities
-    }).catch(err => {
+        console.log(result.rows)
+        return result.rows
+      }).catch(err => {
     throw err
   })
   }
