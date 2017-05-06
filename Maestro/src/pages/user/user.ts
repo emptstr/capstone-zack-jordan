@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams, Loading, LoadingController} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth-service';
 import { LoginPage } from '../login/login';
 import { User } from '../../providers/database/user';
@@ -7,6 +7,8 @@ import { UserService } from '../../providers/database/user.service'
 import {KnowledgeBaseService} from "../../providers/knowledge-base/knowlege.base.service"
 import {LearningStrategiesService} from "../../providers/learning-strategies/learning.strategies.service"
 import {KnowledgePage} from "../knowledge/knowledge"
+import { LoadingComponent } from "../../shared/loading/loading"
+
 
 /**
  * Component for user page
@@ -32,12 +34,10 @@ export class UserPage {
   knowledge: any;
   learning_style: any;
 
-  loading: Loading;
-  loaded: boolean;
 
   constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams,
               private userService: UserService, private kb: KnowledgeBaseService,
-              private ls: LearningStrategiesService, private loader: LoadingController) {}
+              private ls: LearningStrategiesService, private loading: LoadingComponent) {}
 
   /**
    * Initialize the directive/component after Angular first displays the data-bound properties
@@ -45,7 +45,7 @@ export class UserPage {
    */
   ngOnInit(){
 
-    this.showLoading();
+    this.loading.showLoading();
     this.getKnowledgeBase();
     this.getLearningStyle();
 
@@ -69,17 +69,6 @@ export class UserPage {
       // Calculate user
       this.categorizeUser()
     }
-  }
-
-  /**
-   * Creates and displays loading prompt waiting on sessions to be retrieved.
-   */
-  showLoading(){
-    this.loaded = false;
-    this.loading = this.loader.create({
-      content: 'Please wait...'
-    });
-    this.loading.present();
   }
 
   /**
@@ -112,8 +101,8 @@ export class UserPage {
   getLearningStyle(){
     this.ls.getStrategies().then(ls => {
       this.learning_style = ls;
-      this.loading.dismiss(); // Dismiss Loading
-      this.loaded = true;
+      this.loading.loading.dismiss();
+      this.loading.loaded = true;
     }).catch(err => {
       console.log("Error while getting knowledge base");
       throw err;

@@ -29,6 +29,7 @@ import {LearningStrategiesService} from "../providers/learning-strategies/learni
 import {UserScore} from "../shared/graphs/user-score"
 import {SessionSurveyResultsAnalyzer} from "../providers/sessions/session.survey.results.analyzer";
 import {PrevSession} from "../shared/graphs/prev-session"
+import {LoadingComponent} from "../shared/loading/loading"
 
 
 @NgModule({
@@ -85,7 +86,7 @@ import {PrevSession} from "../shared/graphs/prev-session"
     provide: ErrorHandler,
     useClass: IonicErrorHandler
   }, AuthService, DatabaseService, UserService, PasswordService, SessionService, SurveyService, KnowledgeBaseService,
-     LearningStrategiesService, SessionSurveyResultsAnalyzer]
+     LearningStrategiesService, SessionSurveyResultsAnalyzer, LoadingComponent]
 })
 export class AppModule {
 }

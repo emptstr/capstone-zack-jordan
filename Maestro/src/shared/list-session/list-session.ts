@@ -1,8 +1,9 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
-import { NavController, LoadingController, AlertController, ItemSliding, Loading} from 'ionic-angular';
+import { NavController, AlertController, ItemSliding} from 'ionic-angular';
 import {SessionService} from "../../providers/sessions/session.service";
 import {SessionInfoPage} from "../../pages/session-info/session-info";
 import {HomePage} from "../../pages/home/home"
+import {LoadingComponent} from "../loading/loading"
 
 /**
  * A reusable component to display the users sessions.
@@ -18,10 +19,8 @@ export class ListSession {
   @Input() amount: number;  // How many sessions to show
 
   @Output() isLoaded = new EventEmitter();
-  loading: Loading;
-  loaded: boolean;
 
-  constructor(private loader: LoadingController,  private session_service: SessionService,
+  constructor(private loading: LoadingComponent,  private session_service: SessionService,
               private alertCtrl: AlertController, private nav: NavController) {}
 
   /**
@@ -29,20 +28,10 @@ export class ListSession {
    * and sets the directive/component's input properties.
    */
   ngOnInit() {
-    this.showLoading();
+    this.loading.showLoading()
     this.getSessions();
   }
 
-  /**
-   * Creates and displays loading prompt waiting on sessions to be retrieved.
-   */
-  showLoading(){
-    this.loaded = false;
-    this.loading = this.loader.create({
-      content: 'Please wait...'
-    });
-    this.loading.present();
-  }
 
   /**
    * Get user sessions from database.
@@ -53,8 +42,8 @@ export class ListSession {
         this.sessions = []; // User doesn't have any sessions
       } else {
         this.sessions = sess;
-        this.loading.dismiss(); // Dismiss Loading
-        this.loaded = true;
+        this.loading.loading.dismiss();
+        this.loading.loaded = true;
 
       }
     }).catch(err => {
