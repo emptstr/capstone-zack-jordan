@@ -42,16 +42,18 @@ export class ListSession {
     this.session_service.getPreviousSessions(10000).then((sess) => {
       if (sess == null){
         this.sessions = []; // User doesn't have any sessions
+        this.loading.loading.dismiss();
+        this.loading.loaded = true;
       } else {
         this.sessions = sess;
         this.loading.loading.dismiss();
         this.loading.loaded = true;
-
       }
     }).catch(err => {
       console.log("Error while getting previous sessions");
       throw err;
     });
+
 
   }
 
