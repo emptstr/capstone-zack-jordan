@@ -95,6 +95,17 @@ export class UserPage {
     })
   }
 
+  getKnowledgeBaseCat(cat) {
+    console.log(this.knowledge[0]);
+    if (cat == "Auditory") {
+      return this.knowledge[0].key.auditory_section;
+    } else if (cat == "Visual") {
+      return this.knowledge[0].key.visual_section;
+    } else {
+      return this.knowledge[0].key.kinesthetic_section;
+    }
+  }
+
   /**
    *
    */
@@ -128,9 +139,10 @@ export class UserPage {
    * @param category
    */
   gotoKnowledge(category) {
+    let catKnowledge = this.getKnowledgeBaseCat(category);
     let catLearning = this.getLearningStyleCat(category);
     this.nav.push(KnowledgePage, {
-      knowledge: this.knowledge,
+      knowledge: catKnowledge,
       learning: catLearning
     })
   }
