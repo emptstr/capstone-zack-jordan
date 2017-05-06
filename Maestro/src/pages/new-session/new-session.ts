@@ -82,12 +82,13 @@ export class NewSessionPage {
    */
   getSessions(){
     this.sess.getPreviousSessions(1).then((sess) => {
-      if (sess == null){
-        this.prev_session_survey = []; // User doesn't have any sessions
+      if (sess.length == 0){
+        this.prev_session_survey = null; // User doesn't have any sessions
+        this.loading.dismiss(); // Dismiss Loading
+        this.loaded = true;
       } else {
         this.prev_session_survey = sess;
         console.log(this.prev_session_survey);
-
         this.loading.dismiss(); // Dismiss Loading
         this.loaded = true;
 

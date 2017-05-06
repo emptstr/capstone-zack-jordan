@@ -10,4 +10,7 @@ import { Component } from '@angular/core';
   selector: 'page-session-hist',
   templateUrl: 'session-hist.html'
 })
-export class SessionHistPage {}
+export class SessionHistPage {
+
+  navigate = SessionHistPage
+}
