@@ -12,6 +12,8 @@ import { NewSessionPage } from "../new-session/new-session"
 
 export class HomePage {
 
+  navigate = HomePage;
+
   constructor(private nav: NavController) {}
 
   /**

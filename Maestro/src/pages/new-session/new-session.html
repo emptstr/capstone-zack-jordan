@@ -12,6 +12,11 @@
 <ion-content padding>
     <!--Info from last session-->
     <div [hidden]="!prev_session">
+        <div [hidden]="!loaded" *ngIf="!prev_session_survey">
+            <h1 text-center>No Previous Sessions</h1>
+            <button ion-button margin-top="30px" color="seconday" (click)="toStart()">Next</button>
+        </div>
+
         <div *ngIf="prev_session_survey">
             <ion-card>
                 <ion-title text-center>Past Session Survey Metrics</ion-title>

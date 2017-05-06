@@ -124,7 +124,7 @@ export class UserPage {
   }
 
   /**
-   * Click handler for categoryy buttons to go to knowledge base
+   * Click handler for category buttons to go to knowledge base
    * @param category
    */
   gotoKnowledge(category) {
@@ -151,13 +151,13 @@ export class UserPage {
    */
   calcInitSurvey() {
 
-    let visual = this.getVisualAnswers(); // Get scores from visual section
+    let visual = this.getAnswers("Visual"); // Get scores from visual section
     this.visual_score = calculateScore(visual); // Calculate score
 
-    let kinesthetic = this.getKinAnswers(); // Get scores from kinesthetic section
+    let kinesthetic = this.getAnswers("Kinesthetic"); // Get scores from kinesthetic section
     this.kin_score = calculateScore(kinesthetic); // Calculate score
 
-    let auditory = this.getAudAnswers();  // Get scores from auditory section
+    let auditory = this.getAnswers("Auditory");  // Get scores from auditory section
     this.aud_score = calculateScore(auditory);  // Calculate score
 
     // Put users scores into the User object
@@ -194,13 +194,14 @@ export class UserPage {
     }
   }
 
+
   /**
-   * Gets the visual scores from the users answers.
+   * Get scores from user answers
    * @returns {any[]}
    */
-  getVisualAnswers(){
+  getAnswers(cat){
     return this.init_answers.filter(a => {
-      if (a.section == "Visual") {
+      if (a.section == cat) {
         return a;
       } else {
         return false;
@@ -208,37 +209,6 @@ export class UserPage {
     });
 
   }
-
-  /**
-   * Gets Kinesthetic scores from users answers.
-   * @returns {any[]}
-   */
-  getKinAnswers(){
-    return this.init_answers.filter(a => {
-      if (a.section == "Auditory") {
-        return a;
-      } else {
-        return false;
-      }
-    });
-
-  }
-
-  /**
-   * Get auditory scores from user answers
-   * @returns {any[]}
-   */
-  getAudAnswers(){
-    return this.init_answers.filter(a => {
-      if (a.section == "Kinesthetic") {
-        return a;
-      } else {
-        return false;
-      }
-    });
-
-  }
-
 }
 
 /**

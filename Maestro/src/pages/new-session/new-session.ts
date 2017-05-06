@@ -70,15 +70,17 @@ export class NewSessionPage {
    */
   getSessions(){
     this.sess.getPreviousSessions(1).then((sess) => {
-      if (sess == null){
-        this.prev_session_survey = []; // User doesn't have any sessions
+      if (sess.length == 0){
+        this.prev_session_survey = null; // User doesn't have any sessions
+        this.loading.loading.dismiss();
+        this.loading.loaded = true;
       } else {
         this.prev_session_survey = sess;
         console.log(this.prev_session_survey);
 
+        //Dismiss loading
         this.loading.loading.dismiss();
         this.loading.loaded = true;
-
       }
     }).catch(err => {
       console.log("Error while getting previous sessions");
