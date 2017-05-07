@@ -1,9 +1,8 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
-import { NavController, AlertController, ItemSliding} from 'ionic-angular';
+import { NavController, AlertController, ItemSliding, LoadingController, Loading} from 'ionic-angular';
 import {SessionService} from "../../providers/sessions/session.service";
 import {SessionInfoPage} from "../../pages/session-info/session-info";
 import {HomePage} from "../../pages/home/home"
-import {LoadingComponent} from "../loading/loading"
 
 /**
  * A reusable component to display the users sessions.
@@ -21,8 +20,10 @@ export class ListSession {
   @Output() isLoaded = new EventEmitter();
   @Input() navigate: Component; // Where to go after a session is deleted
 
+  loading: Loading;
+  loaded: boolean;
 
-  constructor(private loading: LoadingComponent,  private session_service: SessionService,
+  constructor(private loader: LoadingController,  private session_service: SessionService,
               private alertCtrl: AlertController, private nav: NavController) {}
 
   /**
@@ -30,10 +31,21 @@ export class ListSession {
    * and sets the directive/component's input properties.
    */
   ngOnInit() {
-    this.loading.showLoading()
+    this.showLoading();
     this.getSessions();
   }
 
+
+  /**
+   * Start loading prompt
+   */
+  showLoading(){
+    this.loaded = false;
+    this.loading = this.loader.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
+  }
 
   /**
    * Get user sessions from database.
@@ -42,12 +54,12 @@ export class ListSession {
     this.session_service.getPreviousSessions(10000).then((sess) => {
       if (sess == null){
         this.sessions = []; // User doesn't have any sessions
-        this.loading.loading.dismiss();
-        this.loading.loaded = true;
+        this.loading.dismiss();
+        this.loaded = true;
       } else {
         this.sessions = sess;
-        this.loading.loading.dismiss();
-        this.loading.loaded = true;
+        this.loading.dismiss();
+        this.loaded = true;
       }
     }).catch(err => {
       console.log("Error while getting previous sessions");

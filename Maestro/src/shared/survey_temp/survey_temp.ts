@@ -1,8 +1,7 @@
 import {Component, ViewChild, Input} from '@angular/core';
-import {Slides} from 'ionic-angular';
+import {Slides, LoadingController, Loading} from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import {SurveyService} from "../../providers/survey/survey.service";
-import { LoadingComponent } from "../loading/loading"
 
 /**
  * A reusable survey component
@@ -25,10 +24,11 @@ export class SurveyTemp {
   @Input() from_session_survey: boolean; // Variable to keep track if coming from session survey
   @Input() session = [];
 
+  loading: Loading;
+  loaded: boolean;
 
 
-  constructor(private nav: NavController, private survey_service:SurveyService, private loading: LoadingComponent) {
-    this.loading.showLoading()
+  constructor(private nav: NavController, private survey_service:SurveyService, private loader: LoadingController) {
   }
 
   /**
@@ -36,11 +36,23 @@ export class SurveyTemp {
    * and sets the directive/component's input properties.
    */
   ngOnInit(){
+    this.showLoading();
     this.getSurvey();
 
     // Workaround to Ionic 2 slide bug
     this.slides.lockSwipeToNext(true);
     this.slides.lockSwipeToPrev(true);
+  }
+
+  /**
+   * Start loading prompt
+   */
+  showLoading(){
+    this.loaded = false;
+    this.loading = this.loader.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
   }
 
   /**
@@ -51,8 +63,8 @@ export class SurveyTemp {
       // Survey is found
       this.survey = result.questions;
       // Dismiss loading
-      this.loading.loading.dismiss();
-      this.loading.loaded = true;
+      this.loading.dismiss();
+      this.loaded = true;
     }).catch(err=>{
       throw err;
     })

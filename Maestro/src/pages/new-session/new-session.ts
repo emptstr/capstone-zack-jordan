@@ -1,12 +1,11 @@
 import {Component, Input, ViewChild} from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController, Loading } from 'ionic-angular';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { AuthService } from '../../providers/auth/auth-service';
 import { Session } from '../../providers/sessions/session';
 import { SessionService } from '../../providers/sessions/session.service';
 import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
 import { SessionSurveyPage } from "../session-survey/session-survey"
-import { LoadingComponent } from "../../shared/loading/loading"
 
 
 import {Chart} from 'chart.js';
@@ -35,10 +34,12 @@ export class NewSessionPage {
 
   prev_session_survey;
 
+  loading: Loading;
+  loaded: boolean;
 
 
   constructor(private nav: NavController, private auth: AuthService, private sess: SessionService,
-              private loading: LoadingComponent) {
+              private loader: LoadingController) {
 
     this.sessionObj = {
       title: '',
@@ -58,10 +59,21 @@ export class NewSessionPage {
    * and sets the directive/component's input properties.
    */
   ngOnInit(){
-    this.loading.showLoading();
+    this.showLoading();
     this.getSessions();
     //TODO: Get previous session-survey
     this.prev_session = true
+  }
+
+  /**
+   * Start loading prompt
+   */
+  showLoading(){
+    this.loaded = false;
+    this.loading = this.loader.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
   }
 
 
@@ -72,15 +84,15 @@ export class NewSessionPage {
     this.sess.getPreviousSessions(1).then((sess) => {
       if (sess.length == 0){
         this.prev_session_survey = null; // User doesn't have any sessions
-        this.loading.loading.dismiss();
-        this.loading.loaded = true;
+        this.loading.dismiss();
+        this.loaded = true;
       } else {
         this.prev_session_survey = sess;
         console.log(this.prev_session_survey);
 
         //Dismiss loading
-        this.loading.loading.dismiss();
-        this.loading.loaded = true;
+        this.loading.dismiss();
+        this.loaded = true;
       }
     }).catch(err => {
       console.log("Error while getting previous sessions");
