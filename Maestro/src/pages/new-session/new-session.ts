@@ -5,7 +5,8 @@ import { AuthService } from '../../providers/auth/auth-service';
 import { Session } from '../../providers/sessions/session';
 import { SessionService } from '../../providers/sessions/session.service';
 import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
-import { SessionSurveyPage } from "../session-survey/session-survey"
+import { SessionSurveyPage } from "../session-survey/session-survey";
+import {Insomnia} from 'ionic-native'
 
 
 import {Chart} from 'chart.js';
@@ -112,6 +113,7 @@ export class NewSessionPage {
    * Click handler for Start session button
    */
   startSession(){
+    Insomnia.keepAwake();
     let timer = Observable.timer(0, 1000);  // Create Timer
     this.subscription = timer.subscribe(t => this.sessionObj.time = convertSec(t)); // Display timer HH:MM:SS
     this.started = true;
@@ -124,6 +126,7 @@ export class NewSessionPage {
    * Click handler for End button for timer
    */
   endSession(){
+    Insomnia.allowSleepAgain();
     this.subscription.unsubscribe();  // Stop timer
     this.started = false;
     this.end_session = true;
