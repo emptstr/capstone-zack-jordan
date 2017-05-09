@@ -19,7 +19,7 @@ export class SessionSurveyPage {
 
   survey_name: string = "session-survey"; // Survey id to be passed to survey-temp
   navigate: Component = SessionSurveyPage; // navigate to be passed to survey-temp
-  session: Session; // Holds session passed form new-session page
+  session: Session; // Holds session passed form session page
   from_session_survey: boolean;
   sess_answers = [];
 
@@ -30,7 +30,7 @@ export class SessionSurveyPage {
    * and sets the directive/component's input properties.
    */
   ngOnInit(){
-    this.session = this.navParams.get("session"); // Get session passed from new-session page
+    this.session = this.navParams.get("session"); // Get session passed from session page
     this.from_session_survey = this.navParams.get("from_session_survey");
 
     // If coming from session survey. Survey is completed
