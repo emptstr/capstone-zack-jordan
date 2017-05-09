@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import { NewSessionPage } from "../new-session/new-session"
+import { SessionPage } from "../session/session"
 
 /**
  * Component for HomePage/Dashboard
@@ -18,7 +18,7 @@ export class HomePage {
    * Navigates to New Session Page
    */
   newSession() {
-    this.nav.push(NewSessionPage);
+    this.nav.push(SessionPage);
   }
 
 

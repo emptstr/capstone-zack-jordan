@@ -6,7 +6,7 @@ import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
 import {HomePage} from '../pages/home/home';
 import {UserPage} from '../pages/user/user';
-import {NewSessionPage} from '../pages/new-session/new-session';
+import {SessionPage} from '../pages/session/session';
 import {SessionInfoPage} from "../pages/session-info/session-info";
 import { SessionHistPage } from "../pages/session-hist/session-hist";
 import { InitSurveyPage } from  "../pages/init-survey/init-survey";
@@ -36,7 +36,7 @@ import {UserScore} from "../shared/graphs/user-score"
     LoginPage,
     RegisterPage,
     UserPage,
-    NewSessionPage,
+    SessionPage,
     SessionInfoPage,
     SessionHistPage,
     SessionSurveyPage,
@@ -61,7 +61,7 @@ import {UserScore} from "../shared/graphs/user-score"
     LoginPage,
     RegisterPage,
     UserPage,
-    NewSessionPage,
+    SessionPage,
     SessionInfoPage,
     SessionHistPage,
     InitSurveyPage,
