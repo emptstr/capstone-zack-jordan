@@ -24,6 +24,10 @@ src/*.map
 src/pages/**/*.js
 src/pages/**/*.map
 
+#Shared
+src/shared/**/*.js
+src/shared/**/*.map
+
 #Providers
 src/providers/**/*.js
 src/providers/**/*.map
