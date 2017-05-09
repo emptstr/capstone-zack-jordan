@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {Component, Input, ViewChild} from '@angular/core';
+import { NavController, LoadingController, Loading } from 'ionic-angular';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { AuthService } from '../../providers/auth/auth-service';
 import { Session } from '../../providers/sessions/session';
 import { SessionService } from '../../providers/sessions/session.service';
 import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
-import { SessionSurveyPage } from "../session-survey/session-survey"
+import { SessionSurveyPage } from "../session-survey/session-survey";
+import {Insomnia} from 'ionic-native'
+
+
+import {Chart} from 'chart.js';
+
 
 /**
  * Component for starting a new work session.
  */
 @Component({
-  selector: 'page-new-session',
+  selector: 'page-session',
   templateUrl: 'session.html'
 })
 
@@ -28,7 +33,14 @@ export class SessionPage {
   session: Session; // Session object being created
   _id: string;  // Field for session id
 
-  constructor(private nav: NavController, private auth: AuthService, private sess: SessionService) {
+  prev_session_survey;
+
+  loading: Loading;
+  loaded: boolean;
+
+
+  constructor(private nav: NavController, private auth: AuthService, private sess: SessionService,
+              private loader: LoadingController) {
 
     this.sessionObj = {
       title: '',
@@ -48,7 +60,46 @@ export class SessionPage {
    * and sets the directive/component's input properties.
    */
   ngOnInit(){
+    this.showLoading();
+    this.getSessions();
+    //TODO: Get previous session-survey
     this.prev_session = true
+  }
+
+  /**
+   * Start loading prompt
+   */
+  showLoading(){
+    this.loaded = false;
+    this.loading = this.loader.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
+  }
+
+
+  /**
+   * Get user sessions from database.
+   */
+  getSessions(){
+    this.sess.getPreviousSessions(1).then((sess) => {
+      if (sess.length == 0){
+        this.prev_session_survey = null; // User doesn't have any sessions
+        this.loading.dismiss();
+        this.loaded = true;
+      } else {
+        this.prev_session_survey = sess;
+        console.log(this.prev_session_survey);
+
+        //Dismiss loading
+        this.loading.dismiss();
+        this.loaded = true;
+      }
+    }).catch(err => {
+      console.log("Error while getting previous sessions");
+      throw err;
+    });
+
   }
 
   /**
@@ -62,6 +113,7 @@ export class SessionPage {
    * Click handler for Start session button
    */
   startSession(){
+    Insomnia.keepAwake();
     let timer = Observable.timer(0, 1000);  // Create Timer
     this.subscription = timer.subscribe(t => this.sessionObj.time = convertSec(t)); // Display timer HH:MM:SS
     this.started = true;
@@ -74,6 +126,7 @@ export class SessionPage {
    * Click handler for End button for timer
    */
   endSession(){
+    Insomnia.allowSleepAgain();
     this.subscription.unsubscribe();  // Stop timer
     this.started = false;
     this.end_session = true;
@@ -117,10 +170,6 @@ const convertSec = ticks => { return new Date(ticks * 1000).toISOString().substr
 const getDateTime = () => {
   let date = new Date();
   return DateArrBuilder.build(date.getFullYear(), date.getMonth(), date.getDate(),
-                              date.getHours(), date.getMinutes(), date.getSeconds());
+    date.getHours(), date.getMinutes(), date.getSeconds());
 
 };
-
-
-
-
