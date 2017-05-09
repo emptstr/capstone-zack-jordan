@@ -2,7 +2,6 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { NavController, AlertController, ItemSliding, LoadingController, Loading} from 'ionic-angular';
 import {SessionService} from "../../providers/sessions/session.service";
 import {SessionInfoPage} from "../../pages/session-info/session-info";
-import {HomePage} from "../../pages/home/home"
 
 /**
  * A reusable component to display the users sessions.

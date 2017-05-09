@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import { NavController, LoadingController, Loading } from 'ionic-angular';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { AuthService } from '../../providers/auth/auth-service';
@@ -7,9 +7,6 @@ import { SessionService } from '../../providers/sessions/session.service';
 import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
 import { SessionSurveyPage } from "../session-survey/session-survey";
 import {Insomnia} from 'ionic-native'
-
-
-import {Chart} from 'chart.js';
 
 
 /**
