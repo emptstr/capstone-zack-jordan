@@ -11,14 +11,16 @@ import {Chart} from 'chart.js';
 
 export class PrevSession {
   @ViewChild('barCanvas') barCanvas;
-
-  @Input() session;
+  @Input() session; //The previous session to be displayed
 
 
   ngOnInit() {
     this.renderChart();
   }
 
+  /**
+   * Renders the Bar Graph of Survey Metrics
+   */
   renderChart() {
     return new Chart(this.barCanvas.nativeElement, {
       type: 'bar',
