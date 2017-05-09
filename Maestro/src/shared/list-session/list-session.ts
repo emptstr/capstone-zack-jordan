@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
-import { NavController, LoadingController, AlertController, ItemSliding, Loading} from 'ionic-angular';
+import { NavController, AlertController, ItemSliding, LoadingController, Loading} from 'ionic-angular';
 import {SessionService} from "../../providers/sessions/session.service";
 import {SessionInfoPage} from "../../pages/session-info/session-info";
 import {HomePage} from "../../pages/home/home"
@@ -18,10 +18,10 @@ export class ListSession {
   @Input() amount: number;  // How many sessions to show
 
   @Output() isLoaded = new EventEmitter();
+  @Input() navigate: Component; // Where to go after a session is deleted
+
   loading: Loading;
   loaded: boolean;
-
-  @Input() navigate: Component; // Where to go after a session is deleted
 
   constructor(private loader: LoadingController,  private session_service: SessionService,
               private alertCtrl: AlertController, private nav: NavController) {}
@@ -35,8 +35,9 @@ export class ListSession {
     this.getSessions();
   }
 
+
   /**
-   * Creates and displays loading prompt waiting on sessions to be retrieved.
+   * Start loading prompt
    */
   showLoading(){
     this.loaded = false;
@@ -53,16 +54,18 @@ export class ListSession {
     this.session_service.getPreviousSessions(10000).then((sess) => {
       if (sess == null){
         this.sessions = []; // User doesn't have any sessions
+        this.loading.dismiss();
+        this.loaded = true;
       } else {
         this.sessions = sess;
-        this.loading.dismiss(); // Dismiss Loading
+        this.loading.dismiss();
         this.loaded = true;
-
       }
     }).catch(err => {
       console.log("Error while getting previous sessions");
       throw err;
     });
+
 
   }
 

@@ -1,11 +1,13 @@
 import {Component, Input, ViewChild} from '@angular/core';
-import { NavController,Loading, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, Loading } from 'ionic-angular';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { AuthService } from '../../providers/auth/auth-service';
 import { Session } from '../../providers/sessions/session';
 import { SessionService } from '../../providers/sessions/session.service';
 import {DateArrBuilder} from "../../providers/sessions/date.arr.builder";
-import { SessionSurveyPage } from "../session-survey/session-survey"
+import { SessionSurveyPage } from "../session-survey/session-survey";
+import {Insomnia} from 'ionic-native'
+
 
 import {Chart} from 'chart.js';
 
@@ -37,7 +39,6 @@ export class NewSessionPage {
   loaded: boolean;
 
 
-
   constructor(private nav: NavController, private auth: AuthService, private sess: SessionService,
               private loader: LoadingController) {
 
@@ -66,7 +67,7 @@ export class NewSessionPage {
   }
 
   /**
-   * Creates and displays loading prompt waiting on sessions to be retrieved.
+   * Start loading prompt
    */
   showLoading(){
     this.loaded = false;
@@ -84,14 +85,15 @@ export class NewSessionPage {
     this.sess.getPreviousSessions(1).then((sess) => {
       if (sess.length == 0){
         this.prev_session_survey = null; // User doesn't have any sessions
-        this.loading.dismiss(); // Dismiss Loading
+        this.loading.dismiss();
         this.loaded = true;
       } else {
         this.prev_session_survey = sess;
         console.log(this.prev_session_survey);
-        this.loading.dismiss(); // Dismiss Loading
-        this.loaded = true;
 
+        //Dismiss loading
+        this.loading.dismiss();
+        this.loaded = true;
       }
     }).catch(err => {
       console.log("Error while getting previous sessions");
@@ -111,6 +113,7 @@ export class NewSessionPage {
    * Click handler for Start session button
    */
   startSession(){
+    Insomnia.keepAwake();
     let timer = Observable.timer(0, 1000);  // Create Timer
     this.subscription = timer.subscribe(t => this.sessionObj.time = convertSec(t)); // Display timer HH:MM:SS
     this.started = true;
@@ -123,6 +126,7 @@ export class NewSessionPage {
    * Click handler for End button for timer
    */
   endSession(){
+    Insomnia.allowSleepAgain();
     this.subscription.unsubscribe();  // Stop timer
     this.started = false;
     this.end_session = true;

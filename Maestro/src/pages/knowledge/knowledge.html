@@ -8,7 +8,16 @@
 
 
 <ion-content padding>
-
+    <div>
+        <ion-list>
+            <ion-item text-wrap *ngFor="let k of knowledge.modalities">
+                <ion-card>
+                <ion-title text-center>{{k.name}}</ion-title>
+                    <ion-card-content text-center e>{{k.value}}</ion-card-content>
+                </ion-card>
+            </ion-item>
+        </ion-list>
+    </div>
     <hr>
     <div text-center>
         <h6 style="display: inline-block">Tips on how to improve learning sessions:</h6>

@@ -1,9 +1,7 @@
 import {Component, ViewChild, Input} from '@angular/core';
 import {Slides, LoadingController, Loading} from 'ionic-angular';
 import { NavController } from 'ionic-angular';
-import { UserPage } from "../../pages/user/user"
 import {SurveyService} from "../../providers/survey/survey.service";
-
 
 /**
  * A reusable survey component
@@ -31,7 +29,6 @@ export class SurveyTemp {
 
 
   constructor(private nav: NavController, private survey_service:SurveyService, private loader: LoadingController) {
-    this.showLoading();
   }
 
   /**
@@ -39,11 +36,23 @@ export class SurveyTemp {
    * and sets the directive/component's input properties.
    */
   ngOnInit(){
+    this.showLoading();
     this.getSurvey();
 
     // Workaround to Ionic 2 slide bug
     this.slides.lockSwipeToNext(true);
     this.slides.lockSwipeToPrev(true);
+  }
+
+  /**
+   * Start loading prompt
+   */
+  showLoading(){
+    this.loaded = false;
+    this.loading = this.loader.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
   }
 
   /**
@@ -59,17 +68,6 @@ export class SurveyTemp {
     }).catch(err=>{
       throw err;
     })
-  }
-
-  /**
-   * Start loading prompt
-   */
-  showLoading(){
-    this.loaded = false;
-    this.loading = this.loader.create({
-      content: 'Please wait...'
-    });
-    this.loading.present();
   }
 
 

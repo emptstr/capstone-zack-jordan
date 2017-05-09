@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams, Loading, LoadingController} from 'ionic-angular';
+import {NavController, NavParams, LoadingController, Loading} from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth-service';
 import { LoginPage } from '../login/login';
 import { User } from '../../providers/database/user';
@@ -7,6 +7,7 @@ import { UserService } from '../../providers/database/user.service'
 import {KnowledgeBaseService} from "../../providers/knowledge-base/knowlege.base.service"
 import {LearningStrategiesService} from "../../providers/learning-strategies/learning.strategies.service"
 import {KnowledgePage} from "../knowledge/knowledge"
+
 
 /**
  * Component for user page
@@ -34,6 +35,7 @@ export class UserPage {
 
   loading: Loading;
   loaded: boolean;
+
 
   constructor(private nav: NavController, private auth: AuthService, public navParams: NavParams,
               private userService: UserService, private kb: KnowledgeBaseService,
@@ -72,7 +74,7 @@ export class UserPage {
   }
 
   /**
-   * Creates and displays loading prompt waiting on sessions to be retrieved.
+   * Start loading prompt
    */
   showLoading(){
     this.loaded = false;
@@ -95,13 +97,24 @@ export class UserPage {
     })
   }
 
+  getKnowledgeBaseCat(cat) {
+    console.log(this.knowledge[0]);
+    if (cat == "Auditory") {
+      return this.knowledge[0].key.auditory_section;
+    } else if (cat == "Visual") {
+      return this.knowledge[0].key.visual_section;
+    } else {
+      return this.knowledge[0].key.kinesthetic_section;
+    }
+  }
+
   /**
    *
    */
   getLearningStyle(){
     this.ls.getStrategies().then(ls => {
       this.learning_style = ls;
-      this.loading.dismiss(); // Dismiss Loading
+      this.loading.dismiss();
       this.loaded = true;
     }).catch(err => {
       console.log("Error while getting knowledge base");
@@ -128,9 +141,10 @@ export class UserPage {
    * @param category
    */
   gotoKnowledge(category) {
+    let catKnowledge = this.getKnowledgeBaseCat(category);
     let catLearning = this.getLearningStyleCat(category);
     this.nav.push(KnowledgePage, {
-      knowledge: this.knowledge,
+      knowledge: catKnowledge,
       learning: catLearning
     })
   }
